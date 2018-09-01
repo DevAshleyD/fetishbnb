@@ -31,7 +31,7 @@ $lang['action_no']                      = 'No';
 $lang['action_loading']                 = 'Loading...';
 $lang['action_clear']                   = 'Clear';
 $lang['action_undo']                    = 'Undo';
-$lang['action_more']                    = 'More';
+$lang['action_more']                    = 'FAQ';
 $lang['action_reset']          			= 'Reset';
 $lang['action_view']            		= 'View';
 $lang['action_view_invoice']            = 'Invoice';
@@ -182,9 +182,9 @@ $lang['header_sales']        				= 'Sales';
  $lang['w_upcoming_events']                 = 'Upcoming Events';
  $lang['w_about_us']                        = 'About Us';
  $lang['w_take_tour']                       = 'Take Video Tour';
- $lang['w_our_tutors']                      = 'Our Tutors & Hosts';
+ $lang['w_our_tutors']                      = 'Hosts Everywhere';
  $lang['w_students_blog']                   = 'Members Blog';
- 
+
 
 /**
  * Sidebar Language
@@ -954,7 +954,7 @@ $lang['pages_slug'] 						= 'Slug';
 $lang['pages_content'] 						= 'Content';
 
 /**
- * FAQ 
+ * FAQ
 **/
 $lang['faqs_question'] 						= 'Question';
 $lang['faqs_answer'] 						= 'Answer';
@@ -989,7 +989,7 @@ $lang['menus_placement'] 					= 'Placement';
 
 
 /**
- * Courses Listings 
+ * Courses Listings
 **/
 $lang['c_l_repetitive_batch']               = 'Repetitive Batch';
 $lang['c_l_repetitive_batch_help']          = ' repeats weekly, that\'s why you can select batch from any week (of batch)!';
@@ -1042,7 +1042,7 @@ $lang['c_l_booking_mail']                   = 'Please check you registered email
 $lang['c_d_related_courses']                = 'Related Courses';
 
 /**
- * Events Listings 
+ * Events Listings
 **/
 $lang['e_l_repetitive_event']               = 'Repetitive Event';
 $lang['e_l_repetitive_event_help']          = ' repeats weekly, that\'s why you can select event from any week (of event)!';
@@ -1128,6 +1128,3 @@ $lang['manage_acl_view']					= 'View';
 
 /*Events lang*/
 $lang['events_free']						= 'FREE';
-
-
-
