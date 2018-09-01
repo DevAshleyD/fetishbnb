@@ -217,8 +217,8 @@ window.theme = {};
 				menuAfterHeader: false,
 				alwaysStickyEnabled: false,
 				logoPaddingTop: 28,
-				logoSmallWidth: 82,
-				logoSmallHeight: 40
+				logoSmallWidth: 150,
+				logoSmallHeight: 70
 			},
 
 			initialize: function($wrapper, opts) {
@@ -336,7 +336,7 @@ window.theme = {};
 						}, 200, function() {
 							$.event.trigger({
 								type: "stickyMenu.active"
-							});						
+							});
 						});
 
 					}
@@ -371,7 +371,7 @@ window.theme = {};
 							}, 200, function() {
 								$.event.trigger({
 									type: "stickyMenu.deactive"
-								});						
+								});
 							});
 
 						}
@@ -517,12 +517,12 @@ window.theme = {};
 	if (typeof theme.Nav !== 'undefined') {
 		theme.Nav.initialize();
 	}
-	
+
 		// Account
 	if (typeof theme.Account !== 'undefined') {
 		theme.Account.initialize();
 	}
-	
+
 }).apply(this, [jQuery]);
 
 
