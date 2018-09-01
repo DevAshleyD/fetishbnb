@@ -1,0 +1,28 @@
+/* Header */
+html.ie header {
+	background: #fff;
+	filter: none;
+}
+
+/* Navigation */
+html.ie8 header nav ul.nav-main ul.dropdown-menu,
+html.ie9 header nav ul.nav-main ul.dropdown-menu {
+	filter: none !important;
+}
+
+/* Social Icons */
+html.ie8 header ul.social-icons {
+	margin-top: 2px;
+}
+
+html.ie8 header ul.social-icons li {
+	background-color: #F1F1F1;
+}
+
+/* Hr */
+hr {
+	background: rgba(0, 0, 0, 0.1);
+}
+.typo-light hr {
+	background: (255, 255, 255, 0.5);
+}

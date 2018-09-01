@@ -1,0 +1,107 @@
+pre,code {
+	font-size: 12px;
+}
+
+pre {
+	width: 100%;
+	overflow: auto;
+}
+
+small {
+	font-size: 90%;
+}
+
+small code {
+	font-size: 11px;
+}
+
+.placeholder {
+	outline: 1px dashed #4183C4;
+}
+
+.mjs-nestedSortable-error {
+	background: #fbe3e4;
+	border-color: transparent;
+}
+
+#tree {
+	width: 550px;
+	margin: 0;
+}
+
+ol {
+	max-width: 450px;
+	padding-left: 25px;
+}
+
+ol.nestable,ol.nestable ol {
+	list-style-type: none;
+}
+.nestable li{
+	margin-top:10px;
+}
+
+.nestable li >div {
+	cursor: move;
+	margin: 0;
+	padding: 3px;
+}
+
+li.mjs-nestedSortable-collapsed.mjs-nestedSortable-hovering div {
+	border-color: #999;
+}
+
+.disclose, .expandEditor {
+	cursor: pointer;
+	width: 20px;
+	display: none;
+}
+
+.nestable li.mjs-nestedSortable-collapsed > ol {
+	display: none;
+}
+
+.nestable li.mjs-nestedSortable-branch > div > .disclose {
+	display: inline-block;
+}
+
+.nestable span.ui-icon {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+.menuDiv {
+	background: #EBEBEB;
+}
+
+.menuEdit {
+	background: #FFF;
+}
+
+.itemTitle {
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.deleteMenu {
+	float: right;
+	cursor: pointer;
+}
+
+dl {
+	margin: 0;
+}
+
+dd {
+	margin: 0;
+	padding: 0 0 0 1.5em;
+}
+
+code {
+	background: #e5e5e5;
+}
+
+.notice {
+	color: #c33;
+}

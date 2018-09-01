@@ -1,0 +1,305 @@
+/* ================================= COLOR STYLE SHEET ====================================== */
+a,
+a:hover, a:focus, a.active,
+.typo-dark h1 a:hover, .typo-dark h1 a:focus, .typo-dark h1 a.active,
+.typo-dark h2 a:hover, .typo-dark h2 a:focus, .typo-dark h2 a.active,
+.typo-dark h3 a:hover, .typo-dark h3 a:focus, .typo-dark h3 a.active, 
+.typo-dark h4 a:hover, .typo-dark h4 a:focus, .typo-dark h4 a.active, 
+.typo-dark h5 a:hover, .typo-dark h5 a:focus, .typo-dark h5 a.active, 
+.typo-dark h6 a:hover, .typo-dark h6 a:focus, .typo-dark h6 a.active,
+
+.typo-light h1 a:hover, .typo-light h1 a:focus, .typo-light h1 a.active,
+.typo-light h2 a:hover, .typo-light h2 a:focus, .typo-light h2 a.active,
+.typo-light h3 a:hover, .typo-light h3 a:focus, .typo-light h3 a.active, 
+.typo-light h4 a:hover, .typo-light h4 a:focus, .typo-light h4 a.active, 
+.typo-light h5 a:hover, .typo-light h5 a:focus, .typo-light h5 a.active, 
+.typo-light h6 a:hover, .typo-light h6 a:focus, .typo-light h6 a.active
+{
+	color: #3271ff;
+}
+.btn,.btn.dark:hover{
+	background-color: #3271ff;
+}
+
+
+
+
+
+/* Color */
+.color{
+	color: #3271ff;
+}
+
+/* Background Color */
+.bg-color{
+	background-color: #3271ff !important;
+}
+/* Bg Gradient */
+.bg-gradient{
+	background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(68, 138, 255, 0.8) 0%, rgba(35, 35, 35, 0.8) 100%) repeat scroll 0 0;
+}
+/* Overlay */
+.overlay.bg-color:after{
+	background-color: #3271ff;
+}
+/* Background Video */
+.video-controls a{
+	background-color: #3271ff;
+}
+/* Title */
+.title-container.color *,
+.title-container .dot-separator.color{
+	color: #3271ff;
+}
+
+.title-container.color .title-wrap .separator.line-separator,
+.title-container.color .title-wrap .separator.line-separator:after{
+	background-color: #3271ff;
+}
+.title-bg-line > .title a{
+   background-color: #3271ff;
+}
+.title-bg-line{
+	border-color: #3271ff;
+}
+/*==================== 
+	Bootstrap 
+====================== */
+/* Accordion */
+.panel-group .panel{
+	border-left-color: #3271ff;
+}
+/* Tab */
+.nav-tabs > li > a:hover,.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
+	color: #3271ff;
+	border-bottom-color: #3271ff;
+}
+/* Progress */
+.progress-bar{
+	background-color: #3271ff;
+}
+/* List Types */
+.list-icon li:hover:before{
+	color: #3271ff;
+}
+/* Pagination */
+.pagination > li > a.active, .pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover,
+.pager li > a:focus, .pager li > a:hover{
+	background-color: #3271ff;
+}
+
+/* Back to top */
+.cd-top:hover, .cd-top:focus {
+	background-color: #3271ff;
+}
+
+/* Tooltip */
+.tooltip-color .tooltip-inner{
+	background-color: #3271ff;
+}
+.tooltip-color .tooltip.top .tooltip-arrow{
+	border-top-color:#3271ff;
+}
+
+.tooltip-color .tooltip.bottom .tooltip-arrow{
+	border-bottom-color:#3271ff;
+}
+
+.tooltip-color .tooltip.left .tooltip-arrow{
+	border-left-color:#3271ff;
+}
+
+.tooltip-color .tooltip.right .tooltip-arrow{
+	border-right-color:#3271ff;
+}
+
+/* Content box */
+.content-box i{
+	color:#3271ff;
+}
+.content-box.icon-box .icon-wrap i{
+	background-color: #3271ff;
+}
+/* Cat */
+.cat{
+	background-color: #3271ff;
+}
+
+
+
+/* Team */
+.color-border .member-wrap{
+	border-color: #3271ff;
+}
+.team-list .member-detail-wrap .position {
+	color: #3271ff;
+}
+
+/*==================== 
+	Course 
+====================== */
+.course-banner-wrap > h6 {
+	background-color: #3271ff;
+}
+.course-wrapper h5 span{
+	color: #3271ff;
+}
+
+/*==================== 
+	Timeline 
+====================== */
+.universh-timeline-img{
+	background-color: #3271ff;
+}
+/*==================== 
+	Events 
+====================== */
+.events-meta li i, .event-widget p i{
+	color: #3271ff;
+}
+/* Testimonial */
+.quote-footer span{
+	color: #3271ff;
+}
+.quote-wrap.color > blockquote{
+	background-color: #3271ff;
+}
+/* Page Header */
+.page-header .breadcrumb li, .page-header .breadcrumb li a:hover, .page-header .breadcrumb li a:focus{
+	color: #3271ff;
+}
+.page-header .title::after,
+.page-header .title::before{
+	background-color: #3271ff;
+}
+/* Related Block */
+.related-content a{
+	background-color: #3271ff;
+}
+/*==================== 
+	Widgets 
+====================== */
+.widget-title span{
+	background-color: #3271ff;
+}
+.widget li a:hover, .widget li a:focus, .widget li a.active,
+.widgets-dark.typo-light .widget li a:hover, .widgets-dark.typo-light .widget li a:focus, .widgets-dark.typo-light .widget li a.active{
+	color: #3271ff;
+}
+/* Tag Widget */
+.tag-widget li a:hover, .tag-widget li a:focus, .tag-widget li a.active{
+	background-color: #3271ff;
+	border-color: #3271ff;
+}
+.widgets-dark.typo-light .tag-widget li a:hover, .widgets-dark.typo-light .tag-widget li a:focus, .widgets-dark.typo-light .tag-widget li a.active{
+	color: #fff;
+}
+/* Go widget */
+.go-widget li a:hover .badge, .accordion-widget .panel-default > .panel-heading a:hover .badge{
+	background-color: #3271ff;
+}
+.widgets-dark.typo-light .widget .accordion-widget .panel-default > .panel-heading:hover .badge{
+	background-color: #3271ff;
+}
+.widgets-dark.typo-light .widget.no-box .accordion-widget .panel-default > .panel-heading:hover .badge{
+	background-color: #3271ff;
+}
+/* Thumbanil Widget */
+.thumbnail-widget span.color{
+	color: #3271ff;
+}
+/*==================== 
+	Owl Carousel
+====================== */
+.owl-theme .owl-nav > div:hover {
+	background-color:#3271ff;
+}
+.owl-theme .owl-dots .owl-dot:hover span, .owl-theme .owl-dots .owl-dot.active span{
+	background-color:#3271ff;
+}
+
+
+/* Gallery */
+.accordion.gallery-accordion .panel-title a.collapsed{
+	background:rgba(33, 150, 243, 0.9);
+}
+.isotope-filters .nav-pills li a.active, .isotope-filters .nav-pills li a:hover, .isotope-filters .nav-pills li a:focus{
+	background-color:#3271ff;
+}
+/* News */
+.news-cat{
+	background-color:#3271ff;
+}
+
+/* Shop */
+.product-label, .product-details .option-btn, .shop-meta li a:hover, .shop-meta li a:focus{
+	background-color:#3271ff;
+}
+.liked-members a:hover,.liked-members a:focus{
+	background-color:#3271ff;
+}
+
+
+/* Footer */
+.footer-copyright nav ul li a:hover, .footer-copyright nav ul li a:focus{
+	color: #3271ff;
+}
+
+/*==================== 
+	Header  color
+====================== */
+#header nav ul.nav-main li.dropdown.open .dropdown-toggle,
+#header nav ul.nav-main li.active a,
+#header nav ul.nav-main li > a:hover,
+#header nav ul.nav-main li.dropdown:hover a,
+#header.flat-menu nav ul.nav-main li.active > a {
+	background-color: #3271ff;
+}
+
+#header nav ul.nav-main ul.dropdown-menu {
+	border-color: #3271ff;
+}
+
+#header nav ul.nav-main li.dropdown:hover ul.dropdown-menu li > a:hover {
+	background: #3271ff ;
+}
+#header .tip{
+	background: #3271ff;
+}
+#header .tip:before{
+	border-right-color: #3271ff;
+}
+@media (min-width: 992px) {
+	#header.single-menu nav ul.nav-main li.active > a {
+		border-top: 5px solid #3271ff;
+	}
+
+	#header.darken-top-border {
+		border-color: #3271ff;
+	}
+
+	#header.colored .header-top {
+		background-color: #3271ff;
+	}
+
+	#header.colored .header-top ul.nav-top li a:hover {
+		background-color: #3271ff;
+	}
+	
+	/*#header.flat-menu nav ul.nav-main li.active > a {
+		color: #3271ff;
+	}*/
+
+	#header.flat-menu nav ul.nav-main li > a:hover,
+	#header.flat-menu nav ul.nav-main li.dropdown:hover a {
+		background-color: #3271ff;
+	}
+
+	#header nav.mega-menu ul.nav-main li.mega-menu-item ul.dropdown-menu {
+		border-top-color: #3271ff;
+	}
+}
+
+
+
+
