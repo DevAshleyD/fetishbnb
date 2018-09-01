@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?php echo base_url('/upload/institute/') ?>/logo.png" />
     <meta name="theme-color" content="#356cff">
 
     <!-- Web Fonts  -->
@@ -133,7 +132,7 @@
     <div class="container">
         <div class="logo">
             <a href="<?php echo site_url(''); ?>">
-                <img alt="<?php echo $this->settings->site_name ?>" src="<?php echo base_url('upload/institute/logo.png') ?>">
+                <img alt="<?php echo $this->settings->site_name ?>" width="200px" height="90px" src="<?php echo base_url('upload/institute/logo.png') ?>">
             </a>
         </div>
         <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
@@ -144,14 +143,7 @@
         <div class="container">
             <nav class="nav-main mega-menu">
                 <ul class="nav nav-pills nav-main" id="mainMenu">
-                    <!-- Courses Menu -->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="<?php echo site_url('courses'); ?>">
-                            <?php echo lang('menu_courses') ?>
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                        <?php echo build_menu_levels(0); ?>
-                    </li>
+
 
                     <!-- Events Menu -->
                     <li class="dropdown">
@@ -162,8 +154,6 @@
                         <?php echo build_menu_events(); ?>
                     </li>
 
-                    <!-- Tutors -->
-                    <li><a href="<?php echo site_url('/tutors'); ?>"><?php echo lang('batches_tutors'); ?></a></li>
 
                     <!-- User Dropdown -->
                     <!-- User Login -->
@@ -262,21 +252,12 @@
                     </li>
                     <?php } ?>
 
-                    <!-- Blogs -->
-                    <li><a href="<?php echo site_url('/blogs'); ?>"><?php echo lang('menu_blogs'); ?></a></li>
-
                     <!-- Gallery -->
                     <li><a href="<?php echo site_url('/gallery'); ?>"><?php echo lang('menu_gallary'); ?></a></li>
 
-                    <!-- More Pages -->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">
-                            <?php echo lang('action_more') ?>
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                        <?php echo front_menu('top','dropdown-menu')?>
-                    </li>
-
+                    <!-- FAQ -->
+                    <li><a href="<?php echo site_url('/cms/faq'); ?>"><?php echo lang('action_more'); ?></a></li>
+                    
                     <!-- Contact -->
                     <li><a href="<?php echo site_url('/contact'); ?>"><?php echo lang('menu_contact'); ?></a></li>
 
