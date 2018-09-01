@@ -12,8 +12,8 @@ h4 {
 
 /*Header Menu*/
 #header nav.mega-menu ul.nav-main .mega-menu-signin {
-   margin-left: -4px; 
-   margin-right: 1px; 
+   margin-left: -4px;
+   margin-right: 1px;
 }
 #header nav.mega-menu ul.nav-main .mega-menu-signin.logged .list-account-options li {
     padding: 5px 0px 0px 0px;
@@ -27,6 +27,7 @@ h4 {
 #header .logo img {
 
     top: -5px;
+		max-height: 90px;
 }
 
 /*Institute Name*/
@@ -46,7 +47,7 @@ h4 {
   color: #5a5a5a;
 }
 .institute-name:hover {
-  text-shadow: none; 
+  text-shadow: none;
 }
 
 /*Page Small Header*/
@@ -75,7 +76,7 @@ h4 {
     color: #eaeaea;
 }
 
-/*Owl-carousol*/ 
+/*Owl-carousol*/
 .rltd-items .owl-carousel .owl-item {
   padding: 1em;
 }
@@ -167,7 +168,7 @@ h4 {
 }
 .pointer-elem:hover {
   color: #000 !important;
-} 
+}
 
 /*Header Dropdown*/
 .dropdown-menu a {
@@ -236,7 +237,7 @@ a.a-hover {
 
 /*Class Listings Filter*/
 .u-vmenu {
-  
+
 }
 .u-vmenu h4 {
   margin-bottom: 0.4em;
@@ -253,7 +254,7 @@ a.a-hover {
   display: none;
 }
 .u-vmenu > ul > li {
-  
+
 }
 .u-vmenu ul li a {
   line-height: 30px;
@@ -442,7 +443,7 @@ small.small {
 }
 
 /*RTL Support*/
-[dir=rtl] .navbar-brand span { 
+[dir=rtl] .navbar-brand span {
   right: 5%;
 }
 [dir=rtl] .page-loader-wrapper {
@@ -499,7 +500,7 @@ small.small {
   background: #2c4c8e;
 }
 
-/* Page Loader */ 
+/* Page Loader */
 #pageloader {
   opacity: 0.9;
 }
@@ -540,7 +541,7 @@ small.small {
 }
 
 @media (max-width: 767px) {
-  
+
   .btn-responsive-nav {
     top: 8px;
   }
@@ -550,7 +551,7 @@ small.small {
     display: none;
   }
 
-  
+
   /*Breadcrumb*/
   .page-header .breadcrumb {
     display: inline;
@@ -560,7 +561,7 @@ small.small {
     display: inline;
   }
   .page-header .title {
-    font-size: 7px;    
+    font-size: 7px;
   }
   .page-header .breadcrumb li a {
     font-size: 7px;
@@ -599,7 +600,7 @@ small.small {
     right: 8px;
   }
   #header .nav-main-collapse {
-    
+
   }
   #header > .container {
     height: auto;
