@@ -30,7 +30,7 @@ class Auth extends Public_Controller {
                                     'default_graph_version' => 'v2.8'
                                 ));
         }
-		
+
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 		$this->load->library('file_uploads');
@@ -64,7 +64,7 @@ class Auth extends Public_Controller {
         {
             $this->oauth_login();
         }
-        
+
 		//validate form input
 		$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'trim|required');
 		$this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'trim|required');
@@ -80,7 +80,7 @@ class Auth extends Public_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				
+
                 $result = $this->users_model->get_users_by_id($_SESSION['user_id'], TRUE);
 
                 $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($result['id'])->row()->id;
@@ -131,7 +131,7 @@ class Auth extends Public_Controller {
         $clientId       = $this->settings->g_client_id;
         $clientSecret   = $this->settings->g_client_secret;
         $redirectUrl    = site_url().'auth/g_r_callback';
-        
+
         // Google Client Configuration
         $gClient        = new Google_Client();
         $gClient->setApplicationName($this->settings->site_name);
@@ -141,7 +141,7 @@ class Auth extends Public_Controller {
         $gClient->addScope("email");
         $gClient->addScope("profile");
         $google_oauthV2 = new Google_Service_Oauth2($gClient);
-        
+
         $authUrl        = $gClient->createAuthUrl();
         header('Location: '.$authUrl);
     }
@@ -158,7 +158,7 @@ class Auth extends Public_Controller {
         $clientId       = $this->settings->g_client_id;
         $clientSecret   = $this->settings->g_client_secret;
         $redirectUrl    = site_url().'auth/g_r_callback';
-        
+
         // Google Client Configuration
         $gClient        = new Google_Client();
         $gClient->setApplicationName($this->settings->site_name);
@@ -167,18 +167,18 @@ class Auth extends Public_Controller {
         $gClient->setRedirectUri($redirectUrl);
         $gClient->addScope("email");
         $gClient->addScope("profile");
-        
+
         $google_oauthV2 = new Google_Service_Oauth2($gClient);
-        
+
         if(!isset($_GET['code']))
             redirect(site_url('auth/register'));
 
         $gClient->authenticate($_GET['code']);
-        
+
         $_SESSION['g_access_token'] = $gClient->getAccessToken()['access_token'];
 
         // User information retrieval starts..............................
-        $user_detail = $google_oauthV2->userinfo->get(); //get user info 
+        $user_detail = $google_oauthV2->userinfo->get(); //get user info
 
         $_SESSION['g_user_id']      = $user_detail->id;
         $_SESSION['g_email']        = $user_detail->email;
@@ -209,7 +209,7 @@ class Auth extends Public_Controller {
         $appId       = $this->settings->fb_app_id;
         $appSecret   = $this->settings->fb_app_secret;
         $redirectUrl = site_url().'auth/f_r_callback';
-        
+
         // facebook Client Configuration
         $fb = new Facebook\Facebook([
           'app_id'      => $appId,
@@ -301,7 +301,7 @@ class Auth extends Public_Controller {
         $user_detail                    = $response->getDecodedBody();
         // $user_detail
         // $_SESSION['fb_access_token']
-        
+
         if(empty($user_detail))
             redirect(site_url('auth/login'));
 
@@ -309,7 +309,7 @@ class Auth extends Public_Controller {
         $_SESSION['fb_user_id']         = (string) $user_detail['id'];
         $_SESSION['fb_email']           = (string) $user_detail['email'];
         $_SESSION['fb_fullname']        = (string) $user_detail['name'];
-        
+
         redirect(site_url('auth/oauth_login'));
     }
 
@@ -343,19 +343,19 @@ class Auth extends Public_Controller {
 
             if(empty($_SESSION['fb_email'])) // if in case of no email
             {
-                $_POST['username']      = strtolower($_POST['first_name']).mt_rand(); // email string ~ default username    
+                $_POST['username']      = strtolower($_POST['first_name']).mt_rand(); // email string ~ default username
                 $_SESSION['fb_email']   = $_POST['username'].'@'.get_domain();
             }
             else
             {
-                $_POST['username']      = str_replace('.', '', explode('@', $_SESSION['fb_email'])[0]); // email string ~ default username        
+                $_POST['username']      = str_replace('.', '', explode('@', $_SESSION['fb_email'])[0]); // email string ~ default username
             }
 
-            $_POST['email']             = $_SESSION['fb_email']; // email string ~ default username                
+            $_POST['email']             = $_SESSION['fb_email']; // email string ~ default username
             $_POST['fb_uid']            = $_SESSION['fb_user_id'];
             $_POST['fb_token']          = $_SESSION['fb_access_token'];
             $_POST['language']          = 'english';
-            
+
             // unset unnecessary fields
             unset($_POST['fb_access_token']);
             unset($_POST['fb_user_id']);
@@ -370,8 +370,8 @@ class Auth extends Public_Controller {
             foreach(explode(' ', $_SESSION['g_fullname']) as $k => $v)
                 if($k) $_POST['last_name'].= $v;
 
-            $_POST['email']             = $_SESSION['g_email']; // email string ~ default username    
-            $_POST['username']          = explode('@', $_POST['email'])[0]; // email string ~ default username    
+            $_POST['email']             = $_SESSION['g_email']; // email string ~ default username
+            $_POST['username']          = explode('@', $_POST['email'])[0]; // email string ~ default username
             $_POST['g_uid']             = $_SESSION['g_user_id'];
             $_POST['g_token']           = $_SESSION['g_access_token'];
             $_POST['language']          = 'english';
@@ -396,7 +396,7 @@ class Auth extends Public_Controller {
                 $data['g_uid']                  = $_POST['g_uid'];
                 $data['g_token']                = $_POST['g_token'];
             }
-            
+
             $flag = $this->users_model->save_users($data, '', $_POST['email']);
         }
         else
@@ -424,7 +424,7 @@ class Auth extends Public_Controller {
                 'users_id'  => 1,
                 'n_type'    => 'users',
                 'n_content' => 'noti_new_users',
-                'n_url'     => site_url('admin/users'), 
+                'n_url'     => site_url('admin/users'),
             );
             $this->notifications_model->save_notifications($notification);
         }
@@ -432,7 +432,7 @@ class Auth extends Public_Controller {
         if($flag)
         {
             $result                     = $this->users_model->login_oauth($_POST['email']);
-            
+
             $_SESSION['language'] 		= $result['language'];
 		    $_SESSION['identity'] 		= $result['email'];
 		    $_SESSION['email'] 			= $result['email'];
@@ -443,7 +443,7 @@ class Auth extends Public_Controller {
                 $this->ion_auth->add_to_group(3, $result['id']);
 
             $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($result['id'])->row()->id;
-		    
+
             $this->session->set_userdata('logged_in', $result);
 			redirect(site_url());
         }
@@ -467,7 +467,7 @@ class Auth extends Public_Controller {
         if(!empty($_POST['fb_access_token']))
             $this->oauth_login();
 
-        
+
         $this->add_plugin_theme(array(
                                 "datepicker/datepicker3.css",
                                 "datepicker/bootstrap-datepicker.js",
@@ -478,8 +478,8 @@ class Auth extends Public_Controller {
         $this->form_validation
         ->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'))
         ->set_rules('username', lang('users_username'), 'required|trim|min_length[3]|max_length[128]|callback__check_username')
-        ->set_rules('first_name', lang('users_first_name'), 'required|trim|min_length[2]|max_length[128]')
-        ->set_rules('last_name', lang('users_last_name'), 'required|trim|min_length[2]|max_length[128]')
+        ->set_rules('first_name', lang('users_first_name'), 'trim|min_length[2]|max_length[128]')
+        ->set_rules('last_name', lang('users_last_name'), 'trim|min_length[2]|max_length[128]')
         ->set_rules('email', lang('users_email'), 'required|trim|max_length[256]|valid_email|callback__check_email')
         ->set_rules('profession', lang('users_profession'), 'trim|min_length[3]|max_length[256]')
         ->set_rules('experience', lang('users_experience'), 'trim|is_natural_no_zero')
@@ -487,13 +487,13 @@ class Auth extends Public_Controller {
         ->set_rules('dob', lang('users_dob'), 'trim')
         ->set_rules('mobile', lang('users_mobile'), 'trim|min_length[5]|max_length[20]')
         ->set_rules('address', lang('users_address'), 'trim|min_length[8]|max_length[256]')
-        ->set_rules('language', lang('users_language'), 'required|trim')
+        ->set_rules('language', lang('users_language'), 'trim')
         ->set_rules('password', lang('users_password'), 'required|trim|min_length['.$this->settings->i_min_password.']|max_length['.$this->settings->i_max_password.']')
         ->set_rules('password_confirm', lang('users_password_confirm'), 'required|trim|matches[password]');
-        
+
         // upload users image
         $filename               = NULL;
-        if(! empty($_FILES['image']['name'])) // if image 
+        if(! empty($_FILES['image']['name'])) // if image
         {
             $file               = array('folder'=>'users/images', 'input_file'=>'image');
             $filename           = $this->file_uploads->upload_file($file);
@@ -510,7 +510,7 @@ class Auth extends Public_Controller {
             else
                 $_POST['image']          	= '';
 
-            
+
             $username 						= $this->input->post('username');
 			$email 							= $this->input->post('email');
 			$password 						= $this->input->post('password');
@@ -518,7 +518,8 @@ class Auth extends Public_Controller {
 												'first_name' 	=> $this->input->post('first_name'),
 												'last_name' 	=> $this->input->post('last_name'),
 												'gender' 		=> $this->input->post('gender'),
-												'dob' 			=> $this->input->post('dob'),
+												'dob' 			=> if($this->input->post('dob') == ''){"1970-01-01"
+						                           }else{$this->input->post('dob')};,
 												'mobile' 		=> $this->input->post('mobile'),
 												'image' 		=> $this->input->post('image'),
 												'address' 		=> $this->input->post('address'),
@@ -536,13 +537,13 @@ class Auth extends Public_Controller {
                     'users_id'  => 1,
                     'n_type'    => 'users',
                     'n_content' => 'noti_new_users',
-                    'n_url'     => site_url('admin/users'), 
+                    'n_url'     => site_url('admin/users'),
                 );
                 $this->notifications_model->save_notifications($notification);
 
                 /*Direct login after signup*/
                 $result                     = $this->users_model->login_oauth($email);
-            
+
                 $_SESSION['language']       = $additional_data['language'];
                 $_SESSION['identity']       = $email;
                 $_SESSION['email']          = $email;
@@ -553,7 +554,7 @@ class Auth extends Public_Controller {
                     $this->ion_auth->add_to_group(3, $flag['id']);
 
                 $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($flag['id'])->row()->id;
-                
+
                 $this->session->set_userdata('logged_in', $result);
                 redirect(site_url());
             }
@@ -649,7 +650,7 @@ class Auth extends Public_Controller {
 		{
 			$identity 		 = $this->ion_auth->where('email', $this->input->post('identity'))->users()->row();
 
-			if(empty($identity)) 
+			if(empty($identity))
 			{
         		$this->ion_auth->set_error('forgot_password_email_not_found');
 
