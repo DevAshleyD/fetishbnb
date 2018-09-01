@@ -11,7 +11,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="<?php echo base_url('/upload/institute/') ?>/logo.png" />
     <meta name="theme-color" content="#356cff">
-    
+
     <!-- Web Fonts  -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
@@ -26,7 +26,7 @@
     </script>
 
     <!-- Google adSense site verification code  -->
-    <?php if($_SERVER['HTTP_HOST'] !== 'localhost') { 
+    <?php if($_SERVER['HTTP_HOST'] !== 'localhost') {
         echo $this->settings->ad_verify;
     } ?>
     <!-- Google adSense site verification code  -->
@@ -73,7 +73,7 @@
 
         // Google Login Creds
         var g_client_id         = "<?php echo $this->settings->g_client_id ? $this->settings->g_client_id : null; ?>";
-        
+
         // Google map api key
         var g_map_key           = "<?php echo $this->settings->g_map_key ? $this->settings->g_map_key : null; ?>";
 
@@ -85,14 +85,14 @@
     </script>
 </head>
 
-<?php   // RTL or not 
+<?php   // RTL or not
         $is_rtl = FALSE;
-        if( stripos($this->config->item('language'), 'Persian')    !== FALSE   || 
-            stripos($this->config->item('language'), 'Hebrew')     !== FALSE   || 
-            stripos($this->config->item('language'), 'Arabic')     !== FALSE   || 
-            stripos($this->config->item('language'), 'Malay')      !== FALSE   || 
-            stripos($this->config->item('language'), 'Uyghur')     !== FALSE   || 
-            stripos($this->config->item('language'), 'Urdu')       !== FALSE   || 
+        if( stripos($this->config->item('language'), 'Persian')    !== FALSE   ||
+            stripos($this->config->item('language'), 'Hebrew')     !== FALSE   ||
+            stripos($this->config->item('language'), 'Arabic')     !== FALSE   ||
+            stripos($this->config->item('language'), 'Malay')      !== FALSE   ||
+            stripos($this->config->item('language'), 'Uyghur')     !== FALSE   ||
+            stripos($this->config->item('language'), 'Urdu')       !== FALSE   ||
             stripos($this->config->item('language'), 'Malayalam')  !== FALSE) $is_rtl = TRUE;
          ?>
 <body class="one-page" data-target=".single-menu" data-spy="scroll" data-offset="200" <?php echo $is_rtl ? 'dir="rtl"' : ''; ?>>
@@ -108,7 +108,7 @@
 <!-- Header Begins -->
 <?php if(uri_string() == '') { ?>
 <header id="header" class="single-menu flat-menu transparent valign font-color-light" data-plugin-options='{"stickyEnabled": true, "stickyBodyPadding": false}'>
-<?php } else { ?> 
+<?php } else { ?>
 <header id="header" class="default-header colored flat-menu">
     <div class="header-top">
         <div class="container">
@@ -133,10 +133,7 @@
     <div class="container">
         <div class="logo">
             <a href="<?php echo site_url(''); ?>">
-                <img alt="<?php echo $this->settings->site_name ?>" width="56" height="56" data-sticky-width="48" data-sticky-height="48" src="<?php echo base_url('upload/institute/logo.png') ?>">
-            </a>
-            <a href="<?php echo site_url(''); ?>" class="institute-name">
-                <?php echo $this->settings->site_name; ?>
+                <img alt="<?php echo $this->settings->site_name ?>" src="<?php echo base_url('upload/institute/logo.png') ?>">
             </a>
         </div>
         <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
@@ -209,7 +206,7 @@
                                                               </label>
                                                             </span>
                                                         </div>
-                                                    </div>  
+                                                    </div>
                                                     <div class="row">
                                                         <div class="col-sm-8">
                                                             <a class="a-hover" href="<?php echo site_url('auth/register'); ?>"><?php echo lang('users_register_account'); ?><?php echo ' - '.lang('users_register'); ?></a>
@@ -287,7 +284,7 @@
             </nav>
         </div>
     </div>
-</header><!-- Header Ends -->    
+</header><!-- Header Ends -->
 
 <!-- Page Header -->
 <?php if(uri_string() !== '') { ?>
@@ -300,28 +297,28 @@
                     <!-- Title & Sub Title -->
                     <h5 class="title"><?php echo $page_header; ?></h5>
                     <ol class="breadcrumb" >
-                    <?php 
+                    <?php
                         echo !$this->uri->segment(1) ? '<li class="active">'.lang('action_home').'</li>' : '<li><a href="'.site_url().'">'.lang('action_home').'</a></li>';
 
                         if($this->uri->segment(1) != 'cms'  && $this->uri->segment(1) != 'bbooking' && $this->uri->segment(1) != 'ebooking')
                             echo !$this->uri->segment(2) ? '<li class="active">'.lang('menu_'.$this->uri->segment(1)).'</li>' : '<li><a href="'.site_url().'/'.$this->uri->segment(1).'">'.lang('menu_'.$this->uri->segment(1)).'</a></li>';
 
-                        if($this->uri->segment(1) == 'cms') 
+                        if($this->uri->segment(1) == 'cms')
                             echo '<li class="active text-capitalize">'.($this->uri->segment(2)).'</li>';
 
-                        if($this->uri->segment(1) == 'ebooking') 
+                        if($this->uri->segment(1) == 'ebooking')
                             echo '<li class="active text-capitalize">'.lang('menu_e_booking').' - '.str_replace('+', ' ', $this->uri->segment(2)).'</li>';
 
-                        if($this->uri->segment(1) == 'bbooking') 
+                        if($this->uri->segment(1) == 'bbooking')
                             echo '<li class="active text-capitalize">'.lang('menu_b_booking').' - '.str_replace('+', ' ', $this->uri->segment(2)).'</li>';
 
-                        if($this->uri->segment(1) == 'tutors') 
+                        if($this->uri->segment(1) == 'tutors')
                             echo '<li class="active text-capitalize">'.str_replace('+', ' ', $this->uri->segment(2)).'</li>';
 
-                        if($this->uri->segment(2) == 'detail') 
+                        if($this->uri->segment(2) == 'detail')
                             echo '<li class="active text-capitalize">'.str_replace('+', ' ', $this->uri->segment(3)).'</li>';
                     ?>
-                    </ol>    
+                    </ol>
                 </div><!-- Page Header Wrapper -->
             </div><!-- Coloumn -->
         </div><!-- Row -->
@@ -373,7 +370,7 @@
     <section>
         <div class="row">
           <div class="col-md-12">
-                <?php if($_SERVER['REMOTE_ADDR'] !== '127.0.0.1') { 
+                <?php if($_SERVER['REMOTE_ADDR'] !== '127.0.0.1') {
                     echo $this->settings->ad_code;
                  } ?>
             </div>
@@ -382,13 +379,13 @@
     <!-- Google adSense Integration Ends -->
 
 </div><!-- Page Main -->
-    
+
 <!-- Footer -->
 <footer id="footer" class="footer-3">
     <!-- Main Footer -->
     <div class="main-footer widgets-dark typo-light">
         <div class="container">
-            
+
             <div class="row">
                 <!-- Widget Column -->
                 <div class="col-md-12 text-center">
@@ -426,13 +423,13 @@
                             <?php if($this->settings->social_pinterest) { ?>
                             <li class="pinterest"><a title="Pinterest" target="_blank" href="<?php echo $this->settings->social_pinterest ?>">Pinterest</a></li>
                             <?php } ?>
-                        </ul>   
+                        </ul>
                     </div><!-- Widget -->
                 </div><!-- Column -->
             </div><!-- Row -->
-        </div><!-- Container -->        
+        </div><!-- Container -->
     </div><!-- Main Footer -->
-    
+
     <!-- Footer Copyright -->
     <div class="footer-copyright">
         <div class="container">
@@ -441,7 +438,7 @@
                     <!-- Languages -->
                     <?php ksort($this->languages); foreach ($this->languages as $key=>$name) { ?>
                     <a class="text-capitalize" href="<?php echo site_url('language/'.strtolower($key)); ?>" title="<?php echo $name ?>">
-                        <?php if ($key == $this->session->language) { 
+                        <?php if ($key == $this->session->language) {
                             echo '<strong>'.$name.'</strong>';
                         } else {
                             echo $name;
@@ -460,7 +457,7 @@
         </div><!-- Footer Copyright container -->
     </div><!-- Footer Copyright -->
 </footer>
-<!-- Footer -->    
+<!-- Footer -->
 
 <?php // Javascript files ?>
 <?php if (isset($js_files) && is_array($js_files)) : ?>
