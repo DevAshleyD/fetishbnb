@@ -2,13 +2,10 @@
 
 <!-- Section -->
 <div class="page-default bg-grey">
-    <div class="container">     
-        
+    <div class="container">
+
         <?php echo form_open_multipart('', array('role'=>'form', 'class'=>'form-horizontal', 'id'=>'form_login')); ?>
-        <input type="hidden" name="fb_access_token">
-        <input type="hidden" name="fb_user_id">
-        <input type="hidden" name="fb_email">
-        <input type="hidden" name="fb_fullname">
+        <?php if ($this->session->userdata('logged_in')) : ?>
         <div class="row">
             <div class="col-md-12 text-center image-card">
                 <div class="picture-container">
@@ -20,20 +17,24 @@
             </div>
         </div>
         <br><br>
-        <div class="row">            
+      <?php endif;?>
+        <div class="row">
             <div class="col-md-5">
+                <?php if ($this->session->userdata('logged_in')) : ?>
                 <div class="form-group <?php echo form_error('first_name') ? ' has-error' : ''; ?>">
                     <?php echo lang('users_first_name', 'first_name', array('class' => 'col-md-4 control-label')); ?>
                     <div class="col-md-8">
                         <?php echo form_input(array('name'=>'first_name', 'value'=>set_value('first_name', (isset($user['first_name']) ? $user['first_name'] : '')), 'class'=>'form-control input-lg')); ?>
                     </div>
                 </div>
+              <?php endif;?>
                 <div class="form-group <?php echo form_error('email') ? ' has-error' : ''; ?>">
                     <?php echo lang('users_email', 'email', array('class' => 'col-md-4 control-label')); ?>
                     <div class="col-md-8">
                         <?php echo form_input(array('name'=>'email', 'value'=>set_value('email', (isset($user['email']) ? $user['email'] : '')), 'class'=>'form-control input-lg', 'type'=>'email')); ?>
                     </div>
                 </div>
+                <?php if ($this->session->userdata('logged_in')) : ?>
                 <div class="form-group <?php echo form_error('mobile') ? ' has-error' : ''; ?>">
                     <?php echo lang('users_mobile', 'mobile', array('class' => 'col-md-4 control-label')); ?>
                     <div class="col-sm-8">
@@ -46,7 +47,8 @@
                         <?php echo form_input(array('name'=>'dob', 'value'=>set_value('dob', (isset($user['dob']) ? $user['dob'] : '')), 'class'=>'form-control input-lg', 'id'=>'dob')); ?>
                     </div>
                 </div>
-                <?php if ($this->session->userdata('logged_in')) { 
+                <?php endif;?>
+                <?php if ($this->session->userdata('logged_in')) {
                         if(!$this->ion_auth->is_non_admin()) {
                     ?>
                     <div class="form-group <?php echo form_error('profession') ? ' has-error' : ''; ?>">
@@ -62,27 +64,32 @@
                         <?php echo form_password(array('name'=>'password', 'value'=>set_value('password', (isset($user['password']) ? $user['password'] : '')), 'class'=>'form-control input-lg')); ?>
                     </div>
                 </div>
+                <?php if ($this->session->userdata('logged_in')) : ?>
                 <div class="form-group <?php echo form_error('address') ? ' has-error' : ''; ?>">
                     <?php echo lang('users_address', 'address', array('class' => 'col-md-4 control-label')); ?>
                     <div class="col-md-8">
                         <?php echo form_textarea(array('name'=>'address', 'value'=>set_value('address', (isset($user['address']) ? $user['address'] : '')), 'class'=>'form-control input-lg', 'rows'=>3)); ?>
                     </div>
                 </div>
+              <?php endif;?>
             </div>
 
             <div class="col-md-5">
+              <?php if ($this->session->userdata('logged_in')) : ?>
                 <div class="form-group <?php echo form_error('last_name') ? ' has-error' : ''; ?>">
                     <?php echo lang('users_last_name', 'last_name', array('class' => 'col-md-4 control-label')); ?>
                     <div class="col-md-8">
                         <?php echo form_input(array('name'=>'last_name', 'value'=>set_value('last_name', (isset($user['last_name']) ? $user['last_name'] : '')), 'class'=>'form-control input-lg')); ?>
                     </div>
                 </div>
+              <?php endif;?>
                 <div class="form-group <?php echo form_error('username') ? ' has-error' : ''; ?>">
                     <?php echo lang('users_username', 'username', array('class' => 'col-md-4 control-label')); ?>
                     <div class="col-md-8">
                         <?php echo form_input(array('name'=>'username', 'value'=>set_value('username', (isset($user['username']) ? $user['username'] : '')), 'class'=>'form-control input-lg')); ?>
                     </div>
                 </div>
+                <?php if ($this->session->userdata('logged_in')) : ?>
                 <div class="form-group <?php echo form_error('language') ? ' has-error' : ''; ?>">
                     <?php echo lang('users_language', 'language', array('class' => 'col-md-4 control-label')); ?>
                     <div class="col-md-8">
@@ -95,7 +102,8 @@
                         <?php echo form_dropdown('gender', array('male'=>lang('users_gender_male'), 'female'=>lang('users_gender_female'),'other'=>lang('users_gender_other')), (isset($user['gender']) ? $user['gender'] : 'male'), 'id="gender" class="form-control input-lg"'); ?>
                     </div>
                 </div>
-                <?php if ($this->session->userdata('logged_in')) { 
+              <?php endif;?>
+                <?php if ($this->session->userdata('logged_in')) {
                         if(!$this->ion_auth->is_non_admin()) {
                     ?>
                     <div class="form-group <?php echo form_error('experience') ? ' has-error' : ''; ?>">
@@ -128,29 +136,5 @@
             </div>
         </div>
         <?php echo form_close(); ?>
-    
-        
-
-        <?php if (!$this->session->userdata('logged_in')) : ?>
-        <hr class="md">
-        <?php if($this->settings->fb_app_id && $this->settings->fb_app_secret) { ?>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <a href="<?php echo site_url('auth/f_register') ?>" class="btn loginBtn loginBtn--facebook"><span><?php echo lang('users_login_continue_fb') ?></span></a>
-            <span id="fb_loader"></span>
-            </div>
-        </div>
-        <?php } ?>
-        <br>
-        <?php if($this->settings->g_client_id && $this->settings->g_client_secret) { ?>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <a href="<?php echo site_url('auth/g_register') ?>" class="btn loginBtn loginBtn--google"><span><?php echo lang('users_login_continue_g') ?></span></a>
-            <span id="g_loader"></span>
-            </div>
-        </div>
-        <?php } ?>
-        
-        <?php endif; ?>
     </div>
 </div>
