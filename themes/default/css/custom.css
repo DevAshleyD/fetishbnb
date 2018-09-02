@@ -29,6 +29,14 @@ h4 {
     top: -5px;
 		max-height: 90px;
 }
+.header-top{
+	display: none;
+}
+
+/*banner customs*/
+.owl-carousel, .owl-wrapper-outer{
+	max-height: 700px;
+}
 
 /*Institute Name*/
 .institute-name {
