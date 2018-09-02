@@ -54,7 +54,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  */
 
-define('ENVIRONMENT', $_SERVER['REMOTE_ADDR'] !== '127.0.0.1' ? 'production' : 'development');
+define('ENVIRONMENT', $_SERVER['REMOTE_ADDR'] !== '127.0.0.1' ? 'development' : 'development');
 
 /*
  *---------------------------------------------------------------
