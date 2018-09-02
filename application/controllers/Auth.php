@@ -518,13 +518,17 @@ class Auth extends Public_Controller {
 												'first_name' 	=> $this->input->post('first_name'),
 												'last_name' 	=> $this->input->post('last_name'),
 												'gender' 		=> $this->input->post('gender'),
-												'dob' 			=> if($this->input->post('dob') == ''){"1970-01-01"
-						                           }else{$this->input->post('dob')};,
 												'mobile' 		=> $this->input->post('mobile'),
 												'image' 		=> $this->input->post('image'),
 												'address' 		=> $this->input->post('address'),
 												'language' 		=> $this->input->post('language'),
 											);
+
+			if($this->input->post('dob') == ''){
+				$additional_data['dob'] = "1970-01-01";
+			}else{
+				$additional_data['dob'] =	$this->input->post('dob');
+			};
 
 			$flag 							= $this->ion_auth->register($username, $password, $email, $additional_data);
 
