@@ -445,8 +445,21 @@ small.small {
   font-size: 14px;
 }
 
-
-
+/*Customs by Rob*/
+.remember-pass{
+	margin-top: 10px;
+	display: block;
+}
+.remember-box label{
+	padding-right: 0em !important;
+}
+.shop-forms .signin-form{
+	padding: 0 20px;
+}
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}
 /*======================= V2 css ==========================*/
 /*Checkbox RTL error*/
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
