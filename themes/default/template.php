@@ -218,7 +218,7 @@
                     <?php } else { ?>
                     <li class="dropdown mega-menu-item mega-menu-signin signin logged" id="headerAccount">
                         <a class="dropdown-toggle" href="<?php echo site_url('/profile'); ?>">
-                            <i class="fa fa-user"></i><?php echo $this->user['first_name']; ?>
+                            <i class="fa fa-user"></i><?php echo $this->user['username']; ?>
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu">
@@ -230,7 +230,7 @@
                                                 <div class="img-thumbnail">
                                                     <img src="<?php echo $this->user['image'] ? base_url('upload/users/images/').$this->user['image'] : base_url('themes/default/images/avatar.jpg'); ?>" class="img-responsive" />
                                                 </div>
-                                                <p><strong><?php echo $this->user['first_name'].' '.$this->user['last_name'] ?></strong><span><?php echo $this->user['group_name']; ?></span></p>
+                                                <p><strong><?php echo $this->user['username'];?></strong><span><?php echo $this->user['group_name']; ?></span></p>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
