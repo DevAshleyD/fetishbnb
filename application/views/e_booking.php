@@ -46,47 +46,82 @@
 					</div>
 					<?php } else {
 				  	// get current uri
-					$_SESSION['redirect_url'] = "/" . uri_string();  ?>
-					<div class="signin-form">
-							<span class="mega-menu-sub-title"><?php echo lang('action_login'); ?></span>
-							<?php echo form_open('auth/login', array('class'=>'')); ?>
-									<div class="row">
-											<div class="form-group <?php echo form_error('identity') ? ' has-error' : ''; ?>">
-													<div class="col-md-12">
-															<?php echo lang('users_email_username', 'identity', array('class' => '')); ?>
-															<?php echo form_input(array('name'=>'identity', 'id'=>'identity', 'class'=>'form-control', 'placeholder'=>lang('users_email_username'))); ?>
+						$_SESSION['redirect_url'] = "/" . uri_string();  ?>
+						<div class="row">
+						<div class="col-md-6">
+							<div class="signin-form">
+									<?php echo form_open('auth/login', array('class'=>'')); ?>
+											<div class="row">
+													<div class="form-group <?php echo form_error('identity') ? ' has-error' : ''; ?>">
+															<div class="col-md-12">
+																	<label for="identity">Please login</label>
+																	<?php echo form_input(array('name'=>'identity', 'id'=>'identity', 'class'=>'form-control', 'placeholder'=>lang('users_email_username'))); ?>
+															</div>
 													</div>
 											</div>
-									</div>
-									<div class="row">
-											<div class="form-group <?php echo form_error('password') ? ' has-error' : ''; ?>">
-													<div class="col-md-12">
+											<div class="row">
+													<div class="form-group <?php echo form_error('password') ? ' has-error' : ''; ?>">
+															<div class="col-md-12">
+																	<?php echo form_password(array('name'=>'password', 'id'=>'password', 'class'=>'form-control', 'placeholder'=>lang('users_password'), 'autocomplete'=>'off')); ?>
+															</div>
+													</div>
+											</div>
+											<div class="row">
+													<div class="col-md-6">
+															<span class="remember-box checkbox">
+																 <label for="remember">
+																	<input type="checkbox" id="remember" name="remember" value="1"><?php echo lang('login_remember_label') ?>
+																</label>
+															</span>
+													</div>
+													<div class="col-md-6">
+														<span class="remember-pass pull-right">
 															<a class="pull-right a-hover" href="<?php echo site_url('auth/forgot_password'); ?>"><?php echo lang('users_forgot'); ?></a>
-															<?php echo lang('users_password', 'password', array('class' => '')); ?>
-															<?php echo form_password(array('name'=>'password', 'id'=>'password', 'class'=>'form-control', 'placeholder'=>lang('users_password'), 'autocomplete'=>'off')); ?>
+														</span>
 													</div>
 											</div>
-									</div>
-									<div class="row">
-											<div class="col-md-12">
-													<span class="remember-box checkbox">
-														 <label for="remember">
-															<input type="checkbox" id="remember" name="remember" value="1"><?php echo lang('login_remember_label') ?>
-														</label>
-													</span>
+											<div class="row">
+													<div class="col-sm-4">
+															<!-- Button -->
+															<?php echo form_button(array('type' => 'submit', 'class' => 'btn', 'data-loading-text'=>lang('action_loading'), 'content' => lang('users_login'))); ?>
+													</div>
 											</div>
-									</div>
-									<div class="row">
-											<div class="col-sm-8">
-													<a class="a-hover" href="<?php echo site_url('auth/register'); ?>"><?php echo lang('users_register_account'); ?><?php echo ' - '.lang('users_register'); ?></a>
-											</div>
-											<div class="col-sm-4">
-													<!-- Button -->
-													<?php echo form_button(array('type' => 'submit', 'class' => 'btn pull-right', 'data-loading-text'=>lang('action_loading'), 'content' => lang('users_login'))); ?>
-											</div>
-									</div>
-							<?php echo form_close(); ?> <!-- Form Ends -->
+									<?php echo form_close(); ?> <!-- Form Ends -->
+							</div>
 					</div>
+					<div class="col-md-6">
+						<div class="signin-form">
+						<?php echo form_open_multipart('auth/register', array('role'=>'form', 'class'=>'', 'id'=>'form_login')); ?>
+						<div class="row">
+							<div class="form-group <?php echo form_error('email') ? ' has-error' : ''; ?>">
+								<label for="email">or register to proceed</label>
+											<?php echo form_input(array('name'=>'email', 'value'=>set_value('email', (isset($user['email']) ? $user['email'] : '')), 'class'=>'form-control', 'type'=>'email', 'placeholder'=>lang('users_email'))); ?>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group <?php echo form_error('username') ? ' has-error' : ''; ?>">
+											<?php echo form_input(array('name'=>'username', 'value'=>set_value('username', (isset($user['username']) ? $user['username'] : '')), 'class'=>'form-control','placeholder'=>lang('users_username'))); ?>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group <?php echo form_error('password') ? ' has-error' : ''; ?>">
+									<?php echo form_password(array('name'=>'password', 'value'=>set_value('password', (isset($user['password']) ? $user['password'] : '')), 'class'=>'form-control', 'placeholder'=>lang('users_password'))); ?>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group <?php echo form_error('password_confirm') ? ' has-error' : ''; ?>">
+										<?php echo form_password(array('name'=>'password_confirm', 'value'=>'', 'class'=>'form-control', 'autocomplete'=>'off','placeholder'=>lang('users_password_confirm'))); ?>
+							</div>
+						</div>
+						<div class="row">
+		            <div class="col-sm-4 pull-right padding-0">
+		                <button type="submit" name="submit_form" id="submit_form" class="btn pull-right"><?php echo lang('users_register'); ?></button>
+		            </div>
+		        </div>
+						<?php echo form_close(); ?>
+					</div>
+				</div>
+				</div>
 					<?php } ?>
 				</div>
 			</div>
