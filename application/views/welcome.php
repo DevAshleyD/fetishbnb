@@ -2,25 +2,25 @@
 
  <!-- Section Slider -->
 <section class="pad-none parallax-bg hero">
-    <div class="owl-carousel full-screen dots-inline" 
-        data-animatein="" 
-        data-animateout="" 
-        data-items="1" 
-        data-margin="" 
-        data-loop="true" 
-        data-merge="true" 
-        data-nav="false" 
-        data-dots="false" 
-        data-stagepadding="" 
-        data-mobile="1" 
-        data-tablet="1" 
-        data-desktopsmall="1"  
-        data-desktop="1" 
-        data-autoplay="true" 
-        data-delay="3000" 
+    <div class="owl-carousel full-screen dots-inline"
+        data-animatein=""
+        data-animateout=""
+        data-items="1"
+        data-margin=""
+        data-loop="true"
+        data-merge="true"
+        data-nav="false"
+        data-dots="false"
+        data-stagepadding=""
+        data-mobile="1"
+        data-tablet="1"
+        data-desktopsmall="1"
+        data-desktop="1"
+        data-autoplay="true"
+        data-delay="3000"
         data-navigation="false"
     >
-        <?php for($i = 1; $i<=5;$i++) { if($this->settings->{'banner_title_'.$i}) { ?>
+        <?php for($i = 1; $i<=3;$i++) { if($this->settings->{'banner_title_'.$i}) { ?>
         <div class="item typo-light">
             <img src="<?php echo base_url('upload/home/').$this->settings->{'banner_image_'.$i} ?>" alt="" class="img-responsive">
             <div class="container slider-content vmiddle text-center">
@@ -28,8 +28,8 @@
                     <div class="col-md-offset-2 col-md-8">
                         <h3 class="text-uppercase" data-animation="fadeInUp" data-animation-delay="800"><?php echo $this->settings->{'banner_title_'.$i} ?></h3>
                         <p class="animated" data-animation="fadeInUp" data-animation-delay="800"><?php echo $this->settings->{'banner_description_'.$i} ?></p>
-                    </div>  
-                </div>  
+                    </div>
+                </div>
             </div>
         </div>
         <?php } } ?>
@@ -55,7 +55,7 @@
                         </form>
                     </div><!-- Search -->
                 </div><!-- Column -->
-            </div><!-- Slider Below Wrapper --> 
+            </div><!-- Slider Below Wrapper -->
         </div><!-- Row -->
     </div><!-- Container -->
 </section><!-- Section Search -->
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <!-- Title -->
-            
+
             <!-- Column -->
             <?php foreach($f_courses as $key => $val) { ?>
             <div class="col-sm-4">
@@ -112,7 +112,7 @@
                             <?php } ?>
                             <small><a href="<?php echo site_url('courses/detail/').str_replace(' ', '+', $val->title) ?>" title="<?php lang('action_view'); ?>" ><?php echo $val->total_tutors > 0 ? $val->total_tutors.' '.lang('action_more') : '' ?></a></small>
                         </div><!-- Course Teacher Detail -->
-                        
+
                         <!-- Course Content -->
                         <div class="course-content">
                             <h4><a href="<?php echo site_url('courses/detail/').str_replace(' ', '+', $val->title) ?>" title="<?php lang('action_view'); ?>" ><?php echo $val->title ?></a></h4>
@@ -151,8 +151,8 @@
         </div>
         <!-- Row -->
         <div class="row">
-            <?php $row = 0; foreach($f_events as $key => $val) { 
-                $row++; 
+            <?php $row = 0; foreach($f_events as $key => $val) {
+                $row++;
                 if($row%4 == 0) echo '</div><hr class="md"><div class="row">'; ?>
             <!-- Column -->
             <div class="col-md-4">
@@ -178,30 +178,30 @@
                                 <ul class="events-meta">
                                     <li><i class="fa fa-users"></i> <?php echo lang('e_l_total_tutors').' : '.$val->total_tutors ?></li>
                                     <li><i class="fa fa-calendar-o"></i> <?php echo lang('e_l_total_bookings').' : '.$val->total_e_bookings ?></li>
-                                </ul>       
+                                </ul>
                             </div>
                             <div class="col-sm-6">
                                 <ul class="events-meta">
                                     <li><i class="fa fa-th"></i> <?php echo lang('events_capacity').' : '.$val->capacity ?></li>
-                                    <li><i class="fa fa-money"></i> 
-                                        <?php echo lang('e_l_price').' : '; ?> 
+                                    <li><i class="fa fa-money"></i>
+                                        <?php echo lang('e_l_price').' : '; ?>
                                         <?php echo $val->fees ? $val->fees.' '.$this->settings->default_currency : '<strong>'.lang('events_free').'</strong>'; ?></li>
                                     </li>
-                                </ul>       
+                                </ul>
                             </div>
                             <div class="col-sm-6">
                                 <ul class="events-meta">
                                     <li>
                                         <i class="fa fa-calendar"></i><?php echo lang('e_bookings_duration').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('M j, y', strtotime($val->start_date)).' - '.date('M j, y', strtotime($val->end_date)); ?>
                                     </li>
-                                </ul>       
+                                </ul>
                             </div>
                             <div class="col-sm-6">
                                 <ul class="events-meta">
                                     <li>
                                         <i class="fa fa-clock-o"></i><?php echo lang('e_bookings_timing').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('g:i A', strtotime($val->start_time)).' - '.date('g:i A', strtotime($val->end_time)); ?>
-                                    </li>       
-                                </ul>       
+                                    </li>
+                                </ul>
                             </div>
                         </div>
 
@@ -209,11 +209,11 @@
                         <a href="<?php echo site_url('ebooking/').str_replace(' ', '+', $val->title) ?>" class="btn"><?php echo lang('action_book_now') ?></a>
                         <?php } else { ?>
                         <a disabled class="btn disabled"><?php echo lang('e_l_event_over') ?></a>
-                        <?php } ?>  
-                        
+                        <?php } ?>
+
                     </div>
                 </div><!-- Event Wrapper -->
-            </div><!-- Column -->       
+            </div><!-- Column -->
         <?php } ?>
 
         </div><!-- Row -->
@@ -288,9 +288,9 @@
                 </div>
             </div>
             <!-- Title -->
-        </div><!-- Row -->  
-        
-        <!-- Row -->        
+        </div><!-- Row -->
+
+        <!-- Row -->
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
@@ -307,7 +307,7 @@
                                 <?php } else if($val->category_name == 'freshers day') { ?><i class="uni-rock-androll"></i>
                                 <?php } else { ?><i class="uni-megaphone"></i><?php } ?>
                             </div>
-                            
+
                             <div class="event-img-wrap">
                                 <img alt="<?php echo $val->title ?>" class="img-responsive" src="<?php echo base_url().($val->images ? '/upload/events/images/'.image_to_thumb(json_decode($val->images)[0]) : 'themes/default/images/course/course-01.jpg') ?>" width="600" height="220">
                                 <?php if($val->recurring) { ?>
@@ -323,10 +323,10 @@
                         </div><!-- Contact Info -->
                     </div><!-- Column -->
                     <?php } ?>
-                </div><!-- Row -->  
+                </div><!-- Row -->
             </div><!-- Column -->
-            
-            
+
+
         </div><!-- Row -->
     </div><!-- Container -->
 </section><!-- Section -->
@@ -337,7 +337,7 @@
 <section>
     <div class="row">
       <div class="col-md-12">
-            <?php if($_SERVER['REMOTE_ADDR'] !== '127.0.0.1') { 
+            <?php if($_SERVER['REMOTE_ADDR'] !== '127.0.0.1') {
                 echo $this->settings->ad_code;
              } ?>
         </div>
@@ -349,7 +349,7 @@
 <!-- Section Video -->
 <?php if($this->settings->intro_video_url) { ?>
 <section class="relative typo-light video-bg min-height bg-cover overlay sm" data-background="<?php echo base_url('upload/home/').$this->settings->{'banner_image_1'} ?>" >
-    
+
     <div class="player" data-property="{videoURL:'<?php echo $this->settings->intro_video_url ?>',containment:'.video-bg',startAt:0, mute:true, autoPlay:true, showControls:false}"></div>
     <div id="video-controls" class="video-controls" data-animation="fadeInRight" data-animation-delay="800">
         <a class="fa fa-pause" href="#"></a>
@@ -381,10 +381,10 @@
                 </div>
             </div><!-- Title -->
         </div><!-- Row -->
-        
+
         <!-- Team Container -->
         <div class="row">
-            
+
             <!-- Column -->
             <?php foreach($tutors as $key => $tutor) { if($key == 3) break; ?>
             <div class="col-sm-4">
@@ -406,7 +406,7 @@
                 </div><!-- Member Wrap -->
             </div><!-- Column -->
             <?php } ?>
-            
+
         </div><!-- Row -->
 
         <div class="row m-t-50">
@@ -433,7 +433,7 @@
                 </div>
             </div><!-- Title -->
         </div><!-- Row -->
-        
+
         <div class="row">
             <!-- Item Begins -->
             <?php foreach($blogs as $val) { ?>
@@ -452,11 +452,11 @@
                         <ul class="blog-meta">
                             <li class="text-capitalize">
                                 <img width="36" src="<?php echo $val->user_image ? base_url('upload/users/images/').image_to_thumb($val->user_image) : base_url('themes/default/images/avatar.jpg'); ?>" class="img-circle" />
-                                
+
                                 &nbsp;&nbsp;<?php echo $val->first_name.' '.$val->last_name; ?>
                             </li>
                         </ul><!-- Blog Meta Details -->
-                        
+
                         <!-- Blog Description -->
                         <a class="btn" href="<?php echo site_url('blogs/').$val->slug ?>"><?php echo lang('blogs_read') ?></a>
                     </div><!-- Blog Detail Wrapper -->
@@ -479,7 +479,7 @@
 <?php if(!empty($gallaries)) { ?>
 <section id="gallery" class="bg-grey typo-dark">
     <div class="container">
-        
+
         <div class="row">
             <!-- Title -->
             <div class="col-sm-12">
@@ -491,7 +491,7 @@
                 </div>
             </div><!-- Title -->
         </div><!-- Row -->
-        
+
         <div class="row">
             <div class="col-md-12">
                 <!-- Gallery Block -->
@@ -511,7 +511,7 @@
                         </div><!-- Image Wrapper -->
                     </div><!-- Portfolio Item -->
                     <?php } ?>
-                    
+
                 </div><!-- Gallery Block -->
             </div><!-- Column -->
         </div><!-- Row -->
@@ -533,30 +533,30 @@
         <div class="row rltd-items">
             <!-- Column Begins -->
             <div class="col-sm-12">
-                <div class="owl-carousel" 
-                    data-animatein="" 
-                    data-animateout="" 
-                    data-items="2" 
-                    data-loop="true" 
-                    data-merge="true" 
-                    data-nav="false" 
-                    data-dots="false" 
-                    data-stagepadding="" 
+                <div class="owl-carousel"
+                    data-animatein=""
+                    data-animateout=""
+                    data-items="2"
+                    data-loop="true"
+                    data-merge="true"
+                    data-nav="false"
+                    data-dots="false"
+                    data-stagepadding=""
                     data-margin="30"
-                    data-mobile="1" 
-                    data-tablet="1" 
-                    data-desktopsmall="2"  
-                    data-desktop="2" 
-                    data-autoplay="true" 
-                    data-delay="3000" 
+                    data-mobile="1"
+                    data-tablet="1"
+                    data-desktopsmall="2"
+                    data-desktop="2"
+                    data-autoplay="true"
+                    data-delay="3000"
                     data-navigation="false">
-                    
+
                     <!-- Item Ends -->
                     <?php foreach($testimonials as $val) { ?>
                     <div class="item">
                         <!-- Blockquote Wrapper -->
                         <div class="quote-wrap dark">
-                            <blockquote>        
+                            <blockquote>
                                 <p><?php echo $val->t_feedback; ?></p>
                             </blockquote>
                             <!-- Blockquote Author -->
@@ -580,7 +580,7 @@
 <?php } ?>
 
 <!-- Section Contact -->
-<section id="contact" class="bg-lgrey"> 
+<section id="contact" class="bg-lgrey">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
@@ -609,5 +609,5 @@
                 <a href="<?php echo site_url('contact') ?>" class="btn"><?php echo lang('contacts_get_in_touch') ?></a>
             </div>
         </div>
-    </div><!-- Container -->    
-</section><!-- Section Contact -->  
+    </div><!-- Container -->
+</section><!-- Section Contact -->
