@@ -246,22 +246,6 @@
 					<?php } // end if ?>
 				</div>
 			</div>
-
-			<!-- Disqus Divider -->
-			<?php if($this->settings->disqus_short_name) { ?>
-			<hr class="md">
-			<!-- Discussion -->
-			<div class="row">
-				<div class="col-md-12">
-					<!-- Post Comments -->
-					 <div id="post-comment"  class="post-block post-comments clearfix">
-						<h4><?php echo lang('common_discussion') ?></h4>
-						<div id="disqus_thread"></div>
-					</div><!-- Post Comments -->
-				</div>
-			</div>
-			<?php } ?>
-
 		</div><!-- Container -->
 	</div><!-- Page Default -->
 </div><!-- Page Main -->
