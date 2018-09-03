@@ -585,7 +585,7 @@ class Auth extends Public_Controller {
         );
 
         // load views
-        $data['content'] = $this->load->view('auth/profile_form', $content_data, TRUE);
+        $data['content'] = $this->load->view('auth/register_form', $content_data, TRUE);
         $this->load->view($this->template, $data);
     }
 
