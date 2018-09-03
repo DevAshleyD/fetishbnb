@@ -241,7 +241,6 @@
                                                 <li><a href="<?php echo site_url('/profile'); ?>"><?php echo lang('action_profile'); ?></a></li>
                                                 <li><a href="<?php echo site_url('mybatches') ?>"><?php echo lang('menu_my_batches') ?></a></li>
                                                 <li><a href="<?php echo site_url('myevents') ?>"><?php echo lang('menu_my_events') ?></a></li>
-                                                <li><a href="<?php echo site_url('myblogs') ?>"><?php echo lang('menu_my_blogs') ?></a></li>
                                                 <li><a href="<?php echo site_url('logout'); ?>"><?php echo lang('action_logout') ?></a></li>
                                             </ul>
                                         </div>
