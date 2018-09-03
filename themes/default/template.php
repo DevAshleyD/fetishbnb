@@ -82,6 +82,7 @@
         // Video Url
         var intro_video_url   = "<?php echo $this->settings->intro_video_url ? $this->settings->intro_video_url : null; ?>";
     </script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <?php   // RTL or not
