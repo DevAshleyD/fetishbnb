@@ -12,22 +12,22 @@
 					<div class="row course-single">
 						<!-- Course Banner Image -->
 						<div class="col-sm-12">
-							<?php if($event_detail->images) { ?> 
-							<div class="owl-carousel dots-inline" 
-							<?php echo count(json_decode($event_detail->images))>1 ? 'data-loop="true"' : ''; ?> 
-							data-animatein="pulse" 
-							data-animateout="" 
-							data-items="1" data-margin="" 
-							data-merge="true" 
-							data-nav="false" 
-							data-dots="false" 
-							data-stagepadding="" 
-							data-mobile="1" 
-							data-tablet="1" 
-							data-desktopsmall="1"  
-							data-desktop="1" 
-							data-autoplay="true" 
-							data-delay="3000" 
+							<?php if($event_detail->images) { ?>
+							<div class="owl-carousel dots-inline"
+							<?php echo count(json_decode($event_detail->images))>1 ? 'data-loop="true"' : ''; ?>
+							data-animatein="pulse"
+							data-animateout=""
+							data-items="1" data-margin=""
+							data-merge="true"
+							data-nav="false"
+							data-dots="false"
+							data-stagepadding=""
+							data-mobile="1"
+							data-tablet="1"
+							data-desktopsmall="1"
+							data-desktop="1"
+							data-autoplay="true"
+							data-delay="3000"
 							data-navigation="false">
 								<!-- Items -->
 								<?php foreach(json_decode($event_detail->images) as $key => $val) { ?>
@@ -55,8 +55,8 @@
 										<li>
 											<i class="fa fa-money"></i><span><?php echo lang('e_l_price'); ?></span>
 											<h5>
-												<?php echo lang('e_l_price').' : '; ?> 
-												<?php echo $event_detail->fees ? $event_detail->fees.' '.$this->settings->default_currency : '<strong>'.lang('events_free').'</strong>'; ?></li>	
+												<?php echo lang('e_l_price').' : '; ?>
+												<?php echo $event_detail->fees ? $event_detail->fees.' '.$this->settings->default_currency : '<strong>'.lang('events_free').'</strong>'; ?></li>
 											</h5>
 										</li>
 										<li><i class="fa fa-users"></i><span><?php echo lang('events_tutors') ?></span><h5><?php echo $event_detail->total_tutors ?></h5>
@@ -65,7 +65,7 @@
 										<li>
 											<i class="fa fa-refresh"></i><span><?php echo lang('e_l_event_repetitive') ?></span>
 											<h5>
-											<?php foreach($recurring_types as $key => $val) { 
+											<?php foreach($recurring_types as $key => $val) {
 													if($event_detail->recurring_type == $key)
 			                                    		echo lang('events_recurring_types').' '.$val;
 											?>
@@ -75,8 +75,8 @@
 										<li>
 											<i class="fa fa-calendar-check-o"></i><span><?php echo lang('e_l_event_days'); ?></span>
 											<h5>
-											<?php foreach($weekdays as $key => $val) { 
-													if(in_array($key, json_decode($event_detail->weekdays))) 
+											<?php foreach($weekdays as $key => $val) {
+													if(in_array($key, json_decode($event_detail->weekdays)))
 														echo ' | '.$val;
 											?>
 			                                <?php } echo ' | '; ?>
@@ -97,7 +97,7 @@
 									<?php } ?>
 								</div>
 							</div><!-- Course Detail -->
-						</div><!-- Column -->	
+						</div><!-- Column -->
 					</div><!-- Course Wrapper -->
 					<?php if($event_detail->total_tutors) { ?>
 					<!-- Divider -->
@@ -120,9 +120,9 @@
 								<h3 class="count-number" data-count="<?php echo $event_detail->total_e_bookings ?>"><span class="counter"></span></h3>
 							</div><!-- Count -->
 						</div><!-- Column -->
-						
+
 						<!-- If event is recurring -->
-						<?php if($event_detail->recurring) { ?>						
+						<?php if($event_detail->recurring) { ?>
 						<div class="col-md-4">
 							<!-- Count -->
 							<div class="count-block">
@@ -175,7 +175,7 @@
 						<!-- Widget -->
 						<?php if(!empty($event_tutors)) { ?>
 						<div class="widget">
-							<h5 class="widget-title"><?php echo lang('batches_tutors') ?><span></span></h5>
+							<h5 class="widget-title">Hosts<span></span></h5>
 							<ul class="thumbnail-widget thumb-circle">
 								<?php foreach($event_tutors as $val) { ?>
 								<li>
@@ -193,10 +193,10 @@
 							</ul>
 						</div><!-- Widget -->
 						<?php } ?>
-					</aside><!-- aside -->	
+					</aside><!-- aside -->
 				</div><!-- Column -->
 			</div><!-- Row -->
-			
+
 			<!-- Divider -->
 			<hr class="md">
 
@@ -206,22 +206,22 @@
 					<!-- Related Classes -->
 					<?php if(!empty($related_events)) { ?>
 					<h4><?php echo lang('e_d_related_events'); ?></h4>
-					<div class="owl-carousel show-nav-hover dots-dark nav-square dots-square navigation-color" 
-					data-animatein="zoomIn" 
-					data-animateout="slideOutDown" 
-					data-items="3" 
-					data-margin="30" 
-					data-loop="true" 
-					data-merge="true" 
-					data-nav="true" 
-					data-dots="false" 
-					data-stagepadding="" 
-					data-mobile="1" 
-					data-tablet="2" 
-					data-desktopsmall="3" 
-					data-desktop="3" 
-					data-autoplay="true" 
-					data-delay="3000" 
+					<div class="owl-carousel show-nav-hover dots-dark nav-square dots-square navigation-color"
+					data-animatein="zoomIn"
+					data-animateout="slideOutDown"
+					data-items="3"
+					data-margin="30"
+					data-loop="true"
+					data-merge="true"
+					data-nav="true"
+					data-dots="false"
+					data-stagepadding=""
+					data-mobile="1"
+					data-tablet="2"
+					data-desktopsmall="3"
+					data-desktop="3"
+					data-autoplay="true"
+					data-delay="3000"
 					data-navigation="false">
 						<?php foreach($related_events as $val) { if($val->id !== $event_detail->id) { ?>
 						<div class="item">
@@ -241,9 +241,9 @@
 								</div><!-- Related Content Wrapper -->
 							</div><!-- Related Wrapper -->
 						</div><!-- Item -->
-						<?php } }  ?> 
+						<?php } }  ?>
 					</div><!-- Related Post -->
-					<?php } // end if ?>	
+					<?php } // end if ?>
 				</div>
 			</div>
 
