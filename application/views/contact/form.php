@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <!-- Section -->
-<section class="bg-lgrey">  
+<section class="bg-lgrey">
     <div class="container">
         <div class="row">
             <div class="col-sm-offset-1 col-sm-4">
@@ -20,7 +20,7 @@
                     <p><?php echo $this->settings->institute_name ?></p>
                     <p><?php echo $this->settings->institute_address ?></p>
                 </div><!-- Contact Info -->
-                
+
                 <div class="contact-info margin-top-30">
                     <div class="info-icon bg-dark">
                         <i class="uni-mail"></i>
@@ -29,9 +29,9 @@
                     <p><a href="mailto:<?php echo $this->settings->site_email ?>"><?php echo $this->settings->site_email ?></a></p>
                     <p><a href="tel:<?php echo $this->settings->institute_phone ?>"><?php echo $this->settings->institute_phone ?></a></p>
                 </div><!-- Contact Info -->
-                
+
             </div><!-- Column -->
-            
+
             <div class="col-sm-6">
                 <!-- Title -->
                 <div class="title-container sm text-left">
@@ -65,11 +65,10 @@
                         <span class="required">*</span>
                         <?php echo form_textarea(array('name'=>'message', 'value'=>set_value('message'), 'class'=>'form-control textarea-message')); ?>
                     </div>
-                    <div class="form-group textarea-message <?php echo form_error('captcha') ? ' has-error' : ''; ?>">
+                    <div class="form-group textarea-message">
                         <?php echo form_label(lang('contacts_captcha'), 'captcha', array('class'=>'control-label')); ?>
                         <br />
-                        <?php echo $captcha_image; ?>
-                        <?php echo form_input(array('name'=>'captcha', 'id'=>'captcha', 'value'=>"", 'class'=>'form-control textarea-message')); ?>
+                        <div class="g-recaptcha" data-sitekey="6LfFAG4UAAAAAHSFfmQRIqdijS7PGoaJ0dWtWE_l"></div>
                     </div>
                     <button type="submit" name="submit" class="btn"><i class="fa fa-send"></i> <?php echo lang('contacts_send_message') ?></button>
                     <span id="submit-loader"></span>
@@ -77,19 +76,19 @@
                 </div><!-- Contact Info -->
             </div><!-- Column -->
         </div><!-- Row -->
-    </div><!-- Container -->    
-</section><!-- Section -->  
+    </div><!-- Container -->
+</section><!-- Section -->
 
 <!-- Map -->
 <?php if($this->settings->g_map_key) { ?>
-<div class="full-screen map-canvas" 
-    style="" 
-    data-zoom="12" 
-    data-lat="<?php echo $this->settings->g_map_lat ?>" 
-    data-lng="<?php echo $this->settings->g_map_lng ?>" 
-    data-title="<?php echo $this->settings->institute_name ?>" 
-    data-type="roadmap" 
-    data-hue="#2196F3" 
+<div class="full-screen map-canvas"
+    style=""
+    data-zoom="12"
+    data-lat="<?php echo $this->settings->g_map_lat ?>"
+    data-lng="<?php echo $this->settings->g_map_lng ?>"
+    data-title="<?php echo $this->settings->institute_name ?>"
+    data-type="roadmap"
+    data-hue="#2196F3"
     data-content="<?php echo $this->settings->site_name ?>&lt;br&gt; Contact: <?php echo $this->settings->institute_phone ?>&lt;br&gt; <?php echo $this->settings->site_email ?>">
 </div><!-- Map -->
 <?php } ?>

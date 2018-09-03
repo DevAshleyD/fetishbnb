@@ -34,7 +34,6 @@ class Contact extends Public_Controller {
         $this->form_validation->set_rules('email', lang('contacts_email'), 'required|trim|valid_email|min_length[10]|max_length[256]');
         $this->form_validation->set_rules('title', lang('common_title'), 'required|trim|max_length[128]');
         $this->form_validation->set_rules('message', lang('contacts_message'), 'required|trim|min_length[10]');
-        $this->form_validation->set_rules('captcha', lang('contacts_captcha'), 'required|trim|callback__check_captcha');
 
         if ($this->form_validation->run() == TRUE)
         {
@@ -48,9 +47,9 @@ class Contact extends Public_Controller {
                     'users_id'  => 1,
                     'n_type'    => 'contacts',
                     'n_content' => 'noti_new_message',
-                    'n_url'     => site_url('admin/contacts'), 
+                    'n_url'     => site_url('admin/contacts'),
                 );
-                $this->notifications_model->save_notifications($notification);    
+                $this->notifications_model->save_notifications($notification);
 
                 // redirect to home page
                 $this->session->set_flashdata('message', sprintf(lang('contacts_send_success'), $this->input->post('name', TRUE)));
@@ -121,7 +120,7 @@ class Contact extends Public_Controller {
         }
         else
         {
-            return $captcha;    
+            return $captcha;
         }
     }
 
