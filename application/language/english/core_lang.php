@@ -660,8 +660,8 @@ $lang['batches_recurring_help_a']                   = "<ul class='align-left'>
                                                      	</ul>";
 $lang['batches_courses']                            = 'Course';
 $lang['batches_courses_eg']     				    = 'i.e Select Course Of Batch';
-$lang['batches_tutors']                             = 'Tutors';
-$lang['batches_tutors_eg']     						= 'i.e Select Tutor/s For Batch';
+$lang['batches_tutors']                             = 'Hosts';
+$lang['batches_tutors_eg']     						= 'i.e Select Host/s For Batch';
 $lang['batches_sub_course'] 							= 'sub-course';
 $lang['batches_select_course'] 						= 'Select a course';
 $lang['batches_delete_alert'] 						= '%s can\'t be deleted, delete its belonging batches first!';
