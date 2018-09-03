@@ -252,12 +252,9 @@
                     </li>
                     <?php } ?>
 
-                    <!-- Gallery -->
-                    <li><a href="<?php echo site_url('/gallery'); ?>"><?php echo lang('menu_gallary'); ?></a></li>
-
                     <!-- FAQ -->
                     <li><a href="<?php echo site_url('/cms/faq'); ?>"><?php echo lang('action_more'); ?></a></li>
-                    
+
                     <!-- Contact -->
                     <li><a href="<?php echo site_url('/contact'); ?>"><?php echo lang('menu_contact'); ?></a></li>
 
