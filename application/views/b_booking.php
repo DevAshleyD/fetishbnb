@@ -2,7 +2,7 @@
 <div class="page-default bg-grey typo-dark">
 	<!-- Container -->
 	<div class="container" id="booking-page">
-		
+
 		<div class="row shop-forms">
 
 			<!-- User Login Tab -->
@@ -12,7 +12,7 @@
 					<?php if ($this->session->userdata('logged_in')) { ?>
 					<div class="row">
 						<div class="col-md-12">
-							<h4><?php echo lang('c_l_logged_in_user') ?></h4>	
+							<h4><?php echo lang('c_l_logged_in_user') ?></h4>
 						</div>
 					</div>
 					<div class="row">
@@ -44,20 +44,48 @@
 					  	    </table>
 					  	</div>
 					</div>
-					<?php } else { 
+					<?php } else {
 				  	// get current uri
 					$_SESSION['redirect_url'] = "/" . uri_string();  ?>
-					<div class="row">
-						<div class="col-md-12">
-							<h4><?php echo lang('c_l_login_first') ?></h4>	
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group">
-					    	<div class="col-md-2">
-						        <a class="btn" href="<?php echo site_url('auth/'); ?>"><?php echo lang('users_login'); ?></a>
-						    </div>
-						</div>
+					<div class="signin-form">
+							<span class="mega-menu-sub-title"><?php echo lang('action_login'); ?></span>
+							<?php echo form_open('auth/login', array('class'=>'')); ?>
+									<div class="row">
+											<div class="form-group <?php echo form_error('identity') ? ' has-error' : ''; ?>">
+													<div class="col-md-12">
+															<?php echo lang('users_email_username', 'identity', array('class' => '')); ?>
+															<?php echo form_input(array('name'=>'identity', 'id'=>'identity', 'class'=>'form-control', 'placeholder'=>lang('users_email_username'))); ?>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="form-group <?php echo form_error('password') ? ' has-error' : ''; ?>">
+													<div class="col-md-12">
+															<a class="pull-right a-hover" href="<?php echo site_url('auth/forgot_password'); ?>"><?php echo lang('users_forgot'); ?></a>
+															<?php echo lang('users_password', 'password', array('class' => '')); ?>
+															<?php echo form_password(array('name'=>'password', 'id'=>'password', 'class'=>'form-control', 'placeholder'=>lang('users_password'), 'autocomplete'=>'off')); ?>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-md-12">
+													<span class="remember-box checkbox">
+														 <label for="remember">
+															<input type="checkbox" id="remember" name="remember" value="1"><?php echo lang('login_remember_label') ?>
+														</label>
+													</span>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-8">
+													<a class="a-hover" href="<?php echo site_url('auth/register'); ?>"><?php echo lang('users_register_account'); ?><?php echo ' - '.lang('users_register'); ?></a>
+											</div>
+											<div class="col-sm-4">
+													<!-- Button -->
+													<?php echo form_button(array('type' => 'submit', 'class' => 'btn pull-right', 'data-loading-text'=>lang('action_loading'), 'content' => lang('users_login'))); ?>
+											</div>
+									</div>
+							<?php echo form_close(); ?> <!-- Form Ends -->
 					</div>
 					<?php } ?>
 				</div>
@@ -73,10 +101,10 @@
                     <input type="hidden" name="booking_date" id="booking_date" value="">
                     <input type="hidden" name="start_time" id="start_time" value="">
                     <input type="hidden" name="booking_members" id="booking_members" value="">
-					
+
 					<div class="row">
 						<div class="col-md-12">
-							<h4><?php echo lang('c_l_select_batch') ?></h4>	
+							<h4><?php echo lang('c_l_select_batch') ?></h4>
 						</div>
 					</div>
 					<div class="row">
@@ -85,7 +113,7 @@
                             <div id="calendar"></div>
                         </div>
                     </div>
-                    
+
                     <div class="row batch_details" id="fees_table">
                     	<hr class="lg">
                     	<div class="col-md-6" id="batch_label">
@@ -118,9 +146,9 @@
                     <div class="row members-toggle">
                         <div class="col-md-12">
                         	<h4><?php echo lang('b_bookings_members'); ?><i class="add_member_button uni-add pointer-elem" title="<?php echo lang('b_bookings_members_add'); ?>"></i></h4>
-                            
+
                             <div class="row">
-                                <div class="col-md-offset-1 col-md-11 members"> 
+                                <div class="col-md-offset-1 col-md-11 members">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="<?php echo form_error('fullname') ? ' has-error' : ''; ?>">
@@ -153,11 +181,11 @@
 							<span id="submit_loader"></span>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 			<!-- End User Login Tab -->
-			
+
 			<!-- Booking Details -->
 			<div class="col-sm-12 margin-top-50" id="booking_details">
 				<div class="content-box shadow bg-lgrey table-responsive">
@@ -240,16 +268,16 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12 text-right">
-								<input type="submit" value="<?php echo lang('c_l_place_order') ?>" name="" class="btn btn-lg">	
+								<input type="submit" value="<?php echo lang('c_l_place_order') ?>" name="" class="btn btn-lg">
 							</div>
 						</div>
 					<?php echo form_close(); ?>
-					
+
 				</div>
 			</div>
 			<?php } ?>
 
 		</div><!-- Row -->
-		
+
 	</div><!-- Container -->
 </div><!-- Page Default -->
