@@ -68,7 +68,7 @@
                     <div class="form-group textarea-message">
                         <?php echo form_label(lang('contacts_captcha'), 'captcha', array('class'=>'control-label')); ?>
                         <br />
-                        <div class="g-recaptcha" data-sitekey="6LfFAG4UAAAAAHSFfmQRIqdijS7PGoaJ0dWtWE_l"></div>
+                        <div class="g-recaptcha" data-sitekey="6LdZA24UAAAAAJ9D7y_IV79EulCGNYQKCEwHg9oz"></div>
                     </div>
                     <button type="submit" name="submit" class="btn"><i class="fa fa-send"></i> <?php echo lang('contacts_send_message') ?></button>
                     <span id="submit-loader"></span>
