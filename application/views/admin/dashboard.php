@@ -29,19 +29,6 @@
         </a>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <a href="<?php echo site_url('admin/batches') ?>">
-            <div class="info-box bg-light-green hover-expand-effect pointer-elem">
-                <div class="icon">
-                    <i class="material-icons">event_note</i>
-                </div>
-                <div class="content">
-                    <div class="text text-uppercase"><?php echo lang('dashboard_batches') ?></div>
-                    <div class="number count-to" data-from="0" data-to="<?php echo $total_batches ?>" data-speed="1000" data-fresh-interval="20"></div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <a href="<?php echo site_url('admin/events') ?>">
             <div class="info-box bg-orange hover-expand-effect pointer-elem">
                 <div class="icon">
@@ -180,7 +167,7 @@
         </div>
     </div>
     <!-- #END# Answered Tickets -->
-    
+
 </div>
 
 <script type="text/javascript">
