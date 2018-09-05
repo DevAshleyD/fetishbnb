@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); 
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Groups Controller
  *
@@ -16,7 +16,7 @@ class Groups extends Admin_Controller {
 	function __construct()
 	{
 	    parent::__construct();
-	    
+
         // Page Title
         $this->set_title( lang('menu_groups') );
 	}
@@ -31,7 +31,7 @@ class Groups extends Admin_Controller {
         {
             $this->session->set_flashdata('error', lang('users_only_admin_can'));
             redirect($this->uri->segment(1).'/dashboard');
-        }   
+        }
 
         /* Initialize assets */
         $this->include_index_plugins();
@@ -58,7 +58,7 @@ class Groups extends Admin_Controller {
     {
         $this->load->library('datatables');
 
-        $table              = 'groups';        
+        $table              = 'groups';
         $columns            = array(
                                 "$table.id",
                                 "$table.name",
@@ -75,12 +75,12 @@ class Groups extends Admin_Controller {
                                 'name',
                             );
         $order              = array('id' => 'ASC');
-        
+
         $result             = $this->datatables->get_datatables($table, $columns, $columns_order, $columns_search, $order);
         $data               = array();
         $no                 = $_POST['start'];
-        
-        foreach ($result as $val) 
+
+        foreach ($result as $val)
         {
             $no++;
             $row            = array();
@@ -91,14 +91,14 @@ class Groups extends Admin_Controller {
             $row[]          = $val->id <= 3 ? '<small>'.lang('common_uneditable').'<small>' : action_buttons('groups', $val->id, $val->name, lang('menu_group'));
             $data[]         = $row;
         }
- 
+
         $output             = array(
                                 "draw"              => $_POST['draw'],
                                 "recordsTotal"      => $this->datatables->count_all(),
                                 "recordsFiltered"   => $this->datatables->count_filtered(),
                                 "data"              => $data,
                             );
-        
+
         //output to json format
         echo json_encode($output);exit;
     }
@@ -112,7 +112,7 @@ class Groups extends Admin_Controller {
         /* Initialize assets */
         $this->add_js_theme( "pages/groups/form_i18n.js", TRUE );
         $data                       = $this->includes;
-        
+
         $id                         = (int) $id;
 
         // in case of edit
@@ -121,7 +121,7 @@ class Groups extends Admin_Controller {
             if($id === 1 || $id === 2 || $id === 3)
             {
                 $this->session->set_flashdata('error', lang('common_uneditable'));
-                redirect($this->uri->segment(1).'/'.$this->uri->segment(2));               
+                redirect($this->uri->segment(1).'/'.$this->uri->segment(2));
             }
 
             $result                 = $this->ion_auth->group($id)->row();
@@ -129,13 +129,13 @@ class Groups extends Admin_Controller {
             if(empty($result))
             {
                 $this->session->set_flashdata('error', sprintf(lang('alert_not_found') ,lang('menu_group')));
-                redirect($this->uri->segment(1).'/'.$this->uri->segment(2));            
+                redirect($this->uri->segment(1).'/'.$this->uri->segment(2));
             }
 
             // hidden field in case of update
-            $data['id']             = $result->id; 
+            $data['id']             = $result->id;
         }
-			
+
 		$data['name']      = array(
             'name'          => 'name',
             'id'            => 'name',
@@ -150,7 +150,7 @@ class Groups extends Admin_Controller {
             'class'         => 'form-control',
             'value'         => $this->form_validation->set_value('description', !empty($result->description) ? $result->description : ''),
         );
-        
+
         /* Load Template */
         $content['content']    = $this->load->view('admin/groups/form', $data, TRUE);
         $this->load->view($this->template, $content);
@@ -164,7 +164,7 @@ class Groups extends Admin_Controller {
         if(!$this->ion_auth->is_admin())
         {
             echo '<p>'.lang('users_only_admin_can').'</p>';exit;
-        }   
+        }
 
     	$id = NULL;
 
@@ -172,7 +172,7 @@ class Groups extends Admin_Controller {
         {
             $this->session->set_flashdata('message', lang('common_uneditable'));
                 echo json_encode(array(
-                                        'flag'  => 0, 
+                                        'flag'  => 0,
                                         'msg'   => $this->session->flashdata('message'),
                                         'type'  => 'fail',
                                     ));
@@ -193,7 +193,7 @@ class Groups extends Admin_Controller {
             {
                 $this->session->set_flashdata('message', sprintf(lang('alert_not_found'), lang('menu_group')));
 		        echo json_encode(array(
-		                                'flag'  => 0, 
+		                                'flag'  => 0,
 		                                'msg'   => $this->session->flashdata('message'),
 		                                'type'  => 'fail',
 		                            ));
@@ -217,7 +217,7 @@ class Groups extends Admin_Controller {
             foreach($_POST as $key => $val)
                 if(form_error($key))
                     $error_fields[] = $key;
-            
+
             echo json_encode(array('flag' => 0, 'msg' => validation_errors(), 'error_fields' => json_encode($error_fields)));
             exit;
         }
@@ -230,7 +230,7 @@ class Groups extends Admin_Controller {
             $flag = $this->ion_auth->create_group($data['name'], $data['description']);
         else  // update group
             $flag = $this->ion_auth->update_group($id, $data['name'], $data['description']);
-        
+
         if($flag)
         {
         	if($id)
@@ -239,27 +239,27 @@ class Groups extends Admin_Controller {
             	$this->session->set_flashdata('message', sprintf(lang('alert_insert_success'), lang('menu_group')));
 
             echo json_encode(array(
-                                    'flag'  => 1, 
+                                    'flag'  => 1,
                                     'msg'   => $this->session->flashdata('message'),
                                     'type'  => 'success',
                                 ));
             exit;
         }
-        
+
         if($id)
         	$this->session->set_flashdata('error', sprintf(lang('alert_update_fail'), lang('menu_group')));
         else
         	$this->session->set_flashdata('error', sprintf(lang('alert_insert_fail'), lang('menu_group')));
 
         echo json_encode(array(
-                                'flag'  => 0, 
+                                'flag'  => 0,
                                 'msg'   => $this->session->flashdata('message'),
                                 'type'  => 'fail',
                             ));
         exit;
     }
 
-    
+
     /**
      * delete
      */
@@ -268,13 +268,13 @@ class Groups extends Admin_Controller {
         if(!$this->ion_auth->is_admin())
         {
             echo '<p>'.lang('users_only_admin_can').'</p>';exit;
-        }   
-        
+        }
+
         if($id === 1 || $id === 2 || $id === 3)
         {
             $this->session->set_flashdata('message', lang('common_uneditable'));
                 echo json_encode(array(
-                                        'flag'  => 0, 
+                                        'flag'  => 0,
                                         'msg'   => $this->session->flashdata('message'),
                                         'type'  => 'fail',
                                     ));
@@ -291,7 +291,7 @@ class Groups extends Admin_Controller {
         if(empty($result))
         {
             echo json_encode(array(
-                                    'flag'  => 0, 
+                                    'flag'  => 0,
                                     'msg'   => sprintf(lang('alert_not_found') ,lang('menu_group')),
                                     'type'  => 'fail',
                                 ));exit;
@@ -302,18 +302,18 @@ class Groups extends Admin_Controller {
         if($flag)
         {
             echo json_encode(array(
-                                    'flag'  => 1, 
+                                    'flag'  => 1,
                                     'msg'   => sprintf(lang('alert_delete_success'), lang('menu_group')),
                                     'type'  => 'success',
                                 ));exit;
         }
-        
+
         echo json_encode(array(
-                            'flag'  => 0, 
+                            'flag'  => 0,
                             'msg'   => $this->ion_auth->messages(),
                             'type'  => 'fail',
                         ));
-        exit;   
+        exit;
     }
 
 
