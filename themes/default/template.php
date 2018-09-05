@@ -216,7 +216,7 @@
                         </ul>
                     </li>
                     <!-- User Profile -->
-                    <?php } else { ?>
+                    <?php } else { ?> 
                     <li class="dropdown mega-menu-item mega-menu-signin signin logged" id="headerAccount">
                         <a class="dropdown-toggle" href="<?php echo site_url('/profile'); ?>">
                             <i class="fa fa-user"></i><?php echo $this->user['username']; ?>
