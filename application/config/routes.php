@@ -64,17 +64,17 @@ $route['admin']                					= 'admin/dashboard';
 $route['cms/faq'] 								= 'cms/faq';
 $route['cms/(:any)'] 							= 'cms/index/$1';
 
-$route['blogs'] 								= 'blogs';
-$route['blogs/(:any)'] 							= 'blogs/blog/$1';
+//$route['blogs'] 								= 'blogs';
+//$route['blogs/(:any)'] 							= 'blogs/blog/$1';
 
-$route['myblogs'] 								= 'myblogs';
-$route['myblogs/add_new_blog'] 					= 'myblogs/form';
-$route['myblogs/edit_blog/(:any)'] 				= 'myblogs/form/$1';
+//$route['myblogs'] 								= 'myblogs';
+//$route['myblogs/add_new_blog'] 					= 'myblogs/form';
+//$route['myblogs/edit_blog/(:any)'] 				= 'myblogs/form/$1';
 
-$route['courses'] 								= 'courses';
-$route['courses/search_categories'] 			= 'courses/search_categories';
-$route['courses/(:any)'] 						= 'courses/index/$1';
-$route['courses/detail/(:any)']					= 'courses/detail/$1';
+//$route['courses'] 								= 'courses';
+//$route['courses/search_categories'] 			= 'courses/search_categories';
+//$route['courses/(:any)'] 						= 'courses/index/$1';
+//$route['courses/detail/(:any)']					= 'courses/detail/$1';
 
 $route['events'] 								= 'events';
 $route['events/search_categories'] 				= 'events/search_categories';
@@ -84,16 +84,16 @@ $route['events/detail/(:any)']					= 'events/detail/$1';
 //$route['tutors'] 								= 'tutors';
 //$route['tutors/(:any)'] 						= 'tutors/tutor/$1';
 
-$route['bbooking/get_batches']					= 'bbooking/get_batches';
-$route['bbooking/get_net_fees']					= 'bbooking/get_net_fees';
-$route['bbooking/get_booked_seats']				= 'bbooking/get_booked_seats';
-$route['bbooking/initiate_booking']				= 'bbooking/initiate_booking';
-$route['bbooking/payment_method']				= 'bbooking/payment_method';
-$route['bbooking/pay_with_paypal']				= 'bbooking/pay_with_paypal';
-$route['bbooking/pay_with_stripe']				= 'bbooking/pay_with_stripe';
-$route['bbooking/finish_booking']				= 'bbooking/finish_booking';
-$route['bbooking/booking_complete']				= 'bbooking/booking_complete';
-$route['bbooking/(:any)']						= 'bbooking/index/$1';
+//$route['bbooking/get_batches']					= 'bbooking/get_batches';
+//$route['bbooking/get_net_fees']					= 'bbooking/get_net_fees';
+//$route['bbooking/get_booked_seats']				= 'bbooking/get_booked_seats';
+//$route['bbooking/initiate_booking']				= 'bbooking/initiate_booking';
+//$route['bbooking/payment_method']				= 'bbooking/payment_method';
+//$route['bbooking/pay_with_paypal']				= 'bbooking/pay_with_paypal';
+//$route['bbooking/pay_with_stripe']				= 'bbooking/pay_with_stripe';
+//$route['bbooking/finish_booking']				= 'bbooking/finish_booking';
+//$route['bbooking/booking_complete']				= 'bbooking/booking_complete';
+//$route['bbooking/(:any)']						= 'bbooking/index/$1';
 
 $route['ebooking/get_events']					= 'ebooking/get_events';
 $route['ebooking/get_net_fees']					= 'ebooking/get_net_fees';
