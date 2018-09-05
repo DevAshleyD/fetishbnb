@@ -279,14 +279,7 @@
                       </a>
                     </li>
 
-                    <!-- Blogs -->
-                    <li class="<?php echo (strstr(uri_string(), 'admin/blogs')) ? ' active' : ''; ?>">
-                      <a href="<?php echo site_url('/admin/blogs'); ?>">
-                        <i class="material-icons">pages</i>
-                        <span><?php echo lang('menu_blogs'); ?></span>
-                      </a>
-                    </li>
-
+                  
                     <!-- CMS -->
                     <li class="<?php echo (strstr(uri_string(), 'admin/pages') || strstr(uri_string(), 'admin/menus') || strstr(uri_string(), 'admin/faqs')) ? ' active' : ''; ?>">
                       <a href="#" class="menu-toggle">
@@ -424,7 +417,7 @@
             <?php endif; ?>
         <?php endforeach; ?>
     <?php endif; ?>
- 
+
     <script type="text/javascript">
         var admin_theme = "<?php echo $this->settings->admin_theme; ?>";
         var base_url    = "<?php echo base_url().'/'; ?>";
