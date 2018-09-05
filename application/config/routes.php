@@ -81,8 +81,8 @@ $route['events/search_categories'] 				= 'events/search_categories';
 $route['events/(:any)'] 						= 'events/index/$1';
 $route['events/detail/(:any)']					= 'events/detail/$1';
 
-$route['tutors'] 								= 'tutors';
-$route['tutors/(:any)'] 						= 'tutors/tutor/$1';
+//$route['tutors'] 								= 'tutors';
+//$route['tutors/(:any)'] 						= 'tutors/tutor/$1';
 
 $route['bbooking/get_batches']					= 'bbooking/get_batches';
 $route['bbooking/get_net_fees']					= 'bbooking/get_net_fees';
@@ -105,3 +105,5 @@ $route['ebooking/pay_with_stripe']				= 'ebooking/pay_with_stripe';
 $route['ebooking/finish_booking']				= 'ebooking/finish_booking';
 $route['ebooking/booking_complete']				= 'ebooking/booking_complete';
 $route['ebooking/(:any)']						= 'ebooking/index/$1';
+$route['hosts'] 								= 'hosts';
+$route['hosts/(:any)'] 						= 'hosts/host/$1';
