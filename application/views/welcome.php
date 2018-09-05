@@ -60,79 +60,6 @@
     </div><!-- Container -->
 </section><!-- Section Search -->
 
-
-<!-- Section Featured Courses -->
-<?php if(! empty($f_courses)) { ?>
-<section class="pad-top-none typo-dark">
-    <div class="container">
-        <!-- Row -->
-        <div class="row">
-            <!-- Title -->
-            <div class="col-sm-12">
-                <div class="title-container sm">
-                    <div class="title-wrap">
-                        <h3 class="title"><?php echo lang('w_featured_courses') ?></h3>
-                        <span class="separator line-separator"></span>
-                    </div>
-                </div>
-            </div>
-            <!-- Title -->
-
-            <!-- Column -->
-            <?php foreach($f_courses as $key => $val) { ?>
-            <div class="col-sm-4">
-                <!-- Course Wrapper -->
-                <div class="course-wrapper">
-                    <!-- Course Banner Image -->
-                    <a href="<?php echo site_url('courses/detail/').str_replace(' ', '+', $val->title) ?>" title="<?php lang('action_view'); ?>" >
-                        <div class="course-banner-wrap">
-                            <img alt="Course" class="img-responsive" src="<?php echo base_url().($val->images ? '/upload/courses/images/'.image_to_thumb(json_decode($val->images)[0]) : 'themes/default/images/course/course-01.jpg') ?>" width="600" height="220">
-                            <?php if($val->total_recurring) { ?>
-                            <span class="cat bg-green"><?php echo $val->total_recurring.' '.lang('c_l_repetitive_batch'); ?></span>
-                            <?php } elseif($val->starting_price) { ?>
-                            <span class="cat bg-blue"><?php echo lang('c_l_starts_from'); ?> : <?php echo $val->starting_price.' '.$this->settings->default_currency; ?></span>
-                            <?php } else { ?>
-                            <span class="cat bg-yellow"><?php echo lang('action_coming_soon'); ?></span>
-                            <?php } ?>
-                        </div><!-- Course Banner Image -->
-                    </a>
-                    <!-- Course Detail -->
-                    <div class="course-detail-wrap">
-                        <!-- Course Teacher Detail -->
-                        <div class="teacher-wrap">
-                            <?php if(empty($val->tutor)) { ?>
-                            <img class="img-responsive" src="<?php echo base_url().'themes/default/images/teacher/thumb-teacher-01.jpg' ?>" width="100" height="100">
-                            <h5><small><?php echo lang('action_coming_soon'); ?></small></h5>
-                            <?php } else { ?>
-                            <a href="<?php echo site_url('tutors/').$val->tutor->username ?>">
-                                <img alt="<?php echo $val->tutor->first_name.' '.$val->tutor->last_name ?>" class="img-responsive" src="<?php echo base_url().($val->tutor->image ? '/upload/users/images/'.image_to_thumb($val->tutor->image) : 'themes/default/images/teacher/thumb-teacher-01.jpg') ?>" width="100" height="100">
-                                <small><?php echo lang('users_role_tutor') ?></small>
-                                <h5><span><?php echo $val->tutor->first_name.' '.$val->tutor->last_name ?></span></h5>
-                            </a>
-                            <?php } ?>
-                            <small><a href="<?php echo site_url('courses/detail/').str_replace(' ', '+', $val->title) ?>" title="<?php lang('action_view'); ?>" ><?php echo $val->total_tutors > 0 ? $val->total_tutors.' '.lang('action_more') : '' ?></a></small>
-                        </div><!-- Course Teacher Detail -->
-
-                        <!-- Course Content -->
-                        <div class="course-content">
-                            <h4><a href="<?php echo site_url('courses/detail/').str_replace(' ', '+', $val->title) ?>" title="<?php lang('action_view'); ?>" ><?php echo $val->title ?></a></h4>
-                            <?php if(!$val->total_batches) { ?>
-                            <a disabled class="btn disabled"><?php echo lang('action_coming_soon') ?></a>
-                            <?php } else { ?>
-                            <a href="<?php echo site_url('bbooking/').str_replace(' ', '+', $val->title) ?>" class="btn"><?php echo lang('action_apply_now') ?></a>
-                            <p><?php echo lang('menu_batches') ?> <?php echo $val->total_batches ? '+'.$val->total_batches : $val->total_batches; ?></p>
-                            <?php } ?>
-                        </div><!-- Course Content -->
-                    </div><!-- Course Detail -->
-                </div><!-- Course Wrapper -->
-            </div><!-- Column -->
-            <?php } ?>
-
-        </div><!-- Row -->
-    </div><!-- Container -->
-</section><!-- Section Featured Courses -->
-<?php } ?>
-
 <!-- Section Featured Events -->
 <?php if(! empty($f_events)) { ?>
 <section class="pad-top-none typo-dark">
@@ -237,15 +164,7 @@
                 </div>
             </div>
             <!-- Title -->
-            <div class="col-sm-6 col-md-3">
-                <!-- Count Block -->
-                <div class="count-block dark bg-verydark">
-                    <h5><?php echo lang('menu_courses') ?></h5>
-                    <h3 data-count="<?php echo $count_courses; ?>" class="count-number"><span class="counter"><?php echo $count_courses; ?></span></h3>
-                    <i class="uni-fountain-pen"></i>
-                </div><!-- Counter Block -->
-            </div><!-- Column -->
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-4">
                 <!-- Count Block -->
                 <div class="count-block dark bg-verydark">
                     <h5><?php echo lang('menu_batches') ?></h5>
@@ -253,7 +172,7 @@
                     <i class="uni-idea"></i>
                 </div><!-- Counter Block -->
             </div><!-- Column -->
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-4">
                 <!-- Count Block -->
                 <div class="count-block dark bg-verydark">
                     <h5><?php echo lang('menu_events'); ?></h5>
@@ -261,7 +180,7 @@
                     <i class="uni-wine-glass"></i>
                 </div><!-- Counter Block -->
             </div><!-- Column -->
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-4">
                 <!-- Count Block -->
                 <div class="count-block dark bg-verydark">
                     <h5><?php echo lang('menu_tutors') ?></h5>
@@ -392,13 +311,13 @@
                 <div class="member-wrap">
                     <!-- Member Image Wrap -->
                     <div class="member-img-wrap">
-                        <a href="<?php echo site_url('tutors/').$tutor->username ?>">
+                        <a href="<?php echo site_url('hosts/').$tutor->username ?>">
                             <img width="600" height="500" alt="<?php echo $tutor->first_name.' '.$tutor->last_name ?>" class="img-responsive" src="<?php echo base_url().($tutor->image ? '/upload/users/images/'.$tutor->image : 'themes/default/images/teacher/teacher-01.jpg') ?>">
                         </a>
                     </div>
                     <!-- Member detail Wrapper -->
                     <div class="member-detail-wrap bg-white">
-                        <h4 class="member-name"><a href="<?php echo site_url('tutors/').$tutor->username ?>"><?php echo $tutor->first_name.' '.$tutor->last_name; ?></a></h4>
+                        <h4 class="member-name"><a href="<?php echo site_url('hosts/').$tutor->username ?>"><?php echo $tutor->first_name.' '.$tutor->last_name; ?></a></h4>
                         <span><?php echo $tutor->profession ?>
                                 <?php echo ' ('.lang('users_experience_1') ?> : <?php echo $tutor->experience > 1 ? $tutor->experience.' '.lang('users_experience_years') : $tutor->experience.' '.lang('users_experience_year') ?><?php echo ')'; ?></span>
                         <p><?php echo $tutor->about ?></p>
@@ -411,67 +330,11 @@
 
         <div class="row m-t-50">
             <div class="col-md-12 text-center">
-                <a href="<?php echo site_url('tutors') ?>" class="btn"><?php echo lang('header_view_all') ?></a>
+                <a href="<?php echo site_url('hosts') ?>" class="btn"><?php echo lang('header_view_all') ?></a>
             </div>
         </div>
     </div><!-- Container -->
 </section><!-- Section Teachers -->
-<?php } ?>
-
-<!-- Section Blog -->
-<?php if(!empty($blogs)) {  ?>
-<section id="blog" class="typo-dark">
-    <div class="container">
-        <div class="row">
-            <!-- Title -->
-            <div class="col-sm-12">
-                <div class="title-container">
-                    <div class="title-wrap">
-                        <h3 class="title"><?php echo lang('w_students_blog') ?></h3>
-                        <span class="separator line-separator"></span>
-                    </div>
-                </div>
-            </div><!-- Title -->
-        </div><!-- Row -->
-
-        <div class="row">
-            <!-- Item Begins -->
-            <?php foreach($blogs as $val) { ?>
-            <div class="col-sm-4">
-                <!-- Blog Grid Wrapper -->
-                <div class="blog-wrap">
-                    <div class="blog-img-wrap">
-                        <a href="<?php echo site_url('blogs/').$val->slug ?>">
-                            <img width="600" height="220" src="<?php echo base_url('upload/blogs/images/').$val->image ?>" class="img-responsive" alt="Blog">
-                            <h6 class="post-type">&nbsp;<i class="fa fa-image"></i>&nbsp;</h6>
-                        </a>
-                    </div>
-                    <!-- Blog Detail Wrapper -->
-                    <div class="blog-details">
-                        <h5><a href="<?php echo site_url('blogs/').$val->slug ?>"><?php echo $val->title ?></a></h5>
-                        <ul class="blog-meta">
-                            <li class="text-capitalize">
-                                <img width="36" src="<?php echo $val->user_image ? base_url('upload/users/images/').image_to_thumb($val->user_image) : base_url('themes/default/images/avatar.jpg'); ?>" class="img-circle" />
-
-                                &nbsp;&nbsp;<?php echo $val->first_name.' '.$val->last_name; ?>
-                            </li>
-                        </ul><!-- Blog Meta Details -->
-
-                        <!-- Blog Description -->
-                        <a class="btn" href="<?php echo site_url('blogs/').$val->slug ?>"><?php echo lang('blogs_read') ?></a>
-                    </div><!-- Blog Detail Wrapper -->
-                </div><!-- Blog Wrapper -->
-            </div><!-- Column -->
-            <?php } ?>
-        </div><!-- Row -->
-
-        <div class="row m-t-50">
-            <div class="col-md-12 text-center">
-                <a href="<?php echo site_url('blogs') ?>" class="btn"><?php echo lang('header_view_all') ?></a>
-            </div>
-        </div>
-    </div><!-- Container -->
-</section><!-- Section Blog -->
 <?php } ?>
 
 
