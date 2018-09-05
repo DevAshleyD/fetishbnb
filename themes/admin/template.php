@@ -216,11 +216,6 @@
                         <span><?php echo lang('menu_bookings'); ?></span>
                       </a>
                       <ul class="ml-menu">
-                        <li class="<?php echo (strstr(uri_string(), 'admin/bbookings')) ? ' active' : ''; ?>">
-                          <a href="<?php echo site_url('/admin/bbookings'); ?>">
-                            <?php echo lang('menu_b_bookings'); ?>
-                          </a>
-                        </li>
                         <li class="<?php echo (strstr(uri_string(), 'admin/ebookings')) ? ' active' : ''; ?>">
                           <a href="<?php echo site_url('/admin/ebookings'); ?>">
                             <?php echo lang('menu_e_bookings'); ?>
@@ -279,7 +274,7 @@
                       </a>
                     </li>
 
-                  
+
                     <!-- CMS -->
                     <li class="<?php echo (strstr(uri_string(), 'admin/pages') || strstr(uri_string(), 'admin/menus') || strstr(uri_string(), 'admin/faqs')) ? ' active' : ''; ?>">
                       <a href="#" class="menu-toggle">
