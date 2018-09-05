@@ -10,11 +10,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="application/json; charset=utf-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="<?php echo base_url('/upload/institute/') ?>/logo.png" />
     <meta name="theme-color" content="#9c27b0">
-    
+
     <title><?php echo $page_title; ?> - <?php echo $this->settings->site_name; ?></title>
 
     <!-- Google Fonts -->
@@ -71,7 +71,7 @@
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="<?php echo site_url('admin'); ?>">
                     <?php echo $this->settings->site_name; ?>
-                    
+
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -152,7 +152,7 @@
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-            <div class="user-info bg-<?php echo $this->settings->admin_theme; ?>"> 
+            <div class="user-info bg-<?php echo $this->settings->admin_theme; ?>">
                 <div class="image">
                     <img src="<?php echo base_url(); ?><?php echo ($_SESSION['logged_in']['image'] == '') ? '/themes/admin/img/avatar2.png' : '/upload/users/images/'.image_to_thumb($_SESSION['logged_in']['image']); ?>" width="48" height="48" alt="User Image">
                 </div>
@@ -189,30 +189,6 @@
                       </a>
                     </li>
 
-                    <!-- Class_categories -->
-                    <li class="<?php echo (strstr(uri_string(), 'admin/categories')) ? ' active' : ''; ?>">
-                      <a href="<?php echo site_url('admin/categories'); ?>">
-                        <i class="material-icons">device_hub</i>
-                        <span><?php echo lang('menu_course_categories'); ?></span>
-                      </a>
-                    </li>
-
-                    <!-- Courses -->
-                    <li class="<?php echo (strstr(uri_string(), 'admin/courses')) ? ' active' : ''; ?>">
-                      <a href="<?php echo site_url('admin/courses'); ?>">
-                        <i class="material-icons">account_balance</i>
-                        <span><?php echo lang('menu_courses'); ?></span>
-                      </a>
-                    </li>
-
-                    <!-- Batches -->
-                    <li class="<?php echo (strstr(uri_string(), 'admin/batches')) ? ' active' : ''; ?>">
-                      <a href="<?php echo site_url('admin/batches'); ?>">
-                        <i class="material-icons">event_note</i>
-                        <span><?php echo lang('menu_batches'); ?></span>
-                      </a>
-                    </li>
-
                     <!-- Events -->
                     <li class="<?php echo (strstr(uri_string(), 'admin/events') || strstr(uri_string(), 'admin/eventtypes')) ? ' active' : ''; ?>">
                       <a href="#" class="menu-toggle">
@@ -230,7 +206,7 @@
                             <?php echo lang('menu_event_types'); ?>
                           </a>
                         </li>
-                      </ul>          
+                      </ul>
                     </li>
 
                     <!-- Bookings -->
@@ -250,7 +226,7 @@
                             <?php echo lang('menu_e_bookings'); ?>
                           </a>
                         </li>
-                      </ul>          
+                      </ul>
                     </li>
 
                     <!-- Users -->
@@ -275,9 +251,9 @@
                             <?php echo lang('menu_manage_acl'); ?>
                           </a>
                         </li>
-                      </ul>          
+                      </ul>
                     </li>
-                    
+
 
                     <!-- Contacts -->
                     <li class="<?php echo (strstr(uri_string(), 'admin/contacts')) ? ' active' : ''; ?>">
@@ -333,7 +309,7 @@
                             <?php echo lang('menu_faqs'); ?>
                           </a>
                         </li>
-                      </ul>          
+                      </ul>
                     </li>
 
                     <!-- Masters -->
@@ -368,7 +344,7 @@
                             <?php echo lang('menu_taxes'); ?>
                           </a>
                         </li>
-                      </ul>          
+                      </ul>
                     </li>
 
                     <!-- Settings -->
@@ -400,33 +376,33 @@
                 <div class="col-md-3">
                     <div class="block-header">
                         <h2 class="text-uppercase"><?php echo $page_header; ?></h2>
-                    </div>        
+                    </div>
                 </div>
                 <div class="col-md-9">
                      <!-- Show breadcrumb -->
                     <div class="breadc pull-right">
                         <ol class="breadcrumb" >
-                            <?php 
+                            <?php
                                 echo !$this->uri->segment(2) ? '<li class="active">'.lang('menu_dashboard').'</li>' : '<li><a href="'.site_url().'/'.$this->uri->segment(1).'">'.lang('menu_dashboard').'</a></li>';
 
                                 if($this->uri->segment(2))
                                     echo !$this->uri->segment(3) ? '<li class="active">'.lang('menu_'.$this->uri->segment(2)).'</li>' : '<li><a href="'.site_url().'/'.$this->uri->segment(2).'">'.lang('menu_'.$this->uri->segment(2)).'</a></li>';
 
 
-                                if($this->uri->segment(3)) 
+                                if($this->uri->segment(3))
                                     echo '<li class="active">'.($this->uri->segment(3) !== 'form' ? lang('action_'.$this->uri->segment(3)) : ($this->uri->segment(4) ? lang('action_edit') : lang('action_create'))).'</li>';
                             ?>
-                        </ol>    
-                    </div>         
+                        </ol>
+                    </div>
                 </div>
             </div>
-           
+
             <!-- Ajax validation error -->
             <div class="alert alert-danger alert-dismissable" id="validation-error">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <p></p>
             </div>
-            
+
             <!--  page content -->
             <?php echo $content; ?>
             <!-- /.page content -->
@@ -448,7 +424,7 @@
             <?php endif; ?>
         <?php endforeach; ?>
     <?php endif; ?>
-
+ 
     <script type="text/javascript">
         var admin_theme = "<?php echo $this->settings->admin_theme; ?>";
         var base_url    = "<?php echo base_url().'/'; ?>";
@@ -458,7 +434,7 @@
         var uri_seg_3   = "<?php echo $this->uri->segment(3); ?>";
         var csrf_name   = "<?php echo $this->security->get_csrf_token_name(); ?>";
         var csrf_token  = "<?php echo $this->security->get_csrf_hash(); ?>";
-        
+
         /*System Notification*/
         $(function() {
             var message     = `<?php echo null !== $this->session->flashdata('message') ? $this->session->flashdata('message') : null ?>`;
@@ -472,6 +448,6 @@
             if(s_error != '') show_danger(s_error);
         });
     </script>
-      
+
 </body>
 </html>
