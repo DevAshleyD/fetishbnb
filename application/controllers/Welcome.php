@@ -36,7 +36,7 @@ class Welcome extends Public_Controller {
         $tutor_ids                          = array();
         foreach($this->ion_auth->get_users_by_group(2)->result() as $val)
             $tutor_ids[] = $val->user_id;
-        
+
         $data['tutors']             = $this->course_model->get_tutors($tutor_ids);
 
         foreach($data['f_courses'] as $key => $val)
@@ -58,6 +58,8 @@ class Welcome extends Public_Controller {
         ->add_plugin_theme(array(
             "owl-carousel/owl.carousel.css",
             "owl-carousel/owl.carousel.min.js",
+            "hero-slider/js/main.js",
+            "hero-slider/css/style.css",
             "theme-lib/counter.js",
             "theme-lib/isotope.pkgd.min.js",
             "theme-lib/jquery.mb.YTPlayer.min.js",
