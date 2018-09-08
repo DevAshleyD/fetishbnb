@@ -1,40 +1,33 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
- <!-- Section Slider -->
-<section class="pad-none parallax-bg hero">
-    <div class="owl-carousel full-screen dots-inline"
-        data-animatein=""
-        data-animateout=""
-        data-items="1"
-        data-margin=""
-        data-loop="true"
-        data-merge="true"
-        data-nav="false"
-        data-dots="false"
-        data-stagepadding=""
-        data-mobile="1"
-        data-tablet="1"
-        data-desktopsmall="1"
-        data-desktop="1"
-        data-autoplay="true"
-        data-delay="3000"
-        data-navigation="false"
-    >
-        <?php for($i = 1; $i<=3;$i++) { if($this->settings->{'banner_title_'.$i}) { ?>
-        <div class="item typo-light">
-            <img src="<?php echo base_url('upload/home/').$this->settings->{'banner_image_'.$i} ?>" alt="" class="img-responsive">
-            <div class="container slider-content vmiddle text-center">
-                <div class="row">
-                    <div class="col-md-offset-2 col-md-8">
-                        <h3 class="text-uppercase" data-animation="fadeInUp" data-animation-delay="800"><?php echo $this->settings->{'banner_title_'.$i} ?></h3>
-                        <p class="animated" data-animation="fadeInUp" data-animation-delay="800"><?php echo $this->settings->{'banner_description_'.$i} ?></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php } } ?>
-    </div>
-</section><!-- Section Slider -->
+<!-- Hero Slider -->
+<section class="pad-none cd-hero js-cd-hero js-cd-autoplay">
+   <ul class="cd-hero__slider">
+     <?php for($i = 1; $i<=3;$i++) { if($this->settings->{'banner_title_'.$i}) { ?>
+      <li style="background-image: url('<?php echo base_url('upload/home/').$this->settings->{'banner_image_'.$i} ?>')" class="cd-hero__slide cd-hero__slide--selected js-cd-slide">
+         <div class="cd-hero__content cd-hero__content--full-width">
+            <h2><?php echo $this->settings->{'banner_title_'.$i} ?></h2>
+            <p><?php echo $this->settings->{'banner_description_'.$i} ?></p>
+         </div> <!-- .cd-hero__content -->
+      </li>
+    <?php } } ?>
+      <!-- other slides here -->
+   </ul> <!-- .cd-hero__slider -->
+   <div style="display:none;" class="cd-hero__nav js-cd-nav">
+      <nav>
+         <span class="cd-hero__marker cd-hero__marker--item-1 js-cd-marker"></span>
+
+         <ul>
+           <li class="cd-selected"><a href="#0">Slider</a></li>
+           <?php for($i = 2; $i<=3;$i++) { if($this->settings->{'banner_title_'.$i}) {?>
+            <li><a href="#<?php echo $i-1;?>">Slider</a></li>
+            <!-- other navigation items here -->
+          <?php }} ?>
+         </ul>
+      </nav>
+   </div> <!-- .cd-hero__nav -->
+</section> <!-- .cd-hero -->
+<!-- Hero Slider-->
 
 
 <!-- Section Search -->
@@ -103,7 +96,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <ul class="events-meta">
-                                    <li><i class="fa fa-users"></i> <?php echo lang('e_l_total_tutors').' : '.$val->total_tutors ?></li>
+                                    <li><i class="fa fa-users"></i> <?php echo lang('e_l_total_hosts').' : '.$val->total_tutors ?></li>
                                     <li><i class="fa fa-calendar-o"></i> <?php echo lang('e_l_total_bookings').' : '.$val->total_e_bookings ?></li>
                                 </ul>
                             </div>
@@ -167,9 +160,9 @@
             <div class="col-sm-6 col-md-4">
                 <!-- Count Block -->
                 <div class="count-block dark bg-verydark">
-                    <h5><?php echo lang('menu_batches') ?></h5>
-                    <h3 data-count="<?php echo $count_batches; ?>" class="count-number"><span class="counter"><?php echo $count_batches; ?></span></h3>
-                    <i class="uni-idea"></i>
+                    <h5><?php echo lang('total_users') ?></h5>
+                    <h3 data-count="<?php echo $count_tutors+1234; ?>" class="count-number"><span class="counter"><?php echo $count_batches; ?></span></h3>
+                    <i class="uni-business-woman"></i>
                 </div><!-- Counter Block -->
             </div><!-- Column -->
             <div class="col-sm-6 col-md-4">
@@ -336,58 +329,6 @@
     </div><!-- Container -->
 </section><!-- Section Teachers -->
 <?php } ?>
-
-
-<!-- Section Gallery -->
-<?php if(!empty($gallaries)) { ?>
-<section id="gallery" class="bg-grey typo-dark">
-    <div class="container">
-
-        <div class="row">
-            <!-- Title -->
-            <div class="col-sm-12">
-                <div class="title-container text-left">
-                    <div class="title-wrap">
-                        <h3 class="title"><?php echo lang('menu_gallary') ?></h3>
-                        <span class="separator line-separator"></span>
-                    </div>
-                </div>
-            </div><!-- Title -->
-        </div><!-- Row -->
-
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Gallery Block -->
-                <div class="isotope-grid grid-three-column" data-gutter="20" data-columns="3">
-                    <div class="grid-sizer"></div>
-                    <!-- Portfolio Item -->
-                    <?php foreach($gallaries as $val) { ?>
-                    <div class="item all design web">
-                        <!-- Image Wrapper -->
-                        <div class="image-wrapper">
-                            <!-- IMAGE -->
-                            <img src="<?php echo base_url('upload/gallaries/images/').image_to_thumb($val->image) ?>" />
-                            <!-- Gallery Btns Wrapper -->
-                            <div class="gallery-detail btns-wrapper">
-                                <a href="<?php echo base_url('upload/gallaries/images/').$val->image ?>" data-rel="prettyPhoto[portfolio]" class="btn uni-full-screen"></a>
-                            </div><!-- Gallery Btns Wrapper -->
-                        </div><!-- Image Wrapper -->
-                    </div><!-- Portfolio Item -->
-                    <?php } ?>
-
-                </div><!-- Gallery Block -->
-            </div><!-- Column -->
-        </div><!-- Row -->
-
-        <div class="row m-t-50">
-            <div class="col-md-12 text-center">
-                <a href="<?php echo site_url('gallery') ?>" class="btn"><?php echo lang('header_view_all') ?></a>
-            </div>
-        </div>
-    </div><!-- Container -->
-</section><!-- Section Gallery -->
-<?php } ?>
-
 
 <!-- Section Testimonials -->
 <?php if(!empty($testimonials)) { ?>

@@ -30,9 +30,9 @@
 						</ul>
 					</div><!-- Widget -->
 					<?php } ?>
-				</aside><!-- aside -->	
+				</aside><!-- aside -->
 			</div><!-- Column -->
-			
+
 			<!-- Page Content -->
 			<div class="col-md-9">
 				<div class="row team-list">
@@ -64,7 +64,7 @@
 					</div><!-- Member Detail Column -->
 				</div><!-- Row -->
 			</div><!-- Column -->
-		</div><!-- Row -->		
+		</div><!-- Row -->
 
 		<!-- Tutors Courses -->
 		<div class="row rltd-items">
@@ -72,22 +72,22 @@
 				<!-- Tutors Courses -->
 				<?php if(!empty($tutor_Courses)) { ?>
 				<h4><?php echo lang('c_l_tutor_Courses'); ?></h4>
-				<div class="owl-carousel show-nav-hover dots-dark nav-square dots-square navigation-color" 
-				data-animatein="bounceIn" 
-				data-animateout="" 
-				data-items="3" 
-				data-margin="30" 
-				data-loop="true" 
-				data-merge="true" 
-				data-nav="true" 
-				data-dots="false" 
-				data-stagepadding="" 
-				data-mobile="1" 
-				data-tablet="2" 
-				data-desktopsmall="3"  
-				data-desktop="3" 
-				data-autoplay="true" 
-				data-delay="3000" 
+				<div class="owl-carousel show-nav-hover dots-dark nav-square dots-square navigation-color"
+				data-animatein="bounceIn"
+				data-animateout=""
+				data-items="3"
+				data-margin="30"
+				data-loop="true"
+				data-merge="true"
+				data-nav="true"
+				data-dots="false"
+				data-stagepadding=""
+				data-mobile="1"
+				data-tablet="2"
+				data-desktopsmall="3"
+				data-desktop="3"
+				data-autoplay="true"
+				data-delay="3000"
 				data-navigation="false">
 					<?php foreach($tutor_Courses as $val) {  ?>
 					<div class="item">
@@ -107,9 +107,9 @@
 							</div><!-- Related Content Wrapper -->
 						</div><!-- Related Wrapper -->
 					</div><!-- Item -->
-					<?php }  ?> 
+					<?php }  ?>
 				</div><!-- Related Post -->
-				<?php } // end if ?>	
+				<?php } // end if ?>
 			</div>
 		</div>
 		<br>
@@ -120,22 +120,22 @@
 				<!-- Tutors Events -->
 				<?php if(!empty($tutor_events)) { ?>
 				<h4><?php echo lang('e_l_tutor_events'); ?></h4>
-				<div class="owl-carousel show-nav-hover dots-dark nav-square dots-square navigation-color" 
-				data-animatein="bounceIn" 
-				data-animateout="" 
-				data-items="3" 
-				data-margin="30" 
-				data-loop="true" 
-				data-merge="true" 
-				data-nav="true" 
-				data-dots="false" 
-				data-stagepadding="" 
-				data-mobile="1" 
-				data-tablet="2" 
-				data-desktopsmall="3" 
-				data-desktop="3" 
-				data-autoplay="true" 
-				data-delay="3000" 
+				<div class="owl-carousel show-nav-hover dots-dark nav-square dots-square navigation-color"
+				data-animatein="bounceIn"
+				data-animateout=""
+				data-items="3"
+				data-margin="30"
+				data-loop="true"
+				data-merge="true"
+				data-nav="true"
+				data-dots="false"
+				data-stagepadding=""
+				data-mobile="1"
+				data-tablet="2"
+				data-desktopsmall="3"
+				data-desktop="3"
+				data-autoplay="true"
+				data-delay="3000"
 				data-navigation="false">
 					<?php foreach($tutor_events as $val) {  ?>
 					<div class="item">
@@ -155,9 +155,9 @@
 							</div><!-- Related Content Wrapper -->
 						</div><!-- Related Wrapper -->
 					</div><!-- Item -->
-					<?php }  ?> 
+					<?php }  ?>
 				</div><!-- Related Post -->
-				<?php } // end if ?>	
+				<?php } // end if ?>
 			</div>
 		</div>
 
