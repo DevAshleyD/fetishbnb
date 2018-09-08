@@ -20,10 +20,6 @@
             <div class="contact-form">
               <!-- Form Begins -->
               <?php echo form_open('auth/login', array('class'=>'', 'id'=>'form_1')); ?>
-              <input type="hidden" name="fb_access_token">
-                  <input type="hidden" name="fb_user_id">
-                  <input type="hidden" name="fb_email">
-                  <input type="hidden" name="fb_fullname">
 
                 <!-- Field 2 -->
                 <div class="input-text text-left form-group <?php echo form_error('identity') ? ' has-error' : ''; ?>">
@@ -47,31 +43,10 @@
                 <?php echo form_button(array('type' => 'submit', 'class' => 'btn', 'id'=>'submit_form', 'content' => lang('users_login'))); ?>
                 <a class="btn" href="<?php echo base_url('auth/register'); ?>"><?php echo lang('users_register'); ?></a>
               <?php echo form_close(); ?> <!-- Form Ends -->
-            </div>  
+            </div>
           </li><!-- Page Template Content -->
-
-          <li class="template-content">
-            <hr class="md">
-                <?php if($this->settings->fb_app_id && $this->settings->fb_app_secret) { ?>
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <a href="<?php echo site_url('auth/f_register') ?>" class="btn loginBtn loginBtn--facebook"><span><?php echo lang('users_login_continue_fb') ?></span></a>
-                    <span id="fb_loader"></span>
-                    </div>
-                </div>
-                <?php } ?>
-                <br>
-                <?php if($this->settings->g_client_id && $this->settings->g_client_secret) { ?>
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <a href="<?php echo site_url('auth/g_register') ?>" class="btn loginBtn loginBtn--google"><span><?php echo lang('users_login_continue_g') ?></span></a>
-                    <span id="g_loader"></span>
-                    </div>
-                </div>
-                <?php } ?>
-          </li> 
         </ul>
       </div><!-- Column -->
     </div><!-- Row -->
-  </div><!-- Container -->  
+  </div><!-- Container -->
 </div><!-- Page Default -->
