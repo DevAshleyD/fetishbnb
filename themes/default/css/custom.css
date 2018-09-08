@@ -32,13 +32,23 @@ h4 {
 .header-top{
 	display: none;
 }
+#header.transparent{
+	position: initial;
+	background: #fff;
+}
+#header.font-color-light nav.nav-main ul.nav-main > li > a{
+	color: #777;
+}
+#header.font-color-light nav.nav-main ul.nav-main > li > a:hover{
+	color: #fff;
+}
 
 /*banner customs*/
 .owl-carousel, .owl-wrapper-outer{
-	max-height: 60vh;
+	max-height: 50vh;
 }
 .slider-content.vmiddle{
-	top: 35%;
+	top: 27%;
 }
 
 /*Institute Name*/
@@ -467,6 +477,7 @@ small.small {
 .text-centered{
 	text-align: center;
 }
+.box-login .logo-wrap img{width: 100%; max-width: 280px;}
 /*======================= V2 css ==========================*/
 /*Checkbox RTL error*/
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
