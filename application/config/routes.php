@@ -81,8 +81,8 @@ $route['events/search_categories'] 				= 'events/search_categories';
 $route['events/(:any)'] 						= 'events/index/$1';
 $route['events/detail/(:any)']					= 'events/detail/$1';
 
-//$route['tutors'] 								= 'tutors';
-//$route['tutors/(:any)'] 						= 'tutors/tutor/$1';
+$route['tutors'] 								= 'tutors';
+$route['tutors/(:any)'] 						= 'tutors/tutor/$1';
 
 //$route['bbooking/get_batches']					= 'bbooking/get_batches';
 //$route['bbooking/get_net_fees']					= 'bbooking/get_net_fees';
