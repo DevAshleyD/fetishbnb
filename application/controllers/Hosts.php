@@ -45,7 +45,7 @@ class Hosts extends Public_Controller {
             if($val->users_id)
                 foreach($data['hosts'] as $v)
                     if($v->id === $val->users_id)
-                        $val->tutor = $v;
+                        $val->host = $v;
 
 
         return $data;
@@ -88,7 +88,7 @@ class Hosts extends Public_Controller {
         ), 'default');
 
         // setup page header data
-        $this->set_title(lang('users_role_tutor'));
+        $this->set_title(lang('users_role_hosts'));
 
         $data           = $this->includes;
 
@@ -97,20 +97,19 @@ class Hosts extends Public_Controller {
         if(! $username)
             show_404();
 
+        $data           = $this->includes;
+
         $events                    = $this->get_events_by_category();
 
         // set content data
-        $content_data['courses']    = $events['courses'];
-        $content_data['tutors']     = $events['tutors'];
-        $content_data['tutor']      = $this->course_model->get_courses_tutor($username);
+        $content_data['events']    = $events['events'];
+        $content_data['hosts']     = $events['hosts'];
+        $content_data['host']      = $this->course_model->get_courses_tutor($username);
 
-        if(empty($content_data['tutor']))
-            show_404();
-
-        $content_data['hosts_ecount']   = $this->event_model->get_tutor_events($content_data['host']->id);
+        $content_data['host_events']   = $this->event_model->get_tutor_events($content_data['host']->id);
 
         // load views
-        $data['content'] = $this->load->view('hosts', $content_data, TRUE);
+        $data['content'] = $this->load->view('host', $content_data, TRUE);
         $this->load->view($this->template, $data);
     }
 
