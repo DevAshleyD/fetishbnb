@@ -163,7 +163,7 @@
 			                <br>
                     	</div>
                     	<div class="col-md-6">
-                    		<h4><?php echo lang('e_l_event_tutors'); ?></h4>
+                    		<h4><?php echo lang('e_l_event_hosts'); ?></h4>
 			                <table cellspacing="0" class="shop_table cart" id="tutors_table"><tbody></tbody></table>
 			                <br>
                     		<h4><?php echo lang('e_l_event_price'); ?></h4>
