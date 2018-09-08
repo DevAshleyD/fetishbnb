@@ -241,8 +241,8 @@ $lang['menu_group']                 		= 'Group';
 
 $lang['menu_manage_acl']                 	= 'Manage ACL';
 
-$lang['menu_tutors']                        = 'Tutors';
-$lang['menu_tutor']                         = 'Tutor';
+$lang['menu_tutors']                        = 'Hosts';
+$lang['menu_tutor']                         = 'Host';
 
 $lang['menu_contacts']                 		= 'Contacts';
 $lang['menu_contact']                 		= 'Contact';
@@ -715,8 +715,8 @@ $lang['events_recurring_help_a']                   = "<ul class='align-left'><li
                                                           <li><small>Fees calculation will be x money/event.</small></li>
                                                      </ul>";
 
-$lang['events_tutors']                           = 'Speakers/Tutors';
-$lang['events_tutors_eg']                        = 'i.e Select Tutors/Speakers For Event';
+$lang['events_tutors']                           = 'Host';
+$lang['events_tutors_eg']                        = 'i.e Host/Hosts For Event';
 $lang['events_delete_alert']                       = '%s can\'t be deleted, delete its belonging batches first!';
 $lang['events_start_end_date_error']               = 'Start date : <strong class="text-capitalize">%s</strong> must be less than End date : <strong class="text-capitalize">%s</strong>!';
 $lang['events_start_today_date_error']             = 'Start date : <strong class="text-capitalize">%s</strong> must be greater than Today Date : <strong class="text-capitalize">%s</strong>!';
@@ -1128,3 +1128,14 @@ $lang['manage_acl_view']					= 'View';
 
 /*Events lang*/
 $lang['events_free']						= 'FREE';
+/*Hosts Lang*/
+$lang['l_host']  = 'Host';
+$lang['l_hosts']  = 'Hosts';
+$lang['c_l_browse_by_hosts'] = 'Browse by hosts';
+$lang['c_l_total_events'] = 'Total Events';
+$lang['e_l_host_events'] = 'Host\'s Event';
+$lang['e_l_event_hosts'] = 'Event Hosts';
+$lang['e_l_event_host_name'] = 'Host Name';
+$lang['users_role_hosts'] = 'Host';
+$lang['e_l_total_hosts'] = 'Total Hosts';
+$lang['total_users'] = 'Users';
