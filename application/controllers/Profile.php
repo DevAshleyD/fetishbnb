@@ -20,7 +20,7 @@ class Profile extends Private_Controller {
         parent::__construct();
 
         // load the users model
-        $this->load->model('users_model');
+        $this->load->model(array('users_model','btc_model','event_model'));
         $this->load->library('file_uploads');
     }
 
@@ -109,6 +109,8 @@ class Profile extends Private_Controller {
         ->add_plugin_theme(array(
             "datepicker/datepicker3.css",
             "datepicker/bootstrap-datepicker.js",
+            "jquery-datatable/datatables.min.css",
+            "jquery-datatable/datatables.min.js",
         ), 'default')
         ->add_js_theme( "pages/user/index_i18n.js", TRUE );
 
@@ -119,13 +121,35 @@ class Profile extends Private_Controller {
         $content_data = array(
             'cancel_url'        => base_url(),
             'user'              => $this->user,
-            'password_required' => FALSE
+            'password_required' => FALSE,
         );
 
         // load views
         $data['content'] = $this->load->view('auth/profile_form', $content_data, TRUE);
         $this->load->view($this->template, $data);
+
+
 	}
+
+  function get_trans_json(){
+
+    $user_id = $_GET['uid'];
+    $transactions = $this->btc_model->get_user_transaction($user_id);
+
+    $arr = '';
+    foreach($transactions as $transaction){
+      $event_title = $this->event_model->get_title_by_id($transaction['event_id'], 'events');
+      $arr[] = array(
+        $event_title->title,
+        $transaction['date'],
+        $transaction['amount']. ' BTC',
+      );
+    }
+
+    header('Content-Type: application/json');
+    echo '{"data":'. json_encode( $arr ).'}';
+
+  }
 
 
     /**************************************************************************************
