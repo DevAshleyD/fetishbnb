@@ -244,20 +244,6 @@
 </section><!-- Section -->
 <?php } ?>
 
-
-<!-- Google adSense Integration -->
-<section>
-    <div class="row">
-      <div class="col-md-12">
-            <?php if($_SERVER['REMOTE_ADDR'] !== '127.0.0.1') {
-                echo $this->settings->ad_code;
-             } ?>
-        </div>
-    </div>
-</section>
-<!-- Google adSense Integration Ends -->
-
-
 <!-- Section Video -->
 <?php if($this->settings->intro_video_url) { ?>
 <section class="relative typo-light video-bg min-height bg-cover overlay sm" data-background="<?php echo base_url('upload/home/').$this->settings->{'banner_image_1'} ?>" >
