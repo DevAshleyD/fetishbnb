@@ -27,7 +27,7 @@ h4 {
 #header .logo img {
 
     top: -5px;
-		max-height: 90px;
+		max-width: 180px;
 }
 .header-top{
 	display: none;
@@ -478,6 +478,60 @@ small.small {
 	text-align: center;
 }
 .box-login .logo-wrap img{width: 100%; max-width: 280px;}
+.card {
+    background: #fff;
+    min-height: 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    position: relative;
+    margin-bottom: 30px;
+}
+.card .header .col-xs-12 h2 {
+    margin-top: 5px;
+}
+.card .header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: normal;
+    color: #111;
+}
+.card .header {
+    color: #555;
+    padding: 20px;
+    position: relative;
+    border-bottom: 1px solid rgba(204,204,204,.35);
+}
+.card .body{
+	padding: 20px;
+}
+#transac_table thead th, #transac_table tbody tr td{
+	padding: 10px;
+}
+#transac_table thead th{
+	background: #404040;
+  color: #fff;
+  font-weight: 300;
+}
+#transac_table tbody tr:nth-child(odd){
+	background-color: #e2e2e2;
+}
+#transac_table{
+	margin-bottom: 30px !important;
+}
+#transac_table_filter .form-control{
+	height: 30px !important;
+}
+.card .body h3{
+	font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+.cd-hero ul{
+	height: 50vh;
+}
+.cd-hero__content.cd-hero__content--full-width{
+	padding-top: 130px !important;
+}
+
 /*======================= V2 css ==========================*/
 /*Checkbox RTL error*/
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
@@ -590,7 +644,6 @@ small.small {
   body.sticky-menu-active .btn-responsive-nav {
     top: 48px;
     padding: 12px 14px !important;
-    display: none;
   }
 
 
@@ -621,7 +674,8 @@ small.small {
     display: inline-block;
   }
   #header .logo img {
-    width: 32px !important;
+		width: 160px !important;
+    padding: 10px 5px;
   }
   .institute-name {
     font-size: 12px;
@@ -629,7 +683,7 @@ small.small {
     top: 3px;
   }
   body.sticky-menu-active #header .logo img, #header.fixed .logo img {
-    width: 32px !important;
+    width: 120px !important;
     top: 65px !important;
     height: auto !important;
   }
