@@ -15,7 +15,7 @@ class Users_model extends CI_Model {
      * @vars
      */
     private $table          = 'users';
-    
+
     /**
      * Constructor
      */
@@ -36,7 +36,7 @@ class Users_model extends CI_Model {
      * get_users_by_id
      *
      * @return array
-     * 
+     *
      **/
     public function get_users_by_id($id = FALSE, $is_array = FALSE)
     {
@@ -58,10 +58,11 @@ class Users_model extends CI_Model {
                         "$this->table.active",
                         "$this->table.date_added",
                         "$this->table.date_updated",
+                        "$this->table.btc_balance",
                         "(SELECT gr.name FROM groups gr WHERE gr.id = (SELECT ug.group_id FROM users_groups ug WHERE ug.user_id = $this->table.id)) group_name",
                     ))
                     ->where(array('id'=>$id));
-                        
+
 
         if($is_array)
             return $this->db->get($this->table)->row_array();
@@ -83,7 +84,7 @@ class Users_model extends CI_Model {
      * save_users
      *
      * @return array
-     * 
+     *
      **/
     public function save_users($data = array(), $id = FALSE, $email = FALSE)
     {
@@ -97,17 +98,17 @@ class Users_model extends CI_Model {
         {
             $this->db->where(array('email'=>$email))
                      ->update($this->table, $data);
-            return $email;   
+            return $email;
         }
         else // insert
         {
             $this->db->insert($this->table, $data);
             return $this->db->insert_id();
         }
-        
+
     }
 
-    
+
     /**
      * Check to see if a username already exists
      *
@@ -233,7 +234,7 @@ class Users_model extends CI_Model {
     * count_users_batch
     *
     * @return array
-    * 
+    *
     **/
     public function count_users_batch($id = NULL)
     {
