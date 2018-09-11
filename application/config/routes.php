@@ -107,3 +107,4 @@ $route['ebooking/booking_complete']				= 'ebooking/booking_complete';
 $route['ebooking/(:any)']						= 'ebooking/index/$1';
 $route['hosts'] 								= 'hosts';
 $route['hosts/(:any)'] 						= 'hosts/host/$1';
+$route['profile/btc'] = 'profile/get_trans_json'; 
