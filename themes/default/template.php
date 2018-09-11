@@ -442,7 +442,7 @@
 <script id="dsq-count-scr" src='//'+disqus_short_name+'.disqus.com/count.js' async></script>
 <?php } ?>
 
-<?php if(isset($this->user['btc_balance'])) :?>
+<?php if(isset($this->user['btc_balance']) && $this->uri->uri_string() == 'profile' ) :?>
   <script>
   jQuery(document).ready(function($) {
       $('#transac_table').DataTable( {
