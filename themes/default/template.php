@@ -133,7 +133,7 @@
     <div class="container">
         <div class="logo">
             <a href="<?php echo site_url(''); ?>">
-                <img alt="<?php echo $this->settings->site_name ?>" width="200px" height="90px" src="<?php echo base_url('upload/institute/logo.png') ?>">
+                <img alt="<?php echo $this->settings->site_name ?>" src="<?php echo base_url('upload/institute/logo.png') ?>">
             </a>
         </div>
         <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
@@ -216,7 +216,7 @@
                         </ul>
                     </li>
                     <!-- User Profile -->
-                    <?php } else { ?> 
+                    <?php } else { ?>
                     <li class="dropdown mega-menu-item mega-menu-signin signin logged" id="headerAccount">
                         <a class="dropdown-toggle" href="<?php echo site_url('/profile'); ?>">
                             <i class="fa fa-user"></i><?php echo $this->user['username']; ?>
@@ -342,19 +342,6 @@
     <!-- Main Content -->
     <?php echo $content; ?>
     <!-- End Main Content -->
-
-    <!-- Google adSense Integration -->
-    <section>
-        <div class="row">
-          <div class="col-md-12">
-                <?php if($_SERVER['REMOTE_ADDR'] !== '127.0.0.1') {
-                    echo $this->settings->ad_code;
-                 } ?>
-            </div>
-        </div>
-    </section>
-    <!-- Google adSense Integration Ends -->
-
 </div><!-- Page Main -->
 
 <!-- Footer -->
@@ -454,6 +441,21 @@
 <?php if($this->settings->disqus_short_name) { ?>
 <script id="dsq-count-scr" src='//'+disqus_short_name+'.disqus.com/count.js' async></script>
 <?php } ?>
+
+<?php if(isset($this->user['btc_balance'])) :?>
+  <script>
+  jQuery(document).ready(function($) {
+      $('#transac_table').DataTable( {
+          ajax: 'http://18.222.143.177/profile/btc/?uid=<?php echo $this->user['id']?>',
+          columns: [
+            { title: "Event" },
+            { title: "Transaction Date" },
+            { title: "Amount Paid" }
+        ]
+      } );
+  } );
+  </script>
+<?php endif;?>
 </body>
 
 <!-- Load Facebook SDK for JavaScript -->
