@@ -9,7 +9,9 @@ h4 {
 .loader-inner i {
 	color: #3271ff;
 }
-
+.table-responsive{
+	overflow: inherit;
+}
 /*Header Menu*/
 #header nav.mega-menu ul.nav-main .mega-menu-signin {
    margin-left: -4px;
@@ -531,6 +533,18 @@ small.small {
 .cd-hero__content.cd-hero__content--full-width{
 	padding-top: 130px !important;
 }
+.btn-circle {
+	padding: 8px 9px;
+    border: none;
+    outline: none !important;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+}
 
 /*======================= V2 css ==========================*/
 /*Checkbox RTL error*/
@@ -545,7 +559,6 @@ small.small {
 [dir=rtl] .page-loader-wrapper {
   direction: ltr;
 }
-
 
 
 /*Google Login Button*/
