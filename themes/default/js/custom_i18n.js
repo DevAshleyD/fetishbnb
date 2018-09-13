@@ -1,5 +1,5 @@
 (function () {
-    // remove has-error on focus on input 
+    // remove has-error on focus on input
     $(document).on('focus', "input, select, textarea", function() {
       $('.form-line').removeClass('error');
       $('label').removeClass('text-danger');
@@ -34,24 +34,24 @@ function time24To12 (time) {
 }
 
 
-/* ajaxPostCustom function 
+/* ajaxPostCustom function
  * url 		: method name
  * data 	: data to post
  * loader 	: loader id
  * callback : data to return
 */
 function ajaxPostCustom(url, loader, data, callback) {
-  $.ajax({ 
-      type        : 'POST', 
-      url         : site_url+uri_seg_1+'/'+url, 
-      data        : data, 
+  $.ajax({
+      type        : 'POST',
+      url         : site_url+uri_seg_1+'/'+url,
+      data        : data,
       dataType    : 'JSON',
       cache       : false,
       beforeSend  : function() {
         if(loader != '')
           $(loader).html('<i class="fa fa-circle-o-notch fa-spin loader"></i>');
       },
-      success     : function (response) { 
+      success     : function (response) {
         if(/<p>/i.test(response)) {
           swal("{{alert_oops}}", response, "error");
         } else if(!response) {
@@ -59,7 +59,7 @@ function ajaxPostCustom(url, loader, data, callback) {
         } else {
           callback(response);
         }
-        
+
         if(loader != '')
          $(loader+' i').remove();
       },
@@ -67,25 +67,25 @@ function ajaxPostCustom(url, loader, data, callback) {
         if(/<p>/i.test(response.responseText)) {
           swal("{{alert_fatal}}", response.responseText, "warning");
         }
-        
+
         if(loader != '')
           $(loader+' i').remove();
       },
   });
-  
+
 }
 
-/* ajaxPostMultiPartCustom function 
+/* ajaxPostMultiPartCustom function
  * url    : method name
  * data   : data to post
  * loader   : loader id
  * callback : data to return
 */
 function ajaxPostMultiPartCustom(url, loader, data, callback) {
-  $.ajax({ 
-      type        : 'POST', 
-      url         : site_url+uri_seg_1+'/'+url, 
-      data        : data, 
+  $.ajax({
+      type        : 'POST',
+      url         : site_url+uri_seg_1+'/'+url,
+      data        : data,
       dataType    : 'JSON',
       cache       : false,
       contentType : false,
@@ -94,7 +94,7 @@ function ajaxPostMultiPartCustom(url, loader, data, callback) {
         if(loader != '')
           $(loader).html('<i class="fa fa-circle-o-notch fa-spin loader"></i>');
       },
-      success     : function (response) { 
+      success     : function (response) {
         if(/<p>/i.test(response)) {
           swal("{{alert_oops}}", response, "error");
         } else if(!response) {
@@ -102,7 +102,7 @@ function ajaxPostMultiPartCustom(url, loader, data, callback) {
         } else {
           callback(response);
         }
-        
+
         if(loader != '')
          $(loader+' i').remove();
       },
@@ -110,12 +110,12 @@ function ajaxPostMultiPartCustom(url, loader, data, callback) {
         if(/<p>/i.test(response.responseText)) {
           swal("{{alert_fatal}}", response.responseText, "warning");
         }
-        
+
         if(loader != '')
           $(loader+' i').remove();
       },
   });
-  
+
 }
 
 
@@ -141,9 +141,9 @@ function ajaxDelete(id, text) {
         if (isConfirm) {
             var data    = {
                 csrf_token      : csrf_token,
-                id              : id, 
+                id              : id,
             };
-                            
+
             ajaxPostCustom('delete', '#blogs_loader', data, function(response) {
                 if(response.flag == 1)
                     swal(text, "{{alert_delete_success_1}}", "success");
@@ -153,7 +153,7 @@ function ajaxDelete(id, text) {
                 if(response.flag == 1) {
                   setTimeout(function () {
                       location.reload(true);
-                  }, 500);    
+                  }, 500);
                 }
             });
         } else {
@@ -185,9 +185,9 @@ function bookingCancel(id, text, cont) {
         if (isConfirm) {
             var data    = {
                 csrf_token      : csrf_token,
-                id              : id, 
+                id              : id,
             };
-                            
+
             ajaxPostCustom('cancel_booking', '#blogs_loader', data, function(response) {
                 if(response.flag == 1)
                     swal(text, "{{alert_cancel_success_1}}", "success");
@@ -197,11 +197,13 @@ function bookingCancel(id, text, cont) {
                 if(response.flag == 1) {
                   setTimeout(function () {
                       location.reload(true);
-                  }, 3000);    
+                  }, 3000);
                 }
             });
         } else {
             swal("{{alert_cancel_cancel}}", "{{alert_booking_safe}}", "error");
         }
     });
+
+    
 }

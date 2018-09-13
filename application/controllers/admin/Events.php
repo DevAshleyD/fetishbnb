@@ -66,7 +66,7 @@ class Events extends Admin_Controller {
     {
         $this->load->library('datatables');
 
-        $table              = 'events';        
+        $table              = 'events';
         $columns            = array(
                                 "$table.id",
                                 "$table.title",
@@ -97,12 +97,12 @@ class Events extends Admin_Controller {
                                 'title',
                             );
         $order              = array('date_updated'=>'DESC', 'start_date' => 'ASC', 'start_time'=>'ASC');
-        
+
         $result             = $this->datatables->get_datatables($table, $columns, $columns_order, $columns_search, $order);
         $data               = array();
         $no                 = $_POST['start'];
-        
-        foreach ($result as $val) 
+
+        foreach ($result as $val)
         {
             $no++;
             $row            = array();
@@ -119,14 +119,14 @@ class Events extends Admin_Controller {
             $row[]          = action_buttons('events', $val->id, mb_substr($val->title, 0, 20, 'utf-8'), lang('menu_event'));
             $data[]         = $row;
         }
- 
+
         $output             = array(
                                 "draw"              => $_POST['draw'],
                                 "recordsTotal"      => $this->datatables->count_all(),
                                 "recordsFiltered"   => $this->datatables->count_filtered(),
                                 "data"              => $data,
                             );
-        
+
         //output to json format
         echo json_encode($output);exit;
     }
@@ -138,7 +138,7 @@ class Events extends Admin_Controller {
     {
         /* Initialize assets */
         $this
-        ->add_plugin_theme(array(   
+        ->add_plugin_theme(array(
                                 "tinymce/tinymce.min.js",
                                 "daterangepicker/daterangepicker.css",
                                 "daterangepicker/moment.min.js",
@@ -187,7 +187,7 @@ class Events extends Admin_Controller {
 
             // For Weekdays
             $_POST['weekdays']      = json_decode($result->weekdays);
-            
+
             // For Recurring
             $_POST['recurring']     = $result->recurring;
         }
@@ -196,12 +196,12 @@ class Events extends Admin_Controller {
         $tutor_ids                          = array();
         foreach($this->ion_auth->get_users_by_group(2)->result() as $val)
             $tutor_ids[] = $val->user_id;
-        
+
         // render tutors dropdown
         $tutors                         = $this->events_model->get_users_dropdown($tutor_ids);
         foreach($tutors as $val)
             $data['tutors_o'][$val->id] = $val->first_name.' '.$val->last_name.' ('.$val->profession.')';
-        
+
         $data['tutors']   = array(
             'name'          => 'tutors[]',
             'id'            => 'tutors',
@@ -216,7 +216,7 @@ class Events extends Admin_Controller {
         $event_types                        = $this->events_model->get_event_types_dropdown();
         foreach($event_types as $val)
             $data['event_types_o'][$val->id] = $val->title;
-        
+
         $data['event_types']   = array(
             'name'          => 'event_types',
             'id'            => 'event_types',
@@ -241,7 +241,7 @@ class Events extends Admin_Controller {
             'class'         => 'form-control',
             'value'         => $this->form_validation->set_value('capacity', !empty($result->capacity) ? $result->capacity : ''),
         );
-        
+
         // convert_to_mysql_date
         if(empty($result->start_date))
         {
@@ -266,13 +266,13 @@ class Events extends Admin_Controller {
             'id'            => 'start_time_1',
             'class'         => 'form-control show-tick',
             'options'       => array(
-                                '01'  => '01', 
-                                '02'  => '02', 
-                                '03'  => '03', 
-                                '04'  => '04', 
-                                '05'  => '05', 
-                                '06'  => '06', 
-                                '07'  => '07', 
+                                '01'  => '01',
+                                '02'  => '02',
+                                '03'  => '03',
+                                '04'  => '04',
+                                '05'  => '05',
+                                '06'  => '06',
+                                '07'  => '07',
                                 '08'  => '08',
                                 '09'  => '09',
                                 '10'  => '10',
@@ -286,10 +286,10 @@ class Events extends Admin_Controller {
             'id'            => 'start_time_2',
             'class'         => 'form-control show-tick',
             'options'       => array(
-                                '00' => '00', 
-                                '15' => '15', 
-                                '30' => '30', 
-                                '45' => '45', 
+                                '00' => '00',
+                                '15' => '15',
+                                '30' => '30',
+                                '45' => '45',
                             ),
             'selected'      => $this->form_validation->set_value('start_time_2', !empty($result->start_time_2) ? $result->start_time_2 : ''),
         );
@@ -298,8 +298,8 @@ class Events extends Admin_Controller {
             'id'            => 'start_time_3',
             'class'         => 'form-control show-tick',
             'options'       => array(
-                                'AM' => 'AM', 
-                                'PM' => 'PM', 
+                                'AM' => 'AM',
+                                'PM' => 'PM',
                             ),
             'selected'      => $this->form_validation->set_value('start_time_3', !empty($result->start_time_3) ? $result->start_time_3 : ''),
         );
@@ -308,13 +308,13 @@ class Events extends Admin_Controller {
             'id'            => 'end_time_1',
             'class'         => 'form-control show-tick',
             'options'       => array(
-                                '01' => '01', 
-                                '02' => '02', 
-                                '03' => '03', 
-                                '04' => '04', 
-                                '05' => '05', 
-                                '06' => '06', 
-                                '07' => '07', 
+                                '01' => '01',
+                                '02' => '02',
+                                '03' => '03',
+                                '04' => '04',
+                                '05' => '05',
+                                '06' => '06',
+                                '07' => '07',
                                 '08' => '08',
                                 '09' => '09',
                                 '10' => '10',
@@ -328,10 +328,10 @@ class Events extends Admin_Controller {
             'id'            => 'end_time_2',
             'class'         => 'form-control show-tick',
             'options'       => array(
-                                '00'  => '00', 
-                                '15' => '15', 
-                                '30' => '30', 
-                                '45' => '45', 
+                                '00'  => '00',
+                                '15' => '15',
+                                '30' => '30',
+                                '45' => '45',
                             ),
             'selected'      => $this->form_validation->set_value('end_time_2', !empty($result->end_time_2) ? $result->end_time_2 : ''),
         );
@@ -340,31 +340,31 @@ class Events extends Admin_Controller {
             'id'            => 'end_time_3',
             'class'         => 'form-control show-tick',
             'options'       => array(
-                                'AM' => 'AM', 
-                                'PM' => 'PM', 
+                                'AM' => 'AM',
+                                'PM' => 'PM',
                             ),
             'selected'      => $this->form_validation->set_value('end_time_3', !empty($result->end_time_3) ? $result->end_time_3 : ''),
         );
         $data['weekdays']   = array(
-            '0' => lang('events_weekdays_sun'), 
+            '0' => lang('events_weekdays_sun'),
             '1' => lang('events_weekdays_mon'),
-            '2' => lang('events_weekdays_tue'), 
-            '3' => lang('events_weekdays_wed'), 
-            '4' => lang('events_weekdays_thu'), 
-            '5' => lang('events_weekdays_fri'), 
-            '6' => lang('events_weekdays_sat'), 
+            '2' => lang('events_weekdays_tue'),
+            '3' => lang('events_weekdays_wed'),
+            '4' => lang('events_weekdays_thu'),
+            '5' => lang('events_weekdays_fri'),
+            '6' => lang('events_weekdays_sat'),
         );
-        if(!empty($result->recurring_type)) 
+        if(!empty($result->recurring_type))
             $_POST['recurring_type']= $result->recurring_type;
         else
             $_POST['recurring_type']= 'every_week';
 
         $data['recurring_types']   = array(
             'every_week'    => lang('events_recurring_types_all'),
-            'first_week'    => lang('events_recurring_types_first'), 
-            'second_week'   => lang('events_recurring_types_second'), 
-            'third_week'    => lang('events_recurring_types_third'), 
-            'fourth_week'   => lang('events_recurring_types_fourth'), 
+            'first_week'    => lang('events_recurring_types_first'),
+            'second_week'   => lang('events_recurring_types_second'),
+            'third_week'    => lang('events_recurring_types_third'),
+            'fourth_week'   => lang('events_recurring_types_fourth'),
         );
         $data['title'] = array(
             'name'      => 'title',
@@ -451,7 +451,7 @@ class Events extends Admin_Controller {
             {
                 $this->session->set_flashdata('message', sprintf(lang('alert_not_found'), lang('menu_event')));
                 echo json_encode(array(
-                                        'flag'  => 0, 
+                                        'flag'  => 0,
                                         'msg'   => $this->session->flashdata('message'),
                                         'type'  => 'fail',
                                     ));
@@ -498,22 +498,22 @@ class Events extends Admin_Controller {
             }
 
         // update events image
-        if(! empty($_FILES['images']['name'][0])) // if image 
+        if(! empty($_FILES['images']['name'][0])) // if image
         {
             $files         = array('folder'=>'events/images', 'input_file'=>'images');
-            
+
             // Remove old image
             if($id)
                 if(!empty($result->images))
                     $this->file_uploads->remove_files('./upload/'.$files['folder'].'/', json_decode($result->images));
 
-            // update events image            
+            // update events image
             $filenames     = $this->file_uploads->upload_files($files);
             // through image upload error
             if(!empty($filenames['error']))
                 $this->form_validation->set_rules('image_error', lang('common_images'), 'required', array('required'=>$filenames['error']));
         }
-        
+
         if($this->form_validation->run() === FALSE)
         {
             // for fetching specific fields errors in order to view errors on each field seperately
@@ -521,7 +521,7 @@ class Events extends Admin_Controller {
             foreach($_POST as $key => $val)
                 if(form_error($key))
                     $error_fields[] = $key;
-            
+
             echo json_encode(array('flag' => 0, 'msg' => validation_errors(), 'error_fields' => json_encode($error_fields)));
             exit;
         }
@@ -532,12 +532,12 @@ class Events extends Admin_Controller {
         $data['description']            = $this->input->post('description');
         $data['fees']                   = (int) $this->input->post('fees');
         $data['capacity']               = (int) $this->input->post('capacity');
-        $data['recurring']              = $this->input->post('recurring') ? $this->input->post('recurring') : '0';  
+        $data['recurring']              = $this->input->post('recurring') ? $this->input->post('recurring') : '0';
         $data['meta_title']             = $this->input->post('meta_title');
         $data['meta_tags']              = $this->input->post('meta_title');
         $data['meta_description']       = $this->input->post('meta_description');
-        $data['featured']               = $this->input->post('featured');  
-        $data['status']                 = $this->input->post('status');  
+        $data['featured']               = $this->input->post('featured');
+        $data['status']                 = $this->input->post('status');
         $data['event_types_id']         = (int) $this->input->post('event_types');
         $data['start_time']             = date("H:i", strtotime($this->input->post('start_time')));
         $data['end_time']               = date("H:i", strtotime($this->input->post('end_time')));
@@ -547,19 +547,19 @@ class Events extends Admin_Controller {
         $data['end_date']               = $start_end_date[1];
         // convert_to_mysql_date
         $data['start_date']             = date('Y-m-d', strtotime(str_replace('-', '/', $data['start_date'])));
-        $data['end_date']               = date('Y-m-d', strtotime(str_replace('-', '/', $data['end_date'])));    
+        $data['end_date']               = date('Y-m-d', strtotime(str_replace('-', '/', $data['end_date'])));
 
         if(!empty($filenames) && !isset($filenames['error']))
             $data['images']             = json_encode($filenames);
-        
+
         // only if event is recurring
         if($data['recurring'])
         {
-            $data['weekdays']               = isset($_POST['weekdays']) 
+            $data['weekdays']               = isset($_POST['weekdays'])
                                                 ? json_encode($this->input->post('weekdays[]'))
                                                 : json_encode(array('0'=>'0'));
-            
-            $data['recurring_type']         = $this->input->post('recurring_type');    
+
+            $data['recurring_type']         = $this->input->post('recurring_type');
         }
 
         $data_2                         = $this->input->post('tutors');
@@ -569,15 +569,15 @@ class Events extends Admin_Controller {
         if($flag)
         {
             // add batch notification when new batch inserted
-            if(!$id) 
+            if(!$id)
             {
                 $notification   = array(
                     'users_id'  => $this->user['id'],
                     'n_type'    => 'events',
                     'n_content' => 'noti_new_added',
-                    'n_url'     => site_url('admin/events'), 
+                    'n_url'     => site_url('admin/events'),
                 );
-                $this->notifications_model->save_notifications($notification);    
+                $this->notifications_model->save_notifications($notification);
             }
 
             if($id)
@@ -586,20 +586,20 @@ class Events extends Admin_Controller {
                 $this->session->set_flashdata('message', sprintf(lang('alert_insert_success'), lang('menu_event')));
 
             echo json_encode(array(
-                                    'flag'  => 1, 
+                                    'flag'  => 1,
                                     'msg'   => $this->session->flashdata('message'),
                                     'type'  => 'success',
                                 ));
             exit;
         }
-        
+
         if($id)
             $this->session->set_flashdata('error', sprintf(lang('alert_update_fail'), lang('menu_event')));
         else
             $this->session->set_flashdata('error', sprintf(lang('alert_insert_fail'), lang('menu_event')));
 
         echo json_encode(array(
-                                'flag'  => 0, 
+                                'flag'  => 0,
                                 'msg'   => $this->session->flashdata('message'),
                                 'type'  => 'fail',
                             ));
@@ -616,7 +616,7 @@ class Events extends Admin_Controller {
             $this->session->set_flashdata('error', sprintf(lang('manage_acl_permission_no'), lang('menu_event').' '.lang('manage_acl_view')));
             redirect($this->uri->segment(1).'/dashboard');
         }
-        
+
         /* Initialize Assets */
         $data = $this->includes;
 
@@ -628,7 +628,7 @@ class Events extends Admin_Controller {
         {
             $this->session->set_flashdata('error', sprintf(lang('alert_not_found'), lang('menu_event')));
             /* Redirect */
-            redirect('admin/events');            
+            redirect('admin/events');
         }
 
         // data to insert in db table
@@ -650,21 +650,21 @@ class Events extends Admin_Controller {
         $data['event_types_id']         = $result->event_types_id;
         $data['recurring']              = $result->recurring;
         $data['weekdays']               = array(
-                                            '0' => lang('events_weekdays_sun'), 
+                                            '0' => lang('events_weekdays_sun'),
                                             '1' => lang('events_weekdays_mon'),
-                                            '2' => lang('events_weekdays_tue'), 
-                                            '3' => lang('events_weekdays_wed'), 
-                                            '4' => lang('events_weekdays_thu'), 
-                                            '5' => lang('events_weekdays_fri'), 
-                                            '6' => lang('events_weekdays_sat'), 
+                                            '2' => lang('events_weekdays_tue'),
+                                            '3' => lang('events_weekdays_wed'),
+                                            '4' => lang('events_weekdays_thu'),
+                                            '5' => lang('events_weekdays_fri'),
+                                            '6' => lang('events_weekdays_sat'),
                                         );
         $_POST['weekdays']              = json_decode($result->weekdays);
         $data['recurring_types']        = array(
                                             'every_week'    => lang('events_recurring_types_all'),
-                                            'first_week'    => lang('events_recurring_types_first'), 
-                                            'second_week'   => lang('events_recurring_types_second'), 
-                                            'third_week'    => lang('events_recurring_types_third'), 
-                                            'fourth_week'   => lang('events_recurring_types_fourth'), 
+                                            'first_week'    => lang('events_recurring_types_first'),
+                                            'second_week'   => lang('events_recurring_types_second'),
+                                            'third_week'    => lang('events_recurring_types_third'),
+                                            'fourth_week'   => lang('events_recurring_types_fourth'),
                                         );
         $_POST['recurring_type']        = $result->recurring_type;
         $data['start_date']             = $result->start_date ? date("M j Y", strtotime($result->start_date)) : lang('events_recurring');
@@ -695,8 +695,8 @@ class Events extends Admin_Controller {
         if($this->form_validation->run() === FALSE)
         {
             echo json_encode(array(
-                                'flag'  => 0, 
-                                'msg'   => validation_errors(), 
+                                'flag'  => 0,
+                                'msg'   => validation_errors(),
                                 'type'  => 'fail',
                             ));exit;
         }
@@ -710,19 +710,19 @@ class Events extends Admin_Controller {
         {
             $this->session->set_flashdata('message', sprintf(lang('alert_not_found'), lang('menu_event')));
             echo json_encode(array(
-                                    'flag'  => 0, 
+                                    'flag'  => 0,
                                     'msg'   => $this->session->flashdata('message'),
                                     'type'  => 'fail',
                                 ));
             exit;
         }
-        
+
         $flag                       = $this->events_model->save_events($data, array(), $id);
 
         if($flag)
         {
             echo json_encode(array(
-                                    'flag'  => 1, 
+                                    'flag'  => 1,
                                     'msg'   => sprintf(lang('alert_status_success'), lang('menu_event')),
                                     'type'  => 'success',
                                 ));
@@ -730,7 +730,7 @@ class Events extends Admin_Controller {
         }
 
         echo json_encode(array(
-                            'flag'  => 0, 
+                            'flag'  => 0,
                             'msg'   => sprintf(lang('alert_status_fail'), lang('menu_event')),
                             'type'  => 'fail',
                         ));
@@ -754,8 +754,8 @@ class Events extends Admin_Controller {
         if($this->form_validation->run() === FALSE)
         {
             echo json_encode(array(
-                                'flag'  => 0, 
-                                'msg'   => validation_errors(), 
+                                'flag'  => 0,
+                                'msg'   => validation_errors(),
                                 'type'  => 'fail',
                             ));exit;
         }
@@ -769,19 +769,19 @@ class Events extends Admin_Controller {
         {
             $this->session->set_flashdata('message', sprintf(lang('alert_not_found'), lang('menu_event')));
             echo json_encode(array(
-                                    'flag'  => 0, 
+                                    'flag'  => 0,
                                     'msg'   => $this->session->flashdata('message'),
                                     'type'  => 'fail',
                                 ));
             exit;
         }
-        
+
         $flag                       = $this->events_model->save_events($data, array(), $id);
 
         if($flag)
         {
             echo json_encode(array(
-                                    'flag'  => 1, 
+                                    'flag'  => 1,
                                     'msg'   => $data['featured'] ? sprintf(lang('alert_featured_added'), lang('menu_event')) : sprintf(lang('alert_featured_removed'), lang('menu_event')),
                                     'type'  => 'success',
                                 ));
@@ -789,7 +789,7 @@ class Events extends Admin_Controller {
         }
 
         echo json_encode(array(
-                            'flag'  => 0, 
+                            'flag'  => 0,
                             'msg'   => sprintf(lang('alert_featured_fail'), lang('menu_event')),
                             'type'  => 'fail',
                         ));
@@ -811,11 +811,11 @@ class Events extends Admin_Controller {
         /* Data */
         $id                     = (int) $this->input->post('id');
         $result                 = $this->events_model->get_events_by_id($id);
-        
+
         if(empty($result))
         {
             echo json_encode(array(
-                                    'flag'  => 0, 
+                                    'flag'  => 0,
                                     'msg'   => sprintf(lang('alert_not_found') ,lang('menu_event')),
                                     'type'  => 'fail',
                                 ));exit;
@@ -823,7 +823,7 @@ class Events extends Admin_Controller {
 
         /*Get Tutors*/
         $result_tutors          = $this->events_model->get_events_tutors($result->id);
-        
+
         $flag                   = $this->events_model->delete_events($id, $result->title, $result_tutors);
 
         if($flag)
@@ -833,14 +833,14 @@ class Events extends Admin_Controller {
                 $this->file_uploads->remove_files('./upload/events/', json_decode($result->images));
 
             echo json_encode(array(
-                                'flag'  => 1, 
+                                'flag'  => 1,
                                 'msg'   => sprintf(lang('alert_delete_success'), lang('menu_event')),
                                 'type'  => 'success',
                             ));exit;
         }
-        
+
         echo json_encode(array(
-                            'flag'  => 0, 
+                            'flag'  => 0,
                             'msg'   => sprintf(lang('alert_delete_fail'), lang('menu_event')),
                             'type'  => 'fail',
                         ));exit;
@@ -883,7 +883,7 @@ class Events extends Admin_Controller {
     }
 
     /**
-     * validate weekdays 
+     * validate weekdays
      *
      * @param  string $weekdays
      * @return boolean
@@ -893,7 +893,7 @@ class Events extends Admin_Controller {
     //     echo "<pre>";print_r($weekdays);exit;
     //     if (!empty($weekdays)) // atleast one weekday
     //         return TRUE;
-            
+
     //     $this->form_validation->set_message('_check_weekdays', lang('events_weekdays_error'));
     //     return FALSE;
     // }

@@ -13,7 +13,7 @@
 
     <!-- Web Fonts  -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -239,8 +239,11 @@
                                                 <?php if (!$this->ion_auth->is_non_admin()) { ?>
                                                 <li><a href="<?php echo site_url('admin'); ?>"><?php echo lang('menu_admin'); ?></a></li>
                                                 <?php } ?>
-                                                <li><a href="<?php echo site_url('/profile'); ?>"><?php echo lang('action_profile'); ?></a></li>
                                                 <li><a href="<?php echo site_url('myevents') ?>"><?php echo lang('menu_my_events') ?></a></li>
+                                                <?php if($this->user['group_name'] == 'host' || !$this->ion_auth->is_non_admin()){?>
+                                                  <li><a href="<?php echo site_url('mybookings'); ?>"><?php echo lang('e_l_my_ebookings'); ?></a></li>
+                                                <?php } ?>
+                                                <li><a href="<?php echo site_url('/profile'); ?>"><?php echo lang('action_profile'); ?></a></li>
                                                 <li><a href="<?php echo site_url('logout'); ?>"><?php echo lang('action_logout') ?></a></li>
                                             </ul>
                                         </div>
@@ -442,7 +445,9 @@
 <script id="dsq-count-scr" src='//'+disqus_short_name+'.disqus.com/count.js' async></script>
 <?php } ?>
 
+
 <?php if(isset($this->user['btc_balance']) && $this->uri->uri_string() == 'profile' ) :?>
+  <!-- BTC Transaction Table-->
   <script>
   jQuery(document).ready(function($) {
       $('#transac_table').DataTable( {
@@ -450,12 +455,39 @@
           columns: [
             { title: "Event" },
             { title: "Transaction Date" },
-            { title: "Amount Paid" }
+            { title: "Amount Paid" },
         ]
       } );
   } );
   </script>
+  <!-- BTC Transaction Table-->
 <?php endif;?>
+
+<?php if($this->uri->uri_string() == 'myevents' ) :?>
+  <!-- Frontend Event Listing-->
+  <script>
+  jQuery(document).ready(function($) {
+      $('#event_title_list').DataTable( {
+          ajax: 'http://18.222.143.177/myevents/get/?uid=<?php echo $this->user['id']?>',
+          'language': {
+            'emptyTable': 'No event is hosted by you, create one <a href="<?php base_url();?>myevents/add">here</a>'
+          },
+          columns: [ 
+            { title: "Title" },
+            { title: "Event Type" },
+            { title: "Start Date" },
+            { title: "End Date" },
+            { title: "Start Time" },
+            { title: "End Time" },
+            { title: "Action" },
+        ]
+      } );
+  } );
+  </script>
+  <!-- Frontend Event Listing-->
+<?php endif;?>
+
+
 </body>
 
 <!-- Load Facebook SDK for JavaScript -->

@@ -9,9 +9,7 @@ h4 {
 .loader-inner i {
 	color: #3271ff;
 }
-.table-responsive{
-	overflow: inherit;
-}
+
 /*Header Menu*/
 #header nav.mega-menu ul.nav-main .mega-menu-signin {
    margin-left: -4px;
@@ -545,9 +543,7 @@ small.small {
     -ms-border-radius: 50%;
     border-radius: 50%;
 }
-.bg-black{
-	background: #000;
-}
+
 /*======================= V2 css ==========================*/
 /*Checkbox RTL error*/
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {

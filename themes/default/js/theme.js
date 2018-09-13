@@ -8,9 +8,9 @@ Version: 		1.1.0
 
 // ************************  CONTENTS   *****************************
 
-// ------------------------------------------------------------------ 
+// ------------------------------------------------------------------
 
-/* 
+/*
 
 //---------------------
 // WINDOW LOAD FUCNTION
@@ -57,10 +57,10 @@ $(window).on('load', function() {
 	prettyPhoto();
 
 	initIsotopeGrid();
-	
+
 	preload();
 
-});	
+});
 
 
 //-----------------------
@@ -81,7 +81,7 @@ function resizeend() {
 
 		colEqheight();
 
-	} 
+	}
 
 }
 
@@ -91,34 +91,34 @@ function resizeend() {
 //----------------------
 
 $(document).ready(function() {
-	
-	
+
+
 	// Init Fuctions
-	
+
 	owlSlider();
-	
+
 	progressBar();
-	
+
 	bootstrapForm();
-	
+
 	subscribeForm();
-	
+
 	bgImage();
-	
+
 	parallaxBg();
-	
+
 	fullscreen();
-	
+
 	backgroundVideo();
-	
+
 	colEqheight();
-	
+
 	allCharts();
-	
+
 	dataAnimations();
-	
-	
-		
+
+
+
 	// Counter
 	$(".count-number").appear(function(){
 		$('.count-number').each(function(){
@@ -131,8 +131,8 @@ $(document).ready(function() {
 			});
 		});
 	});
-	
-	
+
+
 	// Countdown
 	$('.daycounter').each(function(){
 		var counter_id = $(this).attr('id');
@@ -142,7 +142,7 @@ $(document).ready(function() {
 		var date = $(this).data('date');
 		var countDay = new Date();
 		countDay = new Date(year, month - 1, date);
-		
+
 		if( counter_type == "down" ) {
 			$("#"+counter_id).countdown({
 				labels: ['Years', 'Months', 'Weeks', 'Days', 'Hours', 'Mins', 'Secs'],
@@ -156,12 +156,12 @@ $(document).ready(function() {
 				since: countDay
 			});
 		}
-		
+
 	});
-	
-	
-	
-	
+
+
+
+
 	// Scroll top top
 	var offset = 300,
 		offset_opacity = 1200,
@@ -170,7 +170,7 @@ $(document).ready(function() {
 
 	$(window).scroll(function(){
 		( $(this).scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
-		if( $(this).scrollTop() > offset_opacity ) { 
+		if( $(this).scrollTop() > offset_opacity ) {
 			$back_to_top.addClass('cd-fade-out');
 		}
 	});
@@ -183,27 +183,27 @@ $(document).ready(function() {
 		);
 	});
 
-	
+
 	// Tooltip
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip()
 	})
-	
+
 	// Popover
 	$(function () {
 	  $('[data-toggle="popover"]').popover()
 	})
-		
-	// Form Focus 
+
+	// Form Focus
 	$("input").focus(function(){
-	
+
 		$(this).parent().addClass("input-focus");
-	
+
 	}).blur(function(){
-		
+
 		$(this).parent().removeClass("input-focus");
 	})
-	
+
 
 });
 
@@ -228,14 +228,14 @@ $( "#layout-config-boxed" ).click(function(){
 	$( "html" ).toggleClass( "boxed" );
 	initIsotopeGrid();
 	return false;
-});	
+});
 
 // Wide Mode
 $( "#layout-config-wide" ).click(function(){
 	$( "html" ).removeClass( "boxed" ).toggleClass( "wide" );
 	initIsotopeGrid();
 	return false;
-});	
+});
 
 
 
@@ -246,28 +246,28 @@ function boxedMode(){
 
 // Boxed Mode Backgrounds
 $( "#bg-config-color, #bg-config-pattern, #bg-config-image" ).click(function(){
-	
+
 	boxedMode();
-	
-	if($(this).attr('id') == 'bg-config-color' ){	
+
+	if($(this).attr('id') == 'bg-config-color' ){
 		$( "html.boxed" ).addClass( "boxed-solid" );
-		
+
 	}else if($(this).attr('id') == 'bg-config-pattern' ){
 		$( "html.boxed" ).addClass( "boxed-pattern" );
-		
+
 	}else{
-		$( "html.boxed" ).addClass( "boxed-image" );	
+		$( "html.boxed" ).addClass( "boxed-image" );
 	}
-	
+
 	return false;
-	
-});	
+
+});
 
 
 
 
-// Progress 
-function progressBar() {		
+// Progress
+function progressBar() {
 
 	if ($('.progress-bar').length) {
 
@@ -297,24 +297,24 @@ function progressBar() {
 
 	}
 
-} 
+}
 
 
 // Pretty Photo
 function prettyPhoto() {
 
 	"use strict";
-	
-	if( $("a[rel^='prettyPhoto'], a[data-rel^='prettyPhoto']").length != 0 ) { 
-	
+
+	if( $("a[rel^='prettyPhoto'], a[data-rel^='prettyPhoto']").length != 0 ) {
+
 	 $("a[rel^='prettyPhoto'], a[data-rel^='prettyPhoto']").prettyPhoto({hook: 'data-rel', social_tools: false, deeplinking: false});
-	
+
 	}
 
 }
 
 // Background Image
-function bgImage(){		
+function bgImage(){
 
 	var pageSection = $("section,.bg-img");
 
@@ -350,7 +350,7 @@ function fullscreen() {
 
 		"use strict";
 
-		if ($('.owl-carousel').length) {		    
+		if ($('.owl-carousel').length) {
 
 			  $(".owl-carousel").each(function (index) {
 
@@ -408,13 +408,13 @@ function fullscreen() {
 
 							var animationDelay = elem.data('animation-delay');
 
-							if ( animationDelay ) {			
+							if ( animationDelay ) {
 
 								setTimeout(function(){
 
 								 elem.addClass( animation + " visible" );
 
-								}, animationDelay);				
+								}, animationDelay);
 
 							} else {
 
@@ -424,9 +424,9 @@ function fullscreen() {
 
 						}
 
-					});					
+					});
 
-				}).owlCarousel({ 
+				}).owlCarousel({
 
 					autoPlay: autoplay,
 
@@ -486,7 +486,7 @@ function fullscreen() {
 
 			});
 
-		}  
+		}
 
 	})(jQuery);
 
@@ -494,40 +494,40 @@ function fullscreen() {
 
 
 // Parallax
-function parallaxBg(){		
+function parallaxBg(){
 	if ($(window).width() > 1025) {
-		if($('.parallax-bg').length != 0 && !navigator.userAgent.match(/iPad|iPhone|Android/i)){	
-	
+		if($('.parallax-bg').length != 0 && !navigator.userAgent.match(/iPad|iPhone|Android/i)){
+
 				// $.stellar({
-	
+
 				// 	horizontalScrolling: true,
-	
+
 				// 	verticalOffset: 0,
-	
+
 				// 	horizontalOffset: 0,
-	
+
 				// 	responsive: true,
-	
+
 				// 	scrollProperty: 'scroll',
-	
+
 				// 	parallaxElements: false,
-	
+
 			 //  });
-	
+
 			}
-		}	
+		}
 
 }
 
 
-// Animation 
+// Animation
 function dataAnimations() {
   $('[data-animation]').each(function() {
 		var element = $(this);
 		element.addClass('animated');
 		element.appear(function() {
 			var delay = ( element.data('delay') ? element.data('delay') : 1 );
-			if( delay > 1 ) element.css('animation-delay', delay + 'ms');				
+			if( delay > 1 ) element.css('animation-delay', delay + 'ms');
 			element.addClass( element.data('animation') );
 			setTimeout(function() {
 				element.addClass('visible');
@@ -561,7 +561,7 @@ function colEqheight() {
 
 	equalHeight($(".row > .col-eq-height"));
 
-} 
+}
 
 
 // Background Video
@@ -685,7 +685,7 @@ function backgroundVideo(){
 
 
 // Contact Form
-function bootstrapForm(){	
+function bootstrapForm(){
 
 	if ( $( "#bootstrap-form" ).length !== 0 ) {
 
@@ -705,7 +705,7 @@ function bootstrapForm(){
 
 			},
 
-			fields: { 
+			fields: {
 
 				contact_name: {
 
@@ -771,7 +771,7 @@ function bootstrapForm(){
 
 			}
 
-		})	
+		})
 
 		.on('success.form.bv', function(e) {
 
@@ -791,11 +791,11 @@ function bootstrapForm(){
 
 					dataType: 'json',
 
-					url: "form/contact-form.php",					
+					url: "form/contact-form.php",
 
 					data: form_data,
 
-					success: function(msg){						
+					success: function(msg){
 
 						$('.form-message').html(msg.data);
 
@@ -803,7 +803,7 @@ function bootstrapForm(){
 
 						submitButton.removeAttr("disabled");
 
-						resetForm($('#bootstrap-form'));						
+						resetForm($('#bootstrap-form'));
 
 					},
 
@@ -839,7 +839,7 @@ function bootstrapForm(){
 
 		$form.find('button[type=submit]')
 
-			.attr("disabled", "disabled");	
+			.attr("disabled", "disabled");
 
 
 
@@ -849,8 +849,8 @@ function bootstrapForm(){
 
 
 
-// Subscribe 
-function subscribeForm(){	 
+// Subscribe
+function subscribeForm(){
 
 	if ( $( "#subscribe-form" ).length !== 0 ) {
 
@@ -870,7 +870,7 @@ function subscribeForm(){
 
 			},
 
-			fields: { 
+			fields: {
 
 				subscribe_email: {
 
@@ -890,11 +890,11 @@ function subscribeForm(){
 
 					}
 
-				},	
+				},
 
 			}
 
-		})	
+		})
 
 		.on('success.form.bv', function(e) {
 
@@ -914,11 +914,11 @@ function subscribeForm(){
 
 					dataType: 'json',
 
-					url: "form/subscription.php",					
+					url: "form/subscription.php",
 
 					data: form_data,
 
-					success: function(msg){						
+					success: function(msg){
 
 						$('.form-message1').html(msg.data);
 
@@ -926,7 +926,7 @@ function subscribeForm(){
 
 						submitButton.removeAttr("disabled");
 
-						resetForm($('#subscribe-form'));						
+						resetForm($('#subscribe-form'));
 
 					},
 
@@ -975,19 +975,19 @@ function subscribeForm(){
 // Isotope Grid
 function initIsotopeGrid() {
 
-  $('.isotope-grid').each(function(){  
+  $('.isotope-grid').each(function(){
 
-	   var $port_container = $(this);  
+	   var $port_container = $(this);
 
 		$containerProxy = $port_container;
 
-		var filter_selector = $port_container.parent().find('.isotope-filters a.active').data('filter');  
+		var filter_selector = $port_container.parent().find('.isotope-filters a.active').data('filter');
 
-		var gutterSize = $port_container.data('gutter');  
+		var gutterSize = $port_container.data('gutter');
 
 		var columns = $port_container.data('columns');
 
-		 
+
 
 		if ($(window).width() > 1025) {
 
@@ -995,23 +995,23 @@ function initIsotopeGrid() {
 
 				if( columns == 2 ) {
 
-					var masonryGutter = gutterSize / columns;					
+					var masonryGutter = gutterSize / columns;
 
 				} else if( columns == 3 ) {
 
 					var colValue = gutterSize / 2;
 
-					var masonryGutter = colValue + ( colValue / 3 );					
+					var masonryGutter = colValue + ( colValue / 3 );
 
 				} else if( columns == 4 ) {
 
 					var colValue = gutterSize / 2;
 
-					var masonryGutter = colValue + ( colValue / 2 );					
+					var masonryGutter = colValue + ( colValue / 2 );
 
 				}
 
-				
+
 
 				// calculate columnWidth
 
@@ -1019,13 +1019,13 @@ function initIsotopeGrid() {
 
 				var masonryWidth = Math.floor( colWidth - masonryGutter );
 
-				
+
 
 				$port_container.find('.item').css('width', masonryWidth);
 
 				$port_container.find('.item').css('margin-bottom', gutterSize);
 
-		
+
 
 				$port_container.isotope({
 
@@ -1045,7 +1045,7 @@ function initIsotopeGrid() {
 
 				});
 
-				
+
 
 				jQuery( window ).bind( 'load resize', function() {
 
@@ -1055,7 +1055,7 @@ function initIsotopeGrid() {
 
 					$port_container.find('.item').css('width', masonryWidth);
 
-					
+
 
 					$port_container.isotope({
 
@@ -1071,7 +1071,7 @@ function initIsotopeGrid() {
 
 				});
 
-			});					
+			});
 
 		}
 
@@ -1085,21 +1085,21 @@ function initIsotopeGrid() {
 
 				}
 
-				
+
 
 				if( columns == 2 ) {
 
-					var masonryGutter = gutterSize / columns;					
+					var masonryGutter = gutterSize / columns;
 
 				} else if( columns == 3 || columns == 4 ) {
 
 					var colValue = gutterSize / 2;
 
-					var masonryGutter = colValue + ( colValue / 3 );					
+					var masonryGutter = colValue + ( colValue / 3 );
 
 				}
 
-				
+
 
 				// calculate columnWidth
 
@@ -1107,13 +1107,13 @@ function initIsotopeGrid() {
 
 				var masonryWidth = Math.floor( colWidth - masonryGutter );
 
-				
+
 
 				$port_container.find('.item').css('width', masonryWidth);
 
 				$port_container.find('.item').css('margin-bottom', gutterSize);
 
-		
+
 
 				$port_container.isotope({
 
@@ -1133,7 +1133,7 @@ function initIsotopeGrid() {
 
 				});
 
-				
+
 
 				jQuery( window ).bind( 'load resize', function() {
 
@@ -1143,7 +1143,7 @@ function initIsotopeGrid() {
 
 					$port_container.find('.item').css('width', masonryWidth);
 
-					
+
 
 					$port_container.isotope({
 
@@ -1159,7 +1159,7 @@ function initIsotopeGrid() {
 
 				});
 
-			});	
+			});
 
 		}
 
@@ -1173,15 +1173,15 @@ function initIsotopeGrid() {
 
 				}
 
-				
+
 
 				if( columns == 2 ) {
 
-					var masonryGutter = gutterSize / columns;					
+					var masonryGutter = gutterSize / columns;
 
 				}
 
-				
+
 
 				// calculate columnWidth
 
@@ -1189,13 +1189,13 @@ function initIsotopeGrid() {
 
 				var masonryWidth = Math.floor( colWidth - masonryGutter );
 
-				
+
 
 				$port_container.find('.item').css('width', masonryWidth);
 
 				$port_container.find('.item').css('margin-bottom', gutterSize);
 
-		
+
 
 				$port_container.isotope({
 
@@ -1215,7 +1215,7 @@ function initIsotopeGrid() {
 
 				});
 
-				
+
 
 				jQuery( window ).bind( 'load resize', function() {
 
@@ -1225,7 +1225,7 @@ function initIsotopeGrid() {
 
 					$port_container.find('.item').css('width', masonryWidth);
 
-					
+
 
 					$port_container.isotope({
 
@@ -1255,11 +1255,11 @@ function initIsotopeGrid() {
 
 				$port_container.find('.item').css('margin-bottom', gutterSize);
 
-				
+
 
 				var selector = $port_container.parent().find('.isotope-filters a.active').data('filter');
 
-				
+
 
 				$port_container.isotope({
 
@@ -1286,25 +1286,25 @@ function initIsotopeGrid() {
 
 
 
-  
+
 
 		// Filter
 
 		$('.isotope-filters a').click(function(){
 
-		
 
-			$(this).parent().parent().find('a.active').removeClass('active');    
+
+			$(this).parent().parent().find('a.active').removeClass('active');
 
 			$(this).addClass('active');
 
-			var selector = $(this).parent().parent().find('a.active').attr('data-filter');  
+			var selector = $(this).parent().parent().find('a.active').attr('data-filter');
 
 			$(this).parents().find('.isotope-grid').isotope({ filter: selector, animationEngine : "css" });
 
-		
 
-			return false; 
+
+			return false;
 
 		});
 
@@ -1315,7 +1315,7 @@ function initIsotopeGrid() {
 
 
 
-// Pie Chart 
+// Pie Chart
 function allCharts() {
 	$(window).on('load', function(){
 
@@ -1374,7 +1374,7 @@ function allCharts() {
 
 		}
 
-	
+
 		$('#pieChart').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showPieChart,300); },{accX: 0, accY: -155},'easeInCubic');
 
 
@@ -1395,4 +1395,3 @@ function allCharts() {
 	$('#header nav ul li a').filter(function () {
 	   return this.href == url;
 	}).parent().parent().prev('li').addClass('active'); */
-
