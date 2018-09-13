@@ -545,7 +545,9 @@ small.small {
     -ms-border-radius: 50%;
     border-radius: 50%;
 }
-
+.bg-black{
+	background: #000;
+}
 /*======================= V2 css ==========================*/
 /*Checkbox RTL error*/
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {

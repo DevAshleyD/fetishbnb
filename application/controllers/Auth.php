@@ -511,7 +511,7 @@ class Auth extends Public_Controller {
                 $_POST['image']          	= '';
 
 
-            $username 						= $this->input->post('username');
+      $username 						= $this->input->post('username');
 			$email 							= $this->input->post('email');
 			$password 						= $this->input->post('password');
 			$additional_data 				= array(

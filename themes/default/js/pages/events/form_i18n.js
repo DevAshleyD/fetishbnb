@@ -40,7 +40,6 @@ $(function () {
         });
     });
 
-
     $('#start_end_date').daterangepicker();
 
     $('#recurring').change(function() {
@@ -95,7 +94,7 @@ $(function () {
             $('label').removeClass('text-danger');
 
             var formData = new FormData($(this)[0]);
-            ajaxPostMultiPart('save', '#submit_loader', formData, function(response) {
+            ajaxPostMultiPartCustom('save', '#submit_loader', formData, function(response) {
                 if(response.flag == 0) {
                     $('#validation-error').show();
                     $('#validation-error p').html(response.msg);
@@ -109,7 +108,7 @@ $(function () {
                     $('#submit_loader').remove();
                 } else {
                     setTimeout(function() {
-                        window.location.href = site_url+uri_seg_1+'/'+uri_seg_2;
+                        window.location.href = site_url+uri_seg_1+'/'+uri_seg_2+'/'+uri_seg_3;
                     }, 1000);
                 }
             });

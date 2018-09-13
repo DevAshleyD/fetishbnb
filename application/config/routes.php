@@ -109,4 +109,5 @@ $route['hosts'] 								= 'hosts';
 $route['hosts/(:any)'] 						= 'hosts/host/$1';
 $route['profile/btc'] = 'profile/get_trans_json';
 $route['myevents/get'] = 'myevents/fget_hosts_events';
-$route['myevents/edit/(:any)'] = 'myevents/edit_myevent/$1'; 
+$route['myevents/edit/(:any)'] = 'myevents/edit_myevent/$1';
+$route['myevents/add'] = 'myevents/edit_myevent';

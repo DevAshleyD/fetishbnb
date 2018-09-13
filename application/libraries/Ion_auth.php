@@ -20,7 +20,7 @@
 */
 /* =======================/=/=/=/= CUSTOMIZED BY DEEPAK =/=/=/=/=/ ============================*/
 /*
-* 
+*
 * customized methods name
 * - is_non_admin
 * - get_users_by_group
@@ -66,7 +66,7 @@ class Ion_auth
 	{
 		$this->config->load('ion_auth', TRUE);
 		$this->load->library(array('email'));
-		
+
 		$this->load->helper(array('cookie', 'language','url'));
 
 		$this->load->library('session');
@@ -74,7 +74,7 @@ class Ion_auth
 		$this->load->model('ion_auth_model');
 
 		$this->_cache_user_in_group =& $this->ion_auth_model->_cache_user_in_group;
-	
+
 		$email_config = $this->config->item('email_config', 'ion_auth');
 
 		if ($this->config->item('use_ci_email', 'ion_auth') && isset($email_config) && is_array($email_config))
@@ -172,7 +172,7 @@ class Ion_auth
 
 			            $this->email->initialize($config);
 			        }
-			        
+
 					$message = $this->load->view($this->config->item('email_templates', 'ion_auth').$this->config->item('email_forgot_password', 'ion_auth'), $data, true);
 					$this->email->clear();
 					$this->email->from($this->config->item('sender_email', 'ion_auth'), $this->config->item('sender_name', 'ion_auth'));
@@ -243,7 +243,7 @@ class Ion_auth
 				$this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_new_password_subject'));
 				$this->email->message($message);
 				@$this->email->send();
-				
+
 				$this->set_message('password_change_successful');
 				$this->ion_auth_model->trigger_events(array('post_password_change', 'password_change_successful'));
 				return TRUE;
@@ -368,7 +368,7 @@ class Ion_auth
 				$this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_activation_subject'));
 				$this->email->message($message);
 				@$this->email->send();
-				
+
 				$this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_successful', 'activation_email_successful'));
 				$this->set_message('activation_email_successful');
 				return $id;
@@ -440,15 +440,15 @@ class Ion_auth
 	public function logged_in()
 	{
 		$this->ion_auth_model->trigger_events('logged_in');
-                
+
                 $recheck= $this->ion_auth_model->recheck_session();
-        
+
                 //auto-login the user if they are remembered
                 if ( ! $recheck && get_cookie($this->config->item('identity_cookie_name', 'ion_auth')) && get_cookie($this->config->item('remember_cookie_name', 'ion_auth')))
 		{
 			$recheck = $this->ion_auth_model->login_remembered_user();
 		}
-                
+
                 return $recheck;
 	}
 
@@ -561,7 +561,7 @@ class Ion_auth
 
 		return $this->in_group($non_admin_group, $id);
 	}
-	
+
 
 	/**
 	 * get_users_by_group

@@ -11,10 +11,10 @@
                   <h2 class="text-uppercase p-l-3-em"><?php echo !empty($id) ? lang('action_edit') : lang('action_create'); ?></h2>
 
                   <!-- Back Button -->
-                  <a href="<?php echo site_url($this->uri->segment(1).'/'.$this->uri->segment(2)) ?>" class="btn btn-default btn-circle waves-effect waves-circle waves-float pull-left"><i class="material-icons">arrow_back</i></a>
+                  <a href="<?php echo site_url($this->uri->segment(1));?>" class="btn btn-circle waves-effect waves-circle waves-float pull-left"><i class="material-icons">arrow_back</i></a>
 
                   <!-- Delete Button -->
-                  <?php if(!empty($id)) { echo '<a role="button" onclick="ajaxDelete('.$id.', ``, `'.lang('menu_event').'`)" class="btn btn-default btn-circle waves-effect waves-circle waves-float pull-right"><i class="material-icons">delete_forever</i></a>'; } ?>
+                  <?php if(!empty($id)) { echo '<a role="button" onclick="ajaxDelete('.$id.', ``, `'.lang('menu_event').'`)" class="btn btn-circle waves-effect waves-circle waves-float pull-right"><i class="material-icons">delete_forever</i></a>'; } ?>
               </div>
               <div class="body">
                   <?php echo form_open_multipart(site_url($this->uri->segment(1).'/'.$this->uri->segment(2).'/'.'save'), array('class' => 'form-horizontal', 'id' => 'form-create', 'role'=>"form")); ?>
@@ -304,3 +304,6 @@
     	</div>
     </div>
 </div>
+<script type="text/javascript">
+    var tutors      = <?php echo isset($_POST['tutors']) ? json_encode($_POST['tutors']) : json_encode(array()) ?>;
+</script>

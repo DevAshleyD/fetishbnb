@@ -7,7 +7,7 @@
 class Private_Controller extends MY_Controller {
 
     var $stripe_creds;
-    
+
     /**
      * Constructor
      */
@@ -15,7 +15,7 @@ class Private_Controller extends MY_Controller {
     {
         parent::__construct();
 
-        
+
         if ( ! $this->ion_auth->logged_in())
         {
             if (current_url() != base_url())
@@ -43,24 +43,31 @@ class Private_Controller extends MY_Controller {
         // prepare theme name
         $this->settings->theme = strtolower($this->config->item('public_theme'));
 
-        $this->load->helper(array('my_func_helper', 'menu_helper')); 
+        $this->load->helper(array('my_func_helper', 'menu_helper'));
 
         // Visits Count
         $this->load->library('visits_count');
         $this->visits_count->hit_visit();
+
+        // Acl Library
+        $this->load->library('acl');
+
+        // File Upload Library
+        $this->load->library('file_uploads');
+
 
         // set up global header data
         // set up global header data
         $this
         ->add_plugin_theme(array(
             'animate-css/animate.min.css',
-            
+
             // Bootstrap Select
             'bootstrap-select/css/bootstrap-select.min.css',
             'bootstrap-select/js/bootstrap-select.min.js',
-            
+
             'font-awesome/css/font-awesome.min.css',
-            
+
             'univershicon/univershicon.css',
 
             'pretty-photo/prettyPhoto.css',

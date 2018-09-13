@@ -53,7 +53,7 @@ class Event_model extends CI_Model {
                         ->group_by('e_bookings_payments.date_added')
                         ->get('e_bookings_payments')
                         ->result();
-    }    
+    }
 
     /**
      * todays_events_list
@@ -72,7 +72,7 @@ class Event_model extends CI_Model {
                         ->order_by('start_date', 'ASC')
                         ->get('events')
                         ->result();
-    }    
+    }
 
     /**
      * top_events_list
@@ -81,8 +81,8 @@ class Event_model extends CI_Model {
     {
         return $this->db->query("SELECT e.id, e.title, e.images, 'events/detail/' url, 'event' type, (SELECT COUNT(ebm.id) FROM e_bookings_members ebm WHERE ebm.e_bookings_id IN (SELECT eb.id FROM e_bookings eb WHERE eb.events_id = e.id)) total_bookings FROM events e ORDER BY total_bookings DESC LIMIT 5")
                         ->result();
-    }    
-    
+    }
+
     /**
      * get_events
      */
@@ -187,45 +187,45 @@ class Event_model extends CI_Model {
      * get_event_types_id
      *
      * @return array
-     * 
+     *
      **/
-    public function get_event_types_id($category = NULL) 
+    public function get_event_types_id($category = NULL)
     {
         return $this->db->select(array('id'))
                          ->where(array('title'=>$category))
                          ->get('event_types')
                          ->row();
-        
+
     }
 
     /**
      * get_event_id_by_title
      *
      * @return array
-     * 
+     *
      **/
-    public function get_event_id_by_title($title = NULL) 
+    public function get_event_id_by_title($title = NULL)
     {
         return $this->db->select(array('id', 'event_types_id'))
                          ->where(array('title'=>$title, 'status !='=>'0'))
                          ->get($this->table)
                          ->row();
-        
+
     }
 
     /**
      * get_title_by_id
      *
      * @return array
-     * 
+     *
      **/
-    public function get_title_by_id($id = NULL, $table = NULL) 
+    public function get_title_by_id($id = NULL, $table = NULL)
     {
         return $this->db->select(array('title'))
                          ->where(array('id'=>$id))
                          ->get($table)
                          ->row();
-        
+
     }
 
     /**
@@ -268,15 +268,15 @@ class Event_model extends CI_Model {
      * get_events_tutors
      *
      * @return array
-     * 
+     *
      **/
     public function get_events_tutors($events_id = NULL)
     {
-        return $this->db->query("SELECT users.id, 
-                                        users.first_name, 
-                                        users.last_name, 
-                                        users.username, 
-                                        users.image , 
+        return $this->db->query("SELECT users.id,
+                                        users.first_name,
+                                        users.last_name,
+                                        users.username,
+                                        users.image ,
                                         (SELECT COUNT(DISTINCT(et.events_id)) FROM events_tutors et WHERE et.users_id = users.id) total_events
                                  FROM users WHERE users.id IN (SELECT et.users_id FROM events_tutors et WHERE et.events_id = $events_id)")
                         ->result();
@@ -286,13 +286,13 @@ class Event_model extends CI_Model {
      * get_tutor_events
      *
      * @return array
-     * 
+     *
      **/
     public function get_tutor_events($user_id = NULL)
     {
-        return $this->db->query("SELECT $this->table.id, 
-                                        $this->table.title, 
-                                        $this->table.status, 
+        return $this->db->query("SELECT $this->table.id,
+                                        $this->table.title,
+                                        $this->table.status,
                                         $this->table.images,
                                         (SELECT cc.title FROM event_types cc WHERE cc.id = $this->table.event_types_id) category_name,
                                         (SELECT COUNT(et.users_id) FROM events_tutors et WHERE et.events_id = $this->table.id) total_tutors
@@ -304,7 +304,7 @@ class Event_model extends CI_Model {
      * get_events_tutor
      *
      * @return array
-     * 
+     *
      **/
     public function get_events_tutor($username = NULL)
     {
@@ -332,7 +332,7 @@ class Event_model extends CI_Model {
      * get_tutors
      *
      * @return array
-     * 
+     *
      **/
     public function get_tutors($ids = array())
     {
@@ -355,13 +355,21 @@ class Event_model extends CI_Model {
                         ->where_in('id', $ids)
                         ->get('users')
                         ->result();
-    }    
+    }
+
+    public function get_event_name_byid($id = FALSE)
+    {
+        return $this->db->select('event_types.title')
+        ->where_in('id', $id)
+        ->get('event_types')
+        ->row(); 
+    }
 
     /**
      * get_categories
      *
      * @return array
-     * 
+     *
      **/
     public function get_categories($search = '')
     {
@@ -372,7 +380,7 @@ class Event_model extends CI_Model {
                         ->where(array('event_types.status !='=>'0'))
                         ->get('event_types')
                         ->result();
-    }    
+    }
 
 }
 

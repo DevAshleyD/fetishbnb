@@ -469,9 +469,12 @@
   jQuery(document).ready(function($) {
       $('#event_title_list').DataTable( {
           ajax: 'http://18.222.143.177/myevents/get/?uid=<?php echo $this->user['id']?>',
-          columns: [
+          'language': {
+            'emptyTable': 'No event is hosted by you, create one <a href="<?php base_url();?>myevents/add">here</a>'
+          },
+          columns: [ 
             { title: "Title" },
-            { title: "Fees Paid" },
+            { title: "Event Type" },
             { title: "Start Date" },
             { title: "End Date" },
             { title: "Start Time" },

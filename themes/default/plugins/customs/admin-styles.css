@@ -1,4 +1,4 @@
-@import url(materialize.css);
+  @import url(materialize.css);
 .navbar {
     font-family: "Roboto", sans-serif;
     -webkit-border-radius: 0;
@@ -3274,7 +3274,17 @@ section.content {
 .btn-default:hover,
 .btn-default:active,
 .btn-default:focus {
-    background-color: #000 !important;
+    background-color: #fff !important;
+    color: #999;
+}
+.btn-black, {
+  background: #000;
+}
+.btn-black .material-icons{
+  color: #000;
+}
+.btn-grey .material-icons{
+  color: #9e9e9e;  
 }
 
 .btn-group,
