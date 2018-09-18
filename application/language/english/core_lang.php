@@ -27,6 +27,7 @@ $lang['action_toggle_nav']             	= 'Toggle navigation';
 $lang['action_login']             		= 'Login';
 $lang['action_logout']             		= 'Logout';
 $lang['action_profile']             	= 'Profile';
+$lang['action_billing']             	= 'Billing';
 $lang['action_no']                      = 'No';
 $lang['action_loading']                 = 'Loading...';
 $lang['action_clear']                   = 'Clear';
@@ -1142,3 +1143,21 @@ $lang['e_l_my_ebookings'] = 'My Bookings';
 $lang['total_users'] = 'Users';
 /*Email Templates*/
 $lang['welcome_to'] = "Welcome to FetishBNB, ";
+/*Custom warnings*/
+$lang['reg_success_activate'] = 'Registration is successful! Please check your email for activation link to use your account.';
+$lang['update_needed'] = 'To host an event you need to provide your complete profile and billing information.';
+/*Billing Fields*/
+$lang['billing_name'] = 'First Name';
+$lang['billing_lastname'] = 'Last Name';
+$lang['billing_method'] = 'Payment Method';
+$lang['billing_address_1'] = 'Address Line 1';
+$lang['billing_address_2'] = 'Address Line 2';
+$lang['billing_city'] = 'City';
+$lang['billing_state'] = 'State/Province';
+$lang['billing_country'] = 'Country';
+$lang['paypal'] = 'Paypal Email';
+$lang['btc_id'] = 'BTC ID';
+$lang['card_number'] = 'Card Number';
+$lang['card_cvc'] = 'CVC';
+$lang['card_exp'] = 'Card Expiry';
+$lang['card_type'] = 'Card Type'; 
