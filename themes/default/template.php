@@ -145,6 +145,16 @@
             <nav class="nav-main mega-menu">
                 <ul class="nav nav-pills nav-main" id="mainMenu">
 
+                  <!-- Be a host or host an event menu  -->
+                  <?php if($this->user['group_name'] == 'host'){?>
+                    <li><a href="<?php echo site_url('myevents/add')?>">Create an Event</a></li>
+                  <?php } ?>
+                  <?php if($this->user['group_name'] == 'customers'){?>
+                    <li><a href="<?php echo site_url('profile')?>">Become a Host</a></li>
+                  <?php } ?>
+
+
+                  <!-- Be a host or host an event menu  -->
 
                     <!-- Events Menu -->
                     <li class="dropdown">
@@ -239,9 +249,9 @@
                                                 <?php if (!$this->ion_auth->is_non_admin()) { ?>
                                                 <li><a href="<?php echo site_url('admin'); ?>"><?php echo lang('menu_admin'); ?></a></li>
                                                 <?php } ?>
-                                                <li><a href="<?php echo site_url('myevents') ?>"><?php echo lang('menu_my_events') ?></a></li>
-                                                <?php if($this->user['group_name'] == 'host' || !$this->ion_auth->is_non_admin()){?>
-                                                  <li><a href="<?php echo site_url('mybookings'); ?>"><?php echo lang('e_l_my_ebookings'); ?></a></li>
+                                                <li><a href="<?php echo site_url('mybookings'); ?>"><?php echo lang('e_l_my_ebookings'); ?></a></li>
+                                                <?php if($this->user['group_name'] == 'host' && !$this->ion_auth->is_non_admin()){?>
+                                                  <li><a href="<?php echo site_url('myevents') ?>"><?php echo lang('menu_my_events') ?></a></li>
                                                 <?php } ?>
                                                 <li><a href="<?php echo site_url('/profile'); ?>"><?php echo lang('action_profile'); ?></a></li>
                                                 <li><a href="<?php echo site_url('logout'); ?>"><?php echo lang('action_logout') ?></a></li>
@@ -472,7 +482,7 @@
           'language': {
             'emptyTable': 'No event is hosted by you, create one <a href="<?php base_url();?>myevents/add">here</a>'
           },
-          columns: [ 
+          columns: [
             { title: "Title" },
             { title: "Event Type" },
             { title: "Start Date" },
