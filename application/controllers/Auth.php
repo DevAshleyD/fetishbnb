@@ -555,7 +555,7 @@ class Auth extends Public_Controller {
                 $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($flag['id'])->row()->id;
 
                 if(empty($_SESSION['groups_id']))
-                    $this->ion_auth->add_to_group(3, $flag['id']);
+                //    $this->ion_auth->add_to_group(3, $flag['id']);
 
                 $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($flag['id'])->row()->id;
 
