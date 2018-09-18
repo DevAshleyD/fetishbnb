@@ -545,22 +545,8 @@ class Auth extends Public_Controller {
                 );
                 $this->notifications_model->save_notifications($notification);
 
-                /*Direct login after signup*/
-                $result                     = $this->users_model->login_oauth($email);
-
-                $_SESSION['language']       = $additional_data['language'];
-                $_SESSION['identity']       = $email;
-                $_SESSION['email']          = $email;
-                $_SESSION['user_id']        = $flag['id'];
-                $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($flag['id'])->row()->id;
-
-                if(empty($_SESSION['groups_id']))
-                //    $this->ion_auth->add_to_group(3, $flag['id']);
-
-                $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($flag['id'])->row()->id;
-
-                $this->session->set_userdata('logged_in', $result);
-                redirect(site_url());
+                $this->session->set_flashdata('message', lang('reg_success_activate'));
+                redirect(site_url('auth/login'));
             }
             else
             {
