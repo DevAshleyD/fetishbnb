@@ -1138,4 +1138,7 @@ $lang['e_l_event_hosts'] = 'Event Hosts';
 $lang['e_l_event_host_name'] = 'Host Name';
 $lang['users_role_hosts'] = 'Host';
 $lang['e_l_total_hosts'] = 'Total Hosts';
+$lang['e_l_my_ebookings'] = 'My Bookings';
 $lang['total_users'] = 'Users';
+/*Email Templates*/
+$lang['welcome_to'] = "Welcome to FetishBNB, ";
