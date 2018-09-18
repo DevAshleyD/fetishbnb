@@ -179,7 +179,7 @@ class Ion_auth
 					$this->email->to($user->email);
 					$this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_forgotten_password_subject'));
 					$this->email->message($message);
-					@$this->email->send();
+					$this->email->send();
 
 					$this->set_message('forgot_password_successful');
 					return TRUE;
@@ -351,6 +351,8 @@ class Ion_auth
 				'id'         => $user->id,
 				'email'      => $email,
 				'activation' => $activation_code,
+				'username'	 => $user->username,
+				'password'	 => $password,
 			);
 			if(!$this->config->item('use_ci_email', 'ion_auth'))
 			{
