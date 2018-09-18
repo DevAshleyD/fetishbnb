@@ -250,7 +250,7 @@
                                                 <li><a href="<?php echo site_url('admin'); ?>"><?php echo lang('menu_admin'); ?></a></li>
                                                 <?php } ?>
                                                 <li><a href="<?php echo site_url('mybookings'); ?>"><?php echo lang('e_l_my_ebookings'); ?></a></li>
-                                                <?php if($this->user['group_name'] == 'host' && !$this->ion_auth->is_non_admin()){?>
+                                                <?php if($this->user['group_name'] == 'host' || !$this->ion_auth->is_non_admin()){?>
                                                   <li><a href="<?php echo site_url('myevents') ?>"><?php echo lang('menu_my_events') ?></a></li>
                                                 <?php } ?>
                                                 <li><a href="<?php echo site_url('/profile'); ?>"><?php echo lang('action_profile'); ?></a></li>
@@ -334,6 +334,11 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <?php echo $this->error; ?>
                     </div>
+                <?php elseif($this->user['group_name'] == 'customers' && $this->uri->uri_string() == 'profile'): ?>
+                  <div class="alert-danger alert alert-dismissable">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      <?php echo lang('update_needed'); ?>
+                  </div>
                 <?php endif; ?>
                 <!-- Ajax validation error -->
                 <div class="alert-danger alert alert-dismissable" id="validation-error">
@@ -462,6 +467,9 @@
   jQuery(document).ready(function($) {
       $('#transac_table').DataTable( {
           ajax: 'http://18.222.143.177/profile/btc/?uid=<?php echo $this->user['id']?>',
+          'language': {
+            'emptyTable': 'No transaction has been recorded yet.'
+          },
           columns: [
             { title: "Event" },
             { title: "Transaction Date" },
