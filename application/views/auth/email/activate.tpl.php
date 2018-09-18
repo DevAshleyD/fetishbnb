@@ -13,6 +13,20 @@
 * Author: Rob Reyes
 *
 ****/
+?><?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+/***
+* Email templates
+* Author: Rob Reyes
+*
+****/
+?><?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+/***
+* Email templates
+* Author: Rob Reyes
+*
+****/
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -50,20 +64,23 @@
 <table class="body-wrap">
 	<tr>
 		<td></td>
-		<td class="container" bgcolor="#FFFFFF"> 
+		<td class="container" bgcolor="#FFFFFF">
 
 			<div class="content">
 			<table>
 				<tr>
 					<td>
-						<h3><?php echo sprintf(lang('welcome_to'), $identity);?></h3>
+						<h3><?php echo sprintf(lang('welcome_to')).$username;?></h3>
+						<p style="font-size: 12px;"><strong>Your login details:</strong></p>
+						<p style="font-size: 12px;"><i>Username: <?php echo $username;?></i><p>
+						<p style="font-size: 12px;"><i>Password: <?php echo $password;?></i><p>
 						<p style="font-size:17px">Please confirm your email address to make sure that members can contact you.</p>
-						<a style=" color: #fff; background: #000;padding: 10px 25px;text-decoration: none; margin-top: 10px;display: inline-block;" href="<?php base_url(). 'auth/activate'.$id.'/'.$activation;?>">Activation Link<?php echo lang('email_activate_link');?></a>
+						<a style=" color: #fff; background: #000;padding: 10px 25px;text-decoration: none; margin-top: 10px;display: inline-block;" href="<?php base_url(). 'auth/activate'.$id.'/'.$activation;?>"><?php echo lang('email_activate_link');?></a>
 									<span class="clear"></span>
 
 								</td>
 							</tr>
-						</table><!-- /social & contact -->
+						</table>
 
 					</td>
 				</tr>
