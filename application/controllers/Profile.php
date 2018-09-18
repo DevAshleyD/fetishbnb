@@ -20,7 +20,7 @@ class Profile extends Private_Controller {
         parent::__construct();
 
         // load the users model
-        $this->load->model(array('users_model','btc_model','event_model'));
+        $this->load->model(array('users_model','btc_model','event_model','billing_model'));
         $this->load->library('file_uploads');
     }
 
@@ -128,8 +128,78 @@ class Profile extends Private_Controller {
         $data['content'] = $this->load->view('auth/profile_form', $content_data, TRUE);
         $this->load->view($this->template, $data);
 
-
 	}
+
+  function billing()
+  {
+    // validators
+    $this->form_validation
+    ->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'))
+    ->set_rules('billing_name', lang('billing_name'), 'required|trim|min_length[5]|max_length[35]')
+    ->set_rules('billing_lastname', lang('billing_lastname'), 'required|trim|min_length[5]|max_length[35]')
+    ->set_rules('billing_address_1', lang('billing_line_1'), 'required|trim|min_length[5]|max_length[35]')
+    ->set_rules('billing_city', lang('billing_city'), 'required|trim|min_length[5]|max_length[35]')
+    ->set_rules('billing_state', lang('billing_state'), 'required|trim|min_length[5]|max_length[35]')
+    ->set_rules('billing_country', lang('billing_country'), 'required|trim|min_length[5]|max_length[35]');
+
+
+    if ($this->form_validation->run() == TRUE)
+    {
+        // save the changes
+        $data                  = array();
+
+        $data['billing_name']           = $this->input->post('billing_name');
+        $data['billing_lastname']       = $this->input->post('billing_lastname');
+        $data['billing_method']         = $this->input->post('billing_method');
+        $data['billing_address_1']      = $this->input->post('billing_address_1');
+        $data['billing_address_2']      = $this->input->post('billing_address_2');
+        $data['billing_city']           = $this->input->post('billing_city');
+        $data['billing_state']          = $this->input->post('billing_state');
+        $data['billing_country']        = $this->input->post('billing_country');
+        $data['paypal']                 = $this->input->post('paypal');
+        $data['btc_id']                 = $this->input->post('btc_id');
+        $data['card_number']            = $this->input->post('card_number');
+        $data['card_cvc']               = $this->input->post('card_cvc');
+        $data['card_exp1']              = $this->input->post('card_exp1');
+        $data['card_exp2']              = $this->input->post('card_exp2');
+        $data['card_type']              = $this->input->post('langucard_typeage');
+
+        $saved                 = $this->billing_model->save_user_billing($data, $this->user['id']);
+
+        if ($saved)
+        {
+            $this->session->set_flashdata('message', sprintf(lang('alert_update_success'), lang('action_billing')));
+        }
+        else
+        {
+            $this->session->set_flashdata('error', sprintf(lang('alert_update_fail'), lang('action_billing')));
+        }
+        // reload page and display message
+        redirect('billing');
+    }
+
+    // setup page header data
+    $this
+    ->add_plugin_theme(array(
+        "datepicker/datepicker3.css",
+        "datepicker/bootstrap-datepicker.js",
+        "jquery-datatable/datatables.min.css",
+        "jquery-datatable/datatables.min.js",
+    ), 'default')
+    ->add_js_theme( "pages/user/index_i18n.js", TRUE );
+
+    $this->set_title( lang('menu_user').' '.lang('action_billing'));
+    $data = $this->includes;
+
+    // set content data
+    $content_data = array(
+        'user'              => $this->user,
+    );
+
+    // load views
+    $data['content'] = $this->load->view('auth/billing_form', $content_data, TRUE);
+    $this->load->view($this->template, $data);
+  }
 
   function get_trans_json(){
 
