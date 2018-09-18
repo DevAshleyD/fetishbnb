@@ -3,9 +3,11 @@
 <!-- Section -->
 <div class="page-default bg-grey">
     <div class="container">
-
         <?php echo form_open_multipart('', array('role'=>'form', 'class'=>'form-horizontal', 'id'=>'form_login')); ?>
         <?php if ($this->session->userdata('logged_in')) : ?>
+        <div class="card">
+        <div class="header"><h2>My Profile</h2></div>
+        <div class="body table-responsive">
         <div class="row">
             <div class="col-md-12 text-center image-card">
                 <div class="picture-container">
@@ -123,7 +125,7 @@
                     </div>
                 </div>
             </div>
-
+          </div>
         </div>
         <br>
         <div class="row">
@@ -136,6 +138,8 @@
             </div>
         </div>
         <br>
+        </div>
+        <?php if($user['group_name'] == 'hosts' || !$this->ion_auth->is_non_admin()){?>
         <div class="row">
           <div class="col-md-12">
             <div class="card">
@@ -147,6 +151,7 @@
             </div>
           </div>
         </div>
+      <?php }; ?>
         <?php echo form_close(); ?>
     </div>
 </div>
