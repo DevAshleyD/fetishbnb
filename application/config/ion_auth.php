@@ -83,7 +83,7 @@ $config['salt_prefix']    = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' 
  | The controller should check this function and act
  | appropriately. If this variable set to 0, there is no maximum.
  */
- 
+
 $config['site_title']                 = $CI->settings->site_name;       // Site Title, example.com
 $config['admin_email']                = $CI->settings->i_admin_email; 	// Admin Email, admin@example.com
 
@@ -108,7 +108,7 @@ $config['forgot_password_expiration'] = $CI->settings->i_forgot_password_expirat
 $config['recheck_timer']              = $CI->settings->i_recheck_timer ? $CI->settings->i_recheck_timer : 0;                   /* The number of seconds after which the session is checked again against database to see if the user still exists and is active.
 							           Leave 0 if you don't want session recheck. if you really think you need to recheck the session against database, we would
 								   recommend a higher value, as this would affect performance */
-								
+
 
 /*
  | -------------------------------------------------------------------------
@@ -128,7 +128,7 @@ $config['identity_cookie_name'] = 'identity';
  | 	  'file' = Use the default CI config or use from a config file
  | 	  array  = Manually set your email config settings
  */
-$config['use_ci_email'] = FALSE; // Send Email using the builtin CI email class, if false it will return the code and the identity
+$config['use_ci_email'] = TRUE; // Send Email using the builtin CI email class, if false it will return the code and the identity
 $config['email_config'] = array(
 	'mailtype' => $CI->settings->email_type,
 );
