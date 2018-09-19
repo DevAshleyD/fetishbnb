@@ -19,7 +19,8 @@ class Auth extends Public_Controller {
 
 		// load the users model
         $this->load->model('users_model');
-        $this->load->model('notifications_model');
+				$this->load->model('notifications_model');
+        $this->load->model('billing_model');
 
         // facebook login
         if($this->settings->fb_app_id && $this->settings->fb_app_secret)
@@ -84,8 +85,9 @@ class Auth extends Public_Controller {
                 $result = $this->users_model->get_users_by_id($_SESSION['user_id'], TRUE);
 
                 $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($result['id'])->row()->id;
+								$result['has_billing'] = $this->billing_model->get_user_billing_id($result['id']);
 
-            	$this->session->set_userdata('logged_in', $result);
+            	$this->session->set_userdata('logged_in', $result); 
 
 				redirect('/', 'refresh');
 			}
