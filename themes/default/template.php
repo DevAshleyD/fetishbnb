@@ -146,10 +146,10 @@
                 <ul class="nav nav-pills nav-main" id="mainMenu">
 
                   <!-- Be a host or host an event menu  -->
-                  <?php if($this->user['group_name'] == 'host'){?>
+                  <?php if($this->user['group_name'] == 'host' && !empty($this->user['has_billing'])){?>
                     <li><a href="<?php echo site_url('myevents/add')?>">Create an Event</a></li>
                   <?php } ?>
-                  <?php if($this->user['group_name'] == 'customers'){?>
+                  <?php if($this->user['group_name'] == 'customers' || empty($this->user['has_billing'])){?>
                     <li><a href="<?php echo site_url('profile')?>">Become a Host</a></li>
                   <?php } ?>
 
@@ -334,7 +334,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <?php echo $this->error; ?>
                     </div>
-                <?php elseif($this->user['group_name'] == 'customers' && $this->uri->uri_string() == 'profile'): ?>
+                <?php elseif($this->user['group_name'] == 'customers' && empty($this->user['has_billing'])) : ?>
                   <div class="alert-danger alert alert-dismissable">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       <?php echo lang('update_needed'); ?>
@@ -461,7 +461,7 @@
 <?php } ?>
 
 
-<?php if(isset($this->user['btc_balance']) && $this->uri->uri_string() == 'profile' ) :?>
+<?php if(isset($this->user['btc_balance']) && $this->uri->uri_string() == 'profile/billing' ) :?>
   <!-- BTC Transaction Table-->
   <script>
   jQuery(document).ready(function($) {
@@ -505,6 +505,46 @@
   <!-- Frontend Event Listing-->
 <?php endif;?>
 
+<?php if($this->uri->uri_string() == 'profile/billing') :?>
+  <script>
+    jQuery(document).ready( function($){
+
+      var selectedbmethod = $('#billing_method').val();
+
+      if(selectedbmethod == 1){
+        $('.billpaypal').show();
+        $('.billbtc').hide();
+        $('.billswipe').hide();
+      }else if (selectedbmethod == 2) {
+        $('.billbtc').show();
+        $('.billpaypal').hide();
+        $('.billswipe').hide();
+      }else if (selectedbmethod == 3) {
+        $('.billswipe').show();
+        $('.billpaypal').hide();
+        $('.billbtc').hide();
+      }
+
+      $('#billing_method').on('change', function(){
+        var billmethod = $(this).val();
+
+        if(billmethod == 1){
+          $('.billpaypal').show();
+          $('.billbtc').hide();
+          $('.billswipe').hide();
+        }else if (billmethod == 2) {
+          $('.billbtc').show();
+          $('.billpaypal').hide();
+          $('.billswipe').hide();
+        }else if (billmethod == 3) {
+          $('.billswipe').show();
+          $('.billpaypal').hide();
+          $('.billbtc').hide();
+        }
+      });
+    });
+  </script>
+<?php endif;?>
 
 </body>
 
