@@ -193,7 +193,8 @@ class Profile extends Private_Controller {
 
     // set content data
     $content_data = array(
-        'user'              => $this->user,
+        'billing'              => $this->billing_model->get_user_billing($this->user['id'], TRUE),
+        'user'                 => $this->user,
     );
 
     // load views
