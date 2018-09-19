@@ -34,15 +34,15 @@ class Profile extends Private_Controller {
         $this->form_validation
         ->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'))
         ->set_rules('username', lang('users_username'), 'required|trim|min_length[5]|max_length[30]|callback__check_username')
-        ->set_rules('first_name', lang('users_first_name'), 'trim|min_length[2]|max_length[32]')
-        ->set_rules('last_name', lang('users_last_name'), 'trim|min_length[2]|max_length[32]')
+        ->set_rules('first_name', lang('users_first_name'), 'required|trim|min_length[2]|max_length[32]')
+        ->set_rules('last_name', lang('users_last_name'), 'required|trim|min_length[2]|max_length[32]')
         ->set_rules('email', lang('users_email'), 'required|trim|max_length[128]|valid_email|callback__check_email')
         ->set_rules('profession', lang('users_profession'), 'trim|min_length[3]|max_length[256]')
         ->set_rules('experience', lang('users_experience'), 'trim|is_natural_no_zero')
-        ->set_rules('gender', lang('users_gender'), 'trim|in_list[male,female,other]')
-        ->set_rules('dob', lang('users_dob'), 'trim')
-        ->set_rules('mobile', lang('users_mobile'), 'trim|min_length[5]|max_length[20]')
-        ->set_rules('address', lang('users_address'), 'trim|min_length[8]|max_length[256]')
+        ->set_rules('gender', lang('users_gender'), 'required|trim|in_list[male,female,other]')
+        ->set_rules('dob', lang('users_dob'), 'required|trim')
+        ->set_rules('mobile', lang('users_mobile'), 'required|trim|min_length[5]|max_length[20]')
+        ->set_rules('address', lang('users_address'), 'required|trim|min_length[8]|max_length[256]')
         ->set_rules('language', lang('users_language'), 'trim')
         ->set_rules('password', lang('users_password'), 'required|trim|min_length['.$this->settings->i_min_password.']|max_length['.$this->settings->i_max_password.']')
         ->set_rules('password_confirm', lang('users_password_confirm'), 'matches[password]');
@@ -79,6 +79,9 @@ class Profile extends Private_Controller {
             $data['experience']    = $this->input->post('experience');
             $data['address']       = $this->input->post('address');
             $data['language']      = $this->input->post('language');
+            if($this->ion_auth->is_non_admin()){
+              $data['role']          = 2; //set user automatically to host when profile is updated
+            }
 
             $saved                 = $this->ion_auth->update($this->user['id'], $data);
 
@@ -91,7 +94,14 @@ class Profile extends Private_Controller {
 
                 $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($this->user['id'])->row()->id;
 
-                $this->session->set_userdata('logged_in', $this->user);
+                if($this->ion_auth->is_non_admin()){
+                  $this->ion_auth->remove_from_group(3, $this->user['id']);
+                  $this->ion_auth->add_to_group(2, $this->user['id']);
+                }
+
+                $saved_data = array_merge($this->user, array('group_name' => 'host')); 
+
+                $this->session->set_userdata('logged_in', $saved_data);
                 $this->session->language = $this->user['language'];
                 $this->session->set_flashdata('message', sprintf(lang('alert_update_success'), lang('action_profile')));
             }
@@ -122,6 +132,7 @@ class Profile extends Private_Controller {
             'cancel_url'        => base_url(),
             'user'              => $this->user,
             'password_required' => FALSE,
+            'has_billing'       => $this->billing_model->get_user_billing_id($this->user['id']),
         );
 
         // load views
@@ -137,10 +148,11 @@ class Profile extends Private_Controller {
     ->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'))
     ->set_rules('billing_name', lang('billing_name'), 'required|trim|min_length[5]|max_length[35]')
     ->set_rules('billing_lastname', lang('billing_lastname'), 'required|trim|min_length[5]|max_length[35]')
-    ->set_rules('billing_address_1', lang('billing_line_1'), 'required|trim|min_length[5]|max_length[35]')
-    ->set_rules('billing_city', lang('billing_city'), 'required|trim|min_length[5]|max_length[35]')
+    ->set_rules('billing_address_1', lang('billing_address_1'), 'required|trim|min_length[5]|max_length[255]')
+    ->set_rules('billing_address_2', lang('billing_address_2'), 'required|trim|min_length[5]|max_length[255]')
+    ->set_rules('billing_city', lang('billing_city'), 'required|trim|min_length[5]|max_length[40]')
     ->set_rules('billing_state', lang('billing_state'), 'required|trim|min_length[5]|max_length[35]')
-    ->set_rules('billing_country', lang('billing_country'), 'required|trim|min_length[5]|max_length[35]');
+    ->set_rules('billing_country', lang('billing_country'), 'required|trim|max_length[2]');
 
 
     if ($this->form_validation->run() == TRUE)
@@ -168,6 +180,8 @@ class Profile extends Private_Controller {
 
         if ($saved)
         {
+            $saved_data = array_merge($this->user, array('has_billing' => $saved));
+            $this->session->set_userdata('logged_in', $saved_data);
             $this->session->set_flashdata('message', sprintf(lang('alert_update_success'), lang('action_billing')));
         }
         else
@@ -175,7 +189,7 @@ class Profile extends Private_Controller {
             $this->session->set_flashdata('error', sprintf(lang('alert_update_fail'), lang('action_billing')));
         }
         // reload page and display message
-        redirect('billing');
+        redirect('profile/billing');
     }
 
     // setup page header data
