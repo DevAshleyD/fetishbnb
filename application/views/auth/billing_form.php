@@ -275,30 +275,39 @@
                     </div>
                 </div>
                 <?php endif;?>
-                <?php if ($this->session->userdata('logged_in')) {
-                        if(!$this->ion_auth->is_non_admin()) {
-                    ?>
-                    <div class="form-group <?php echo form_error('profession') ? ' has-error' : ''; ?>">
-                        <?php echo lang('users_profession', 'profession', array('class' => 'col-md-4 control-label')); ?>
-                        <div class="col-md-8">
-                            <?php echo form_input(array('name'=>'profession', 'value'=>set_value('profession', (isset($user['profession']) ? $user['profession'] : '')), 'class'=>'form-control input-lg')); ?>
-                        </div>
+                    <div class="billpaypal">
+                      <div class="form-group <?php echo form_error('paypal') ? ' has-error' : ''; ?>">
+                          <?php echo lang('paypal', 'paypal', array('class' => 'col-md-4 control-label')); ?>
+                          <div class="col-md-8">
+                              <?php echo form_input(array('name'=>'paypal', 'value'=>set_value('paypal', (isset($billing['paypal']) ? $billing['paypal'] : '')), 'class'=>'form-control input-lg')); ?>
+                          </div>
+                      </div>
                     </div>
-                <?php } } ?>
-                <div class="form-group <?php echo form_error('password') ? ' has-error' : ''; ?>">
-                    <?php echo lang('users_password', 'password', array('class' => 'col-md-4 control-label')); ?>
-                    <div class="col-md-8">
-                        <?php echo form_password(array('name'=>'password', 'value'=>set_value('password', (isset($user['password']) ? $user['password'] : '')), 'class'=>'form-control input-lg')); ?>
+                    <div class="billbtc">
+                      <div class="form-group <?php echo form_error('btc_id') ? ' has-error' : ''; ?>">
+                          <?php echo lang('btc_id', 'btc_id', array('class' => 'col-md-4 control-label')); ?>
+                          <div class="col-md-8">
+                              <?php echo form_input(array('name'=>'btc_id', 'value'=>set_value('btc_id', (isset($billing['btc_id']) ? $billing['btc_id'] : '')), 'class'=>'form-control input-lg')); ?>
+                          </div>
+                      </div>
                     </div>
-                </div>
-                <?php if ($this->session->userdata('logged_in')) : ?>
-                <div class="form-group <?php echo form_error('address') ? ' has-error' : ''; ?>">
-                    <?php echo lang('users_address', 'address', array('class' => 'col-md-4 control-label')); ?>
-                    <div class="col-md-8">
-                        <?php echo form_textarea(array('name'=>'address', 'value'=>set_value('address', (isset($user['address']) ? $user['address'] : '')), 'class'=>'form-control input-lg', 'rows'=>3)); ?>
+                    <div class="billswipe">
+                      <div class="form-group <?php echo form_error('card_number') ? ' has-error' : ''; ?>">
+                          <?php echo lang('card_number', 'card_number', array('class' => 'col-md-4 control-label')); ?>
+                          <div class="col-md-8">
+                              <?php echo form_input(array('name'=>'card_number', 'value'=>set_value('card_number', (isset($billing['card_number']) ? $billing['card_number'] : '')), 'class'=>'form-control input-lg')); ?>
+                          </div>
+                      </div>
+                      <div class="form-group <?php echo form_error('card_number') ? ' has-error' : ''; ?>">
+                          <?php echo lang('card_exp', 'card_exp', array('class' => 'col-md-4 control-label')); ?>
+                          <div class="col-md-4">
+                              <?php echo form_input(array('name'=>'card_exp1', 'value'=>set_value('card_exp1', (isset($billing['card_exp1']) ? $billing['card_exp1'] : '')), 'class'=>'form-control input-lg')); ?>
+                          </div>
+                          <div class="col-md-4">
+                              <?php echo form_input(array('name'=>'card_exp2', 'value'=>set_value('card_exp2', (isset($billing['card_exp2']) ? $billing['card_exp2'] : '')), 'class'=>'form-control input-lg')); ?>
+                          </div>
+                      </div>
                     </div>
-                </div>
-              <?php endif;?>
             </div>
 
             <div class="col-md-5">
@@ -329,26 +338,15 @@
                         <?php echo form_dropdown('billing_method', array('1'=>lang('payment_m_paypal'), '2'=>lang('payment_m_btc'),'3'=>lang('payment_m_swipe')), (isset($billing['billing_method']) ? $billing['billing_method'] : ''), 'id="billing_method" class="form-control input-lg"'); ?>
                     </div>
                 </div>
-              <?php endif;?>
-                <?php if ($this->session->userdata('logged_in')) {
-                        if(!$this->ion_auth->is_non_admin()) {
-                    ?>
-                    <div class="form-group <?php echo form_error('experience') ? ' has-error' : ''; ?>">
-                        <?php echo lang('users_experience', 'experience', array('class' => 'col-md-4 control-label')); ?>
-                        <div class="col-md-8">
-                            <?php echo form_input(array('name'=>'experience', 'value'=>set_value('experience', (isset($user['experience']) ? $user['experience'] : '')), 'class'=>'form-control input-lg', 'type'=>'number')); ?>
-                        </div>
-                    </div>
-                <?php } } ?>
-                <div class="form-group <?php echo form_error('password_confirm') ? ' has-error' : ''; ?>">
-                    <?php echo lang('users_password_confirm', 'password_confirm', array('class' => 'col-md-4 control-label')); ?>
-                    <div class="col-md-8">
-                        <?php echo form_password(array('name'=>'password_confirm', 'value'=>'', 'class'=>'form-control input-lg', 'autocomplete'=>'off')); ?>
-                        <?php if ($this->session->userdata('logged_in')) : ?>
-                        <span class="help-block"><?php echo lang('users_password_help'); ?></span>
-                        <?php endif; ?>
-                    </div>
+                <div class="billswipe">
+                  <div class="form-group <?php echo form_error('card_cvc') ? ' has-error' : ''; ?>">
+                      <?php echo lang('card_cvc', 'card_cvc', array('class' => 'col-md-4 control-label')); ?>
+                      <div class="col-md-8">
+                          <?php echo form_input(array('name'=>'card_cvc', 'value'=>set_value('card_cvc', (isset($billing['card_cvc']) ? $billing['card_cvc'] : '')), 'class'=>'form-control input-lg')); ?>
+                      </div>
+                  </div>
                 </div>
+              <?php endif;?>
             </div>
           </div>
         </div>
