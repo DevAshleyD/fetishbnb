@@ -53,18 +53,28 @@ class Billing_model extends CI_Model {
               return $this->db->get($this->table)->row();
     }
 
+    public function get_user_billing_id($id)
+    {
+      $this->db->select('user_id')->where(array('user_id'=>$id));
+
+      return $this->db->get($this->table)->row();
+    }
+
     public function save_user_billing($data = array(), $id = FALSE)
     {
-      if($id) // update
+      $bid = $this->get_user_billing_id($id);
+
+      if($bid) // update
       {
           $this->db->where(array('user_id'=>$id))
                    ->update($this->table, $data);
-          return $id;
+          return $bid;
       }
       else // insert
       {
-          $this->db->insert($this->table, $data);
-          return $this->db->insert_id();
+        $data['user_id'] = $id;
+        $this->db->insert($this->table, $data);
+        return $this->get_user_billing_id($id);
       }
     }
 
