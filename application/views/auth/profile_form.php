@@ -6,7 +6,7 @@
         <?php echo form_open_multipart('', array('role'=>'form', 'class'=>'form-horizontal', 'id'=>'form_login')); ?>
         <?php if ($this->session->userdata('logged_in')) : ?>
         <div class="card">
-        <div class="header"><h2>My Profile</h2></div>
+        <div class="header"><h2>My Profile</h2><a class="btn pull-right" href="<?php echo site_url('profile/billing');?>">Billing Details</a></div>
         <div class="body table-responsive">
         <div class="row">
             <div class="col-md-12 text-center image-card">
@@ -138,20 +138,7 @@
             </div>
         </div>
         <br>
-        </div>
-        <?php if($user['group_name'] == 'hosts' || !$this->ion_auth->is_non_admin()){?>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="header"><h2>My Balance: <?php echo $user['btc_balance'];?> BTC</h2></div>
-              <div class="body table-responsive">
-                <h3>Transaction History:</h3>
-                  <table id="transac_table" class="display" cellspacing="0" width="100%"></table>
-              </div>
-            </div>
-          </div>
-        </div>
-      <?php }; ?>
+      </div>
         <?php echo form_close(); ?>
     </div>
 </div>
