@@ -1,7 +1,7 @@
 /*
  Theme Name:     Universh HTML5 Template
  Theme URL:      http://glorythemes.in/html/universh/
- Description:    Best education / Events / News 
+ Description:    Best education / Events / News
  Author:         Glory Themes
  Version:        1.0.0
 */
@@ -15,13 +15,13 @@
 	2.	Section
 	3.	Container
 	4.	Layout
-	
+
 		-	Boxed Layout Header
 		-	Boxed Slider Layout
-		
-	5.	Full width 
+
+	5.	Full width
 	6.	Typography
-	
+
 		-	Headings
 		-	Buttons
 		- 	Link
@@ -29,71 +29,71 @@
 		-	List style
 		-	Typo Light
 		-	Typo dark
-		
+
 	7.	Tools
-	
+
 		-	Back top top
 		-	Color Panel
 		-	Page Loader
-		
+
 	8.	Animation
 	9.	Theme Styles
-		
+
 		-	Shadow
 		-	Image filter
 	10.	Spacings
-		
+
 		-	Paddings
 		-	Margins
-		
+
 	11. Position
 	12. Tilte
-	
+
 		-	Dot Separator
 		-	Line Separator
 		-	White Title
 		- 	Small Title
 		-	Title Background With Border Style ( News Demo )
-		
-	13. Page Header 
-	
+
+	13. Page Header
+
 		-	Page Header - Color
-		-	Page Header - Dark 
+		-	Page Header - Dark
 		-	Page Header - Background Image
-		
+
 	14. Owl Carousel
-		
+
 		-	Navigation
 		-	Pagination
-		
+
 	15. Extras
-		
-		- Social Icons 	
-		- Ratings 	
-	
+
+		- Social Icons
+		- Ratings
+
 	16. Backgrounds
-		
+
 		-	Background Color
 		-	Color
 		-	Background Video
 		-	Background Image
 		-	Overlay
 		- 	Row Seperator
-		
+
 	17. Counter
 	18. Count Down
 	19. Pie Chart
 	20. Bootstrap
-		
+
 		-	Blockquote
 		-	Tooltip
 		-	Popover
 		-	Tab
 			- Tab Right
-			
+
 		-	Accordion
 			- Accordion dark
-		
+
 		-	Progress Bar
 		-	List Style
 		-	Badge
@@ -102,51 +102,51 @@
 		- 	Pager
 		-	Forms
 		-	Label
-	
+
 	21. Hero Scene
 	22. Revolution Slider
-	23. Slider Below Section 
+	23. Slider Below Section
 	24. Content Box
 	25. Team
-	
+
 		-	Grid
 		-	Grid Border Style
 		-	Team Color light
 		-	Team list
 		-	Student
 	26. Course
-	
+
 		-	Course Grid
 		-	Course list
 		-	Course Single
-		
+
 	27. Event
-	
+
 		-	Events Grid
 		-	Events list
 		-	Events Single
-		
+
 	28. Blog
-	
+
 		-	Blog Grid
 		-	Blog list
-		-	Blog Large		
+		-	Blog Large
 		-	Blog Single
-		-	Post Comments	
-		-	Leave a Comment 
-		
+		-	Post Comments
+		-	Leave a Comment
+
 	29. News
-	
-		-	News Single	
-		
+
+		-	News Single
+
 	30. 	Related Block
-	
+
 	31.	Portfolio Grid
 	32.	Pricing
 	33.	Testimonail
 	34.	Call To Action
 	35.	Widgets
-		
+
 		-	Contact Widget
 		-	Download Widget
 		-	Counter Widget
@@ -157,22 +157,22 @@
 		-	Accordion Widget
 		-	Event Widget
 		-	Widget light
-		
+
 	36. Footer
-		
-		-	Main Footer 
+
+		-	Main Footer
 		-	Copy Right Footer
 		-	Footer Top
 		-	Footer transparent
 		-	Footer light
 		-	Footer 4
-		
+
 	37. Template
-		
+
 		-	404
 		-	Login
 		-	Coming soon
-		
+
 	38.	Contact Info
 
 
@@ -407,19 +407,19 @@ thead {
     padding: 0;
 }
 /* Typography Light */
-.typo-light h1 a, 
-.typo-light h2 a, 
-.typo-light h3 a, 
-.typo-light h4 a, 
-.typo-light h5 a, 
+.typo-light h1 a,
+.typo-light h2 a,
+.typo-light h3 a,
+.typo-light h4 a,
+.typo-light h5 a,
 .typo-light h6 a{
 	color: #fff;
 }
-.typo-light h1, 
-.typo-light h2, 
-.typo-light h3, 
-.typo-light h4, 
-.typo-light h5, 
+.typo-light h1,
+.typo-light h2,
+.typo-light h3,
+.typo-light h4,
+.typo-light h5,
 .typo-light h6,
 .typo-light p,
 .typo-light div,
@@ -428,21 +428,21 @@ thead {
 	color: #fff;
 }
 /* Typography Dark */
-.typo-dark h1 a, 
-.typo-dark h2 a, 
-.typo-dark h3 a, 
-.typo-dark h4 a, 
-.typo-dark h5 a, 
+.typo-dark h1 a,
+.typo-dark h2 a,
+.typo-dark h3 a,
+.typo-dark h4 a,
+.typo-dark h5 a,
 .typo-dark h6 a{
 	color: #262626;
 }
 /* Typo Thin */
 .typo-thin,
-.typo-thin h1, 
-.typo-thin h2, 
-.typo-thin h3, 
-.typo-thin h4, 
-.typo-thin h5, 
+.typo-thin h1,
+.typo-thin h2,
+.typo-thin h3,
+.typo-thin h4,
+.typo-thin h5,
 .typo-thin h6,
 .typo-thin p,
 .typo-thin div,
@@ -524,7 +524,7 @@ typo-thin small{
 }
 .close-theme-panel {
 	right: 0;
-    transform: translateX(100%); 
+    transform: translateX(100%);
 	-webkit-transform: translateX(100%);
 	-moz-transform: translateX(100%);
 	-ms-transform: translateX(100%);
@@ -615,7 +615,7 @@ html.boxed .panel-btns.config-layout li a#layout-config-boxed{
 	margin-bottom: 10px;
 }
 
-/* Page Loader */	
+/* Page Loader */
 #pageloader {
     background-color:#fff;
     height: 100%;
@@ -637,14 +637,14 @@ html.boxed .panel-btns.config-layout li a#layout-config-boxed{
 		 -o-transform: translateY(-50%);
 		 	transform: translateY(-50%);
 }
-#pageloader .loader-inner  img{    
+#pageloader .loader-inner  img{
 	margin: 0 auto;
 	display: block;
 }
 
 /* Animation */
 .animated {
-	visibility:hidden; 
+	visibility:hidden;
 }
 .visible {
 	visibility:visible;
@@ -676,7 +676,7 @@ html.boxed .panel-btns.config-layout li a#layout-config-boxed{
 .accordion.gallery-accordion .panel-title a.collapsed,
 .isotope-filters .nav-pills li a,
 .template-box,
-.project-authors ul li img, 
+.project-authors ul li img,
 .contact-info,
 .shop-wrap{
 	-webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
@@ -690,7 +690,7 @@ html.boxed .panel-btns.config-layout li a#layout-config-boxed{
 	     -o-transition:all 250ms ease-in-out 0s;
 		    transition:all 250ms ease-in-out 0s;
 }
-.shadow.active, .shadow:hover,.count-block:hover,.member-wrap:hover, 
+.shadow.active, .shadow:hover,.count-block:hover,.member-wrap:hover,
 .student-wrap:hover .student-img-wrap img,
 .course-wrapper:hover,
 .universh-timeline-content:hover,
@@ -751,14 +751,14 @@ html.boxed .panel-btns.config-layout li a#layout-config-boxed{
 
 /* Image filter */
 .border-style .member-wrap:hover .member-img-wrap img, .isotope-grid.gallery-filter .item:hover{
-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale"); 
-	/* for Webkit browsere, Chrome 19+, Safari 6+ ... */  
-	-webkit-filter: grayscale(1);  
-	filter: gray; 
+filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+	/* for Webkit browsere, Chrome 19+, Safari 6+ ... */
+	-webkit-filter: grayscale(1);
+	filter: gray;
 	opacity:1;
-	-moz-filter: grayscale(1);  
-	 -ms-filter: grayscale(1);  
-	  -o-filter: grayscale(1);  
+	-moz-filter: grayscale(1);
+	 -ms-filter: grayscale(1);
+	  -o-filter: grayscale(1);
 	     filter: grayscale(1);
 	-webkit-transition:all 250ms ease-in-out 0s;
 	   -moz-transition:all 250ms ease-in-out 0s;
@@ -776,8 +776,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 .box-block{
 	padding: 30px;
 }
-/*==================== 
-	Spacings 
+/*====================
+	Spacings
 ====================== */
 .col-pad-none .col-lg-1, .col-pad-none .col-lg-10, .col-pad-none .col-lg-11, .col-pad-none .col-lg-12, .col-pad-none .col-lg-2, .col-pad-none .col-lg-3, .col-pad-none .col-lg-4, .col-pad-none .col-lg-5, .col-pad-none .col-lg-6, .col-pad-none .col-lg-7, .col-pad-none .col-lg-8, .col-pad-none .col-lg-9, .col-pad-none .col-md-1, .col-pad-none .col-md-10, .col-pad-none .col-md-11, .col-pad-none .col-md-12, .col-pad-none .col-md-2, .col-pad-none .col-md-3, .col-pad-none .col-md-4, .col-pad-none .col-md-5, .col-pad-none .col-md-6, .col-pad-none .col-md-7, .col-pad-none .col-md-8, .col-pad-none .col-md-9, .col-pad-none .col-sm-1, .col-pad-none .col-sm-10, .col-pad-none .col-sm-11, .col-pad-none .col-sm-12, .col-pad-none .col-sm-2, .col-pad-none .col-sm-3, .col-pad-none .col-sm-4, .col-pad-none .col-sm-5, .col-pad-none .col-sm-6,.col-pad-none  .col-sm-7, .col-pad-none .col-sm-8, .col-pad-none .col-sm-9, .col-pad-none .col-xs-1, .col-pad-none .col-xs-10, .col-pad-none .col-xs-11, .col-pad-none .col-xs-12, .col-pad-none .col-xs-2, .col-pad-none .col-xs-3, .col-pad-none .col-xs-4, .col-pad-none .col-xs-5, .col-pad-none .col-xs-6, .col-pad-none .col-xs-7, .col-pad-none .col-xs-8, .col-pad-none .col-xs-9{
 	padding-left: 0;
@@ -812,14 +812,14 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 	padding-bottom: 50px;
 }
 .pad-tb-none{
-	padding-top: 0 !important; 
-	padding-bottom: 0 !important; 
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
 }
 .pad-top-none{
 	padding-top: 0;
 }
 .pad-bottom-none{
-	padding-bottom: 0 !important; 
+	padding-bottom: 0 !important;
 }
 
 /* margin */
@@ -854,8 +854,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 .margin-top-100{
 	margin-top: 100px;
 }
-/*==================== 
-	Position 
+/*====================
+	Position
 ====================== */
 .vmiddle{
 	top: 50%;
@@ -885,8 +885,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 	left: 0;
 	bottom: 0;
 }
-/*==================== 
-	logo 
+/*====================
+	logo
 ====================== */
 .logo {
     display: inline-block;
@@ -898,8 +898,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 	color: #252525;
 }
 
-/*==================== 
-	Tilte 
+/*====================
+	Tilte
 ====================== */
 .title-container{
 	text-align: center;
@@ -1006,14 +1006,14 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 	margin-bottom: 25px;
 }
 .title-simple{
-	margin: 30px 0;; 
+	margin: 30px 0;;
 }
 
 /* Title Background With Border Style */
 .title-bg-line{
 	border-bottom: 2px solid #f1f1f1;
 	margin-bottom: 30px;
-}	
+}
 .title-bg-line > .title {
     display: inline-block;
 	margin-bottom: 0;
@@ -1029,8 +1029,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 	 color: #fff;
 }
 
-/*==================== 
-	Page Header 
+/*====================
+	Page Header
 ====================== */
 .page-header {
     background-color: #f9f9f9;
@@ -1130,8 +1130,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 	z-index: 1;
 }
 
-/*==================== 
-	Owl Carousel 
+/*====================
+	Owl Carousel
 ====================== */
 .owl-carousel .animated{
 	visibility:visible;
@@ -1168,7 +1168,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 			transform:translateY(-50%);
 }
 .owl-carousel .owl-controls .owl-nav .owl-prev {
-	left: 15px; 
+	left: 15px;
 	margin-right:7.5px;
 }
 .owl-carousel .owl-controls .owl-nav .owl-next {
@@ -1187,7 +1187,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 	right:0;
 }
 .owl-carousel .owl-controls .owl-nav .owl-next:after {
-	content: "\e6ac"; 
+	content: "\e6ac";
 }
 .owl-theme.nav-dark .owl-nav > div{
 	background:#606060;
@@ -1264,8 +1264,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 a .cat{
 	margin-left: 10px;
 }
-/*==================== 
-	Social Icons 
+/*====================
+	Social Icons
 ====================== */
 ul.social-icons {
 	margin: 0;
@@ -1284,11 +1284,11 @@ ul.social-icons li {
 	padding: 0;
 	border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px;
 	overflow: visible;
-	-webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14); 
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 	   -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 		-ms-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 	 	 -o-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
-			box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14); 
+			box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 }
 
 ul.social-icons li a {
@@ -1606,7 +1606,7 @@ ul.social-icons li.vk:hover {
 .bg-green{
 	background: #4CAF50 !important;
 }
-.bg-orange{ 
+.bg-orange{
 	background: #FF6634 !important;
 }
 .bg-yellow{
@@ -1625,7 +1625,7 @@ ul.social-icons li.vk:hover {
 .color-green{
 	color: #4CAF50 !important;
 }
-.color-orange{ 
+.color-orange{
 	color: #FF6634 !important;
 }
 .color-yellow{
@@ -1701,7 +1701,7 @@ ul.social-icons li.vk:hover {
 .parent-has-overlay{
 	position: relative;
 	z-index: 1;
-} 
+}
 /* Row Seperator */
 .row-sep {
     background: url("../images/default/sep-cloud.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -1775,7 +1775,7 @@ ul.social-icons li.vk:hover {
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
-   
+
 }
 .rating {
 	unicode-bidi: bidi-override;
@@ -1905,8 +1905,8 @@ ul.social-icons li.vk:hover {
     right: 0;
     top: -31px;
 }
-/*==================== 
-	Bootstrap 
+/*====================
+	Bootstrap
 ====================== */
 /* Blockquote */
 blockquote {
@@ -2251,8 +2251,8 @@ label {
     margin-bottom: 10px;
 }
 
-/*==================== 
-	Hero Scene 
+/*====================
+	Hero Scene
 ====================== */
 .hero-btn {
     margin-top: 20px;
@@ -2308,7 +2308,7 @@ label {
 	font-size: 50px;
 }
 
-/*==================== 
+/*====================
 	Revolution Slider
 ====================== */
 .rev_slider .tp-caption, .rev_slider .caption{
@@ -2318,7 +2318,7 @@ label {
 .rs-opacity-overlay{
 	background: rgba(0, 0, 0, 0.75) none repeat scroll 0 0;
 	z-index: auto;
-	
+
 }
 .tparrows{
 	-webkit-border-radius: 2px;
@@ -2451,8 +2451,8 @@ label {
 }
 
 
-/*==================== 
-	Team 
+/*====================
+	Team
 ====================== */
 /* Grid */
 .member-wrap, .member-detail-wrap, .member-wrap:hover .member-detail-wrap, .member-detail-wrap p,
@@ -2560,7 +2560,7 @@ label {
 .member-detail-wrap.bg-white {
 	background: #fff;
 }
-.member-detail-wrap.bg-color .member-name a, .member-detail-wrap.bg-color span, .member-detail-wrap.bg-color p, 
+.member-detail-wrap.bg-color .member-name a, .member-detail-wrap.bg-color span, .member-detail-wrap.bg-color p,
 .member-detail-wrap.bg-dark .member-name a, .member-detail-wrap.bg-dark span, .member-detail-wrap.bg-dark p{
 	color: #fff;
 }
@@ -2595,8 +2595,8 @@ label {
 	margin-top: 30px;
 }
 
-/*==================== 
-	Student 
+/*====================
+	Student
 ====================== */
 .student-wrap{
 	text-align:center;
@@ -2619,8 +2619,8 @@ label {
 	margin-top: 20px;
 }
 
-/*==================== 
-	Course 
+/*====================
+	Course
 ====================== */
 /* Course Grid */
 .course-banner-wrap {
@@ -2633,7 +2633,7 @@ label {
     color: #fff;
     font-weight: 600;
     right: 10px;
-    padding: 5px 6px; 
+    padding: 5px 6px;
 	font-size: 10px;
     position: absolute;
     text-transform: uppercase;
@@ -2657,12 +2657,12 @@ label {
 	   -moz-border-radius: 50%;
 		-ms-border-radius: 50%;
 	     -o-border-radius: 50%;
-			border-radius: 50%; 
+			border-radius: 50%;
 	-webkit-transform: translateY(-50%);
 	   -moz-transform: translateY(-50%);
 		-ms-transform: translateY(-50%);
 	     -o-transform: translateY(-50%);
-			transform: translateY(-50%); 
+			transform: translateY(-50%);
 }
 .course-wrapper .teacher-wrap h5{
 	margin: 0;
@@ -2731,8 +2731,8 @@ label {
 	margin: 28px 0;
 }
 
-/*==================== 
-	Event 
+/*====================
+	Event
 ====================== */
 /* Events Grid */
 .event-details {
@@ -2779,8 +2779,8 @@ label {
 	width: 100%;
 }
 
-/*==================== 
-	Blog 
+/*====================
+	Blog
 ====================== */
 /* Blog Grid */
 .blog-img-wrap{
@@ -2872,7 +2872,7 @@ ul.blog-meta{
     display: inline-block;
 }
 .share h5{
-	margin-right: 20px;	
+	margin-right: 20px;
 }
 .share .social-icons {
     line-height: 34px;
@@ -2946,7 +2946,7 @@ ul.comments .comment-block .date {
 	margin-top: 25px;
 	padding-top: 45px;
 }
-/*==================== 
+/*====================
 	News
 ====================== */
 .news-wrap{
@@ -3008,8 +3008,8 @@ ul.comments .comment-block .date {
     margin-top: 10px;
 }
 
-/*==================== 
-	Related Block 
+/*====================
+	Related Block
 ====================== */
 .related-content {
     overflow: hidden;
@@ -3054,7 +3054,7 @@ ul.comments .comment-block .date {
 .owl-carousel .img-wrap img{
 	width: 100%;
 }
-/* =================================================================== 
+/* ===================================================================
 					Portfolio Grid
 ======================================================================*/
 .isotope-filters {
@@ -3193,14 +3193,14 @@ ul.comments .comment-block .date {
     z-index: 1;
 	padding: 15px 20px 0;
 	background: #eee;
-	box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.14); 
-	-webkit-box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.14); 
+	box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.14);
+	-webkit-box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.14);
 	-moz-box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.14);
 	-ms-box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.14);
 	-o-box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.14);
 }
 .project-authors.right {
-	left: auto; 
+	left: auto;
 	right: 0;
 }
 .project-authors ul li{
@@ -3212,8 +3212,8 @@ ul.comments .comment-block .date {
 	width: 70px;
 }
 
-/*==================== 
-	Pricing 
+/*====================
+	Pricing
 ====================== */
 .pricing-wrap{
 	background: #fff;
@@ -3276,7 +3276,7 @@ li > .duration {
     height: 50px;
     line-height: 33px;
 }
-/*==================== 
+/*====================
 	Testimonail
 ====================== */
 .quote-wrap > blockquote {
@@ -3337,7 +3337,7 @@ li > .duration {
 	font-size: 80%;
 }
 
-/*==================== 
+/*====================
 	Shop
 ====================== */
 .shop-wrap {
@@ -3351,7 +3351,7 @@ li > .duration {
 .product-label{
     background: #171717;
 	border-radius: 50%;
-	-webkit-border-radius: 50%; -moz-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; 
+	-webkit-border-radius: 50%; -moz-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%;
     color: #fff;
     height: 60px;
     line-height: 60px;
@@ -3385,7 +3385,7 @@ li > .duration {
 .product-details .option-btn {
     background: #171717;
     border-radius: 50%;
-	-webkit-border-radius: 50%; -moz-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; 
+	-webkit-border-radius: 50%; -moz-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%;
     color: #fff;
     height: 50px;
     line-height: 50px;
@@ -3413,7 +3413,7 @@ ul.shop-meta {
 .shop-meta li a {
     background: #171717;
     border-radius: 50%;
-	-webkit-border-radius: 50%; -moz-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; 
+	-webkit-border-radius: 50%; -moz-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%;
     color: #fff;
     height: 30px;
     line-height: 30px;
@@ -3685,7 +3685,7 @@ ul.shop-meta {
 	font-size: 1em;
 }
 
-.shop-forms .quantity .qty::-webkit-inner-spin-button, 
+.shop-forms .quantity .qty::-webkit-inner-spin-button,
 .shop-forms .quantity .qty::-webkit-outer-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
@@ -3695,7 +3695,7 @@ ul.shop-meta {
 	display: none;
 }
 
-/*==================== 
+/*====================
 	Call To Action
 ====================== */
 .callto-action .title, .callto-action .btn{
@@ -3711,8 +3711,8 @@ ul.shop-meta {
     margin-left: 60px;
 }
 
-/*==================== 
-	Widgets 
+/*====================
+	Widgets
 ====================== */
 .widget{
 	padding: 20px;
@@ -3955,7 +3955,7 @@ ul.shop-meta {
 .event-widget .daycounter{
 	padding-bottom: 20px;
 	margin-bottom: 20px;
-	border-bottom: 1px solid #e1e1e1;	
+	border-bottom: 1px solid #e1e1e1;
 }
 .event-widget .countdown-section{
 	text-align: left;
@@ -4023,8 +4023,8 @@ ul.shop-meta {
 /* Typo Light Widgets */
 .widget li a{
 }
-/*==================== 
-	Footer 
+/*====================
+	Footer
 ====================== */
 /* Main Footer */
 footer .main-footer{
@@ -4227,4 +4227,8 @@ footer.light .footer-copyright{
 }
 .contact-info p:last-child{
 	margin-bottom: 0;
+}
+/*rob customs*/
+.clear{
+	clear:both;
 }
