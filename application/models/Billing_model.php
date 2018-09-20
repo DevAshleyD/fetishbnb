@@ -57,7 +57,7 @@ class Billing_model extends CI_Model {
     {
       $this->db->select('user_id')->where(array('user_id'=>$id));
 
-      return $this->db->get($this->table)->row();
+      return $this->db->get($this->table)->row()->user_id;
     }
 
     public function save_user_billing($data = array(), $id = FALSE)
