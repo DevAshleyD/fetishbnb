@@ -230,6 +230,13 @@ class Users_model extends CI_Model {
     }
 
 
+    //get user BTC btc_balance
+    public function  get_user_btc($id){
+      $this->db->select(array("$this->table.btc_balance"))->where(array('id'=>$id));
+
+      return $this->db->get($this->table)->row()->btc_balance;
+    }
+
     /**
     * count_users_batch
     *
