@@ -5,8 +5,8 @@
  *
  * This model handles btc_transaction module data
  *
- * @package     eastvantage
- * @author      rob reyes
+ * @package     starcoders
+ * @author      robreyes
 */
 
 class Btc_model extends CI_Model {
