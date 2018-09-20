@@ -185,14 +185,14 @@
                      <?php echo form_open(site_url($this->uri->segment(1).'/'.'initiate_booking'), array('class' => 'form-horizontal', 'id' => 'form-create', 'role'=>'form')); ?>
                     <div class="row members-toggle">
                         <div class="col-md-12">
-                        	<h4><?php echo lang('e_bookings_members'); ?><i class="add_member_button uni-add pointer-elem" title="<?php echo lang('e_bookings_members_add'); ?>"></i></h4>
+                        	<h4><?php echo lang('e_bookings_members'); ?></h4> <a class="add_member_button pointer-elem btn pull-right" title="<?php echo lang('e_bookings_members_add'); ?>"><?php echo lang('e_bookings_members_add'); ?></a>
 
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-11 members">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="<?php echo form_error('fullname') ? ' has-error' : ''; ?>">
-                                                <?php echo lang('users_fullname', 'fullname'); ?>
+                                                <?php echo lang('users_nickname', 'username'); ?>
                                                 <?php echo form_input($fullname); ?>
                                             </div>
                                         </div>
@@ -295,6 +295,15 @@
 								<span class="remember-box checkbox">
 									<label>
 										<input type="radio" name="payment_method" value="stripe"><?php echo lang('e_bookings_payment_type_stripe') ?>
+									</label>
+								</span>
+							</div>
+						</div>
+						<div class="row payment-row">
+							<div class="col-md-12">
+								<span class="remember-box checkbox">
+									<label>
+										<input type="radio" name="payment_method" value="btc_credit"><?php echo lang('e_bookings_payment_type_btc') ?>
 									</label>
 								</span>
 							</div>
