@@ -26,6 +26,7 @@ class Ebooking extends Public_Controller {
                             'admin/events_model',
                             'admin/emailtemplates_model',
                             'admin/taxes_model',
+                            'btc_model',
                         ));
     }
 
@@ -36,9 +37,9 @@ class Ebooking extends Public_Controller {
 	function index($event_title = NULL)
 	{
         /* Initialize assets and title */
-        $this->add_plugin_theme(array(  
+        $this->add_plugin_theme(array(
                                 "daterangepicker/moment.min.js",
-                                "datepicker/bootstrap-datepicker.js", 
+                                "datepicker/bootstrap-datepicker.js",
                                 "fullcalendar/fullcalendar.min.css",
                                 "fullcalendar/fullcalendar.min.js",
                             ), 'default')
@@ -61,7 +62,7 @@ class Ebooking extends Public_Controller {
         $_SESSION['bookings']['event_title']            = $event->title;
         $_SESSION['bookings']['event_types_id']         = $event->event_types_id;
         $_SESSION['bookings']['event_type_title']   = $this->event_model->get_title_by_id($event->event_types_id, 'event_types')->title;
-        
+
         // set content data
         $content_data['events_id']                      = $event->id;
         $content_data['event_types_id']                 = $event->event_types_id;
@@ -71,7 +72,7 @@ class Ebooking extends Public_Controller {
         $content_data['selected_event']->weekdays       = $event->weekdays ? count(json_decode($event->weekdays)) : 0;
         $content_data['selected_event']->description    = '';
         $content_data['selected_event']->images         = '';
-        
+
         // add more fields
         $content_data['fullname'] = array(
             'name'      => 'fullname[]',
@@ -109,12 +110,12 @@ class Ebooking extends Public_Controller {
                 echo validation_errors();exit;
             }
 
-            $event_id        = $this->input->post('event_id');    
+            $event_id        = $this->input->post('event_id');
         }
-        
+
         /* Data */
         $events         = $this->ebookings_model->get_events($event_id);
-        
+
         if(empty($events))
         {
             echo lang('events_empty');exit;
@@ -147,7 +148,7 @@ class Ebooking extends Public_Controller {
 
         $event_id               = $this->input->post('events_id');
         $count_members          = (int) $this->input->post('count_members');
-        
+
         /* Data */
         $result                 = $this->ebookings_model->get_net_fees($event_id);
 
@@ -163,7 +164,7 @@ class Ebooking extends Public_Controller {
 
         $data['single_fees']    = $result->fees; // will change in case of including tax
         $result->fees          *= $count_members;
-        
+
         if($result->net_price == 'including') // decrease value from fees
         {
             if($result->rate_type == 'fixed')
@@ -177,10 +178,10 @@ class Ebooking extends Public_Controller {
                 $data['net_fees']       = $result->fees;
                 $data['fees']           = (float) $result->fees - ( ($result->fees*$result->rate)/100 );
                 $data['single_fees']    = (float) $data['fees']/$count_members;
-            }   
+            }
         }
         else // in case of excluding increase value of fees
-        {   
+        {
             if($result->rate_type == 'fixed')
             {
                 $data['fees']           = $result->fees;
@@ -210,7 +211,7 @@ class Ebooking extends Public_Controller {
         $_SESSION['bookings']['count_members']  = $count_members;
         $_SESSION['bookings']['events_id']      = $event_id;
         $_SESSION['bookings']['currency']       = get_default_currency();
-        
+
         echo json_encode($data);exit;
     }
 
@@ -237,12 +238,12 @@ class Ebooking extends Public_Controller {
         // set booking date and start time
         $_SESSION['bookings']['booking_date']   = $booking_date;
         $_SESSION['bookings']['start_time']     = $start_time;
-        
+
         /* Data */
         $result                 = $this->ebookings_model->get_total_e_bookings($event_id, $booking_date);
-        
+
         echo json_encode(array('booked_seats'=>$result));exit;
-    }   
+    }
 
     /**
      * initiate_booking
@@ -260,7 +261,7 @@ class Ebooking extends Public_Controller {
         $default_prebook_time = $this->settings->default_prebook_time;
         $booking_date         = date('Y-m-d', strtotime(str_replace('-', '/', $_SESSION['bookings']['booking_date'])));
         $today_date           = date('Y-m-d H:i:s');
-        
+
         // booking date should not be less than today's date
         if($booking_date < $today_date)
             $this->form_validation->set_rules('booking_older', 'booking_older', 'required', array('required'=>lang('e_bookings_booking_older_date')));
@@ -270,22 +271,22 @@ class Ebooking extends Public_Controller {
         $time_booking          = strtotime($booking_date.' '.$start_time);
         $time_today            = strtotime($today_date);
         $hours                 = round(abs($time_booking - $time_today)/(60*60));
-        
+
         if($hours < $default_prebook_time)
-            $this->form_validation->set_rules('booking_late', 'booking_late', 'required', array('required'=>sprintf(lang('e_bookings_booking_late'), $default_prebook_time.' Hours')));                           
-        
+            $this->form_validation->set_rules('booking_late', 'booking_late', 'required', array('required'=>sprintf(lang('e_bookings_booking_late'), $default_prebook_time.' Hours')));
+
         // check availability
         $total_bookings       = $this->ebookings_model->get_total_e_bookings($_SESSION['bookings']['events_id'], $_SESSION['bookings']['booking_date']);
         $capacity             = $_SESSION['bookings']['capacity'];
 
         if($total_bookings >= $capacity)
-            $this->form_validation->set_rules('booking_full', 'booking_full', 'required', array('required'=>lang('e_bookings_booking_full')));       
+            $this->form_validation->set_rules('booking_full', 'booking_full', 'required', array('required'=>lang('e_bookings_booking_full')));
 
         $this->form_validation
         ->set_rules('fullname[]', lang('users_fullname'), 'trim|required|alpha_numeric_spaces')
         ->set_rules('email[]', lang('users_email'), 'trim|required|valid_email')
         ->set_rules('mobile[]', lang('users_mobile'), 'trim|required');
-        
+
         if($this->form_validation->run() === FALSE)
         {
             // for fetching specific fields errors in order to view errors on each field seperately
@@ -294,11 +295,11 @@ class Ebooking extends Public_Controller {
             {
                 if($key == 'fullname' || $key == 'mobile' || $key == 'email') // for input array fields
                     $key .= '[]';
-                
+
                 if(form_error($key))
                     $error_fields[] = $key;
-            } 
-            
+            }
+
             echo json_encode(array('flag'=>0, 'msg' => validation_errors(), 'error_fields'=>json_encode($error_fields)));
             exit;
         }
@@ -327,7 +328,7 @@ class Ebooking extends Public_Controller {
     /**
      * payment_method
      */
-    public function payment_method()    
+    public function payment_method()
     {
         if(empty($_SESSION['bookings']) || empty($this->session->userdata('logged_in')))
         {
@@ -349,6 +350,8 @@ class Ebooking extends Public_Controller {
 
             if($payment_method === 'stripe')
                 redirect(site_url('ebooking/pay_with_stripe'));
+            if($payment_method === 'btc_credit')
+                redirect(site_url('ebooking/pay_with_btc'));
             else
                 $this->pay_with_paypal();
         }
@@ -371,7 +374,7 @@ class Ebooking extends Public_Controller {
         $notifyURL = base_url().'paypal/ipn'; //ipn url
 
         $logo = base_url().'themes/default/img/logo.png';
-        
+
         $this->load->library('paypal_lib');
 
         $this->paypal_lib->add_field('business', $this->settings->pp_registered_email);
@@ -406,6 +409,53 @@ class Ebooking extends Public_Controller {
         $this->load->view($this->template, $data);
     }
 
+    public function pay_with_btc(){
+      /*Pay with btc credits*/
+      if(empty($_SESSION['bookings']) || empty($this->session->userdata('logged_in')))
+      {
+          $this->session->set_flashdata('error', lang('e_l_pay_access_denied'));
+          redirect(base_url('events'));
+      }
+
+      //get user current btc data
+      $user_transactions = $this->btc_model->get_user_transaction($this->user['id']);
+
+
+      // setup page header data
+     $this->set_title(lang('e_bookings_payment_type_btc'));
+     $data = $this->includes;
+
+     $currency = $_SESSION['bookings']['currency'];
+
+     $api_url = 'http://api.coindesk.com/v1/bpi/currentprice/'.$currency.'json'; //API URL for the BTC conversion
+
+       //  Initiate curl
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_URL,$api_url);
+      $result=curl_exec($ch);
+      curl_close($ch);
+
+     $btc_data = json_decode($result, true);
+
+     $btc_exchange = $btc_data['bpi'][$currency];
+
+     //content Data
+     $content_data = array(
+       'user'           =>  $this->user,
+       'transactions'   =>  $user_transactions,
+       'btc_balance'    =>  $this->users_model->get_user_btc($this->user['id']),
+       'details'        =>  $_SESSION['bookings'],
+       'btc_exchange'   =>  $btc_exchange,
+     );
+
+     // load views
+     $data['content'] = $this->load->view('btc/index', $content_data, TRUE);
+     $this->load->view($this->template, $data);
+    }
+
+
 
     /**
      * finish_booking
@@ -426,13 +476,13 @@ class Ebooking extends Public_Controller {
         $data['customers_id']           = $this->user['id'];
         $data['events_id']              = $_SESSION['bookings']['events_id'];
         $data['events_id']              = $_SESSION['bookings']['events_id'];
-        // fetch fees and net fees from session 
+        // fetch fees and net fees from session
         $data['event_types_id']         = $_SESSION['bookings']['event_types_id'];
         $data['fees']                   = $_SESSION['bookings']['fees'];
         $data['net_fees']               = $_SESSION['bookings']['net_fees'];
         $data['booking_date']           = $_SESSION['bookings']['booking_date'];
         $data['status']                 = 1;
-        
+
         // fetch event data for static values
         $event                          = array();
         $event                          = $this->events_model->get_events_by_id($data['events_id']);
@@ -447,7 +497,7 @@ class Ebooking extends Public_Controller {
         $data['event_start_time']       = $event->start_time;
         $data['event_end_time']         = $event->end_time;
         $data['event_type_title']       = $event->event_types_title;
-                
+
         // fetch customer data for static values
         $customer                       = array();
         $customer                       = $this->users_model->get_users_by_id($data['customers_id']);
@@ -456,14 +506,14 @@ class Ebooking extends Public_Controller {
         $data['customer_email']         = $customer->email;
         $data['customer_address']       = $customer->address;
         $data['customer_mobile']        = $customer->mobile;
-        
+
         $taxes                          = $this->taxes_model->get_taxes_by_id($this->settings->default_tax_id);
 
         // data for e_bookings_payments
         $payments                       = array();
         $payments['e_bookings_id']        = $data['id'];
-        $payments['paid_amount']        = 0; 
-        $payments['total_amount']       = $_SESSION['bookings']['net_fees']; 
+        $payments['paid_amount']        = 0;
+        $payments['total_amount']       = $_SESSION['bookings']['net_fees'];
         $payments['payment_type']       = $_SESSION['bookings']['payment_gateway'];
         $payments['transactions_id']    = $_SESSION['bookings']['transactions_id'];
         $payments['payment_status']     = 1;
@@ -482,10 +532,10 @@ class Ebooking extends Public_Controller {
             $members[$key]['mobile']          = $val['mobile'];
             $members[$key]['e_bookings_id']     = $data['id'];
         }
-        
+
         $flag                           = $this->ebookings_model->save_e_bookings($data, $members, $payments);
 
-        if($_SERVER['HTTP_HOST'] !== 'localhost') 
+        if($_SERVER['HTTP_HOST'] !== 'localhost')
         {
             $this->load->library('make_mail');
             $email      = $this->emailtemplates_model->get_email_templates_by_id($this->settings->default_e_booking_email_template);
@@ -494,17 +544,17 @@ class Ebooking extends Public_Controller {
             $message    = str_replace('(t_be_name)', '#'.$_SESSION['bookings']['temp_id'].' - '.$_SESSION['bookings']['event_title'], $message);
             $message    = str_replace('(t_txn_id)', '#'.$_SESSION['bookings']['txn_id'], $message);
             $message    = str_replace('(t_total_amount)', $_SESSION['bookings']['booking_fees'].' '.$_SESSION['bookings']['currency'], $message);
-            
+
             $this->make_mail->send($this->user['email'], $email->subject, $message);
         }
-        
+
         if($flag)
         {
             $notification   = array(
                 'users_id'  => 1,
                 'n_type'    => 'ebookings',
                 'n_content' => 'noti_new_booking',
-                'n_url'     => site_url('admin/ebookings'), 
+                'n_url'     => site_url('admin/ebookings'),
             );
             $this->notifications_model->save_notifications($notification);
 
@@ -516,13 +566,13 @@ class Ebooking extends Public_Controller {
             $this->session->set_flashdata('error', lang('e_l_booking_failed'));
             redirect(base_url('ebooking/booking_complete'));
         }
-        
+
     }
 
-    
+
     /**
      * booking_complete
-    */  
+    */
     public function booking_complete()
     {
         if(empty($_SESSION['bookings']))
