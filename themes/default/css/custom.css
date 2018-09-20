@@ -635,6 +635,21 @@ small.small {
 .remember-box input {
   margin: 3px 0px 0px 0px !important;
 }
+.clear{
+	clear: both;
+}
+/*BTC Payment customs*/
+#btc_table table{
+	border: 1px solid #d4d4d4;
+}
+#btc_table table td{
+	padding: 5px 10px;
+	width: 50%;
+}
+#btc_table table tr:nth-child(odd){
+	background: #f8f8f8;
+}
+
 
 
 /*Media Queries*/
