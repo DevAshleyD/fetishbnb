@@ -102,6 +102,7 @@ $route['ebooking/initiate_booking']				= 'ebooking/initiate_booking';
 $route['ebooking/payment_method']				= 'ebooking/payment_method';
 $route['ebooking/pay_with_paypal']				= 'ebooking/pay_with_paypal';
 $route['ebooking/pay_with_stripe']				= 'ebooking/pay_with_stripe';
+$route['ebooking/pay_with_btc']				= 'ebooking/pay_with_btc';
 $route['ebooking/finish_booking']				= 'ebooking/finish_booking';
 $route['ebooking/booking_complete']				= 'ebooking/booking_complete';
 $route['ebooking/(:any)']						= 'ebooking/index/$1';
