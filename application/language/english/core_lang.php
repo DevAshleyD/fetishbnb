@@ -456,7 +456,7 @@ $lang['deactivate_current_user_unsuccessful']= 'You cannot De-Activate your self
 // Login / Logout
 $lang['login_successful']                    = 'Logged In Successfully';
 $lang['login_unsuccessful']                  = 'Incorrect Login';
-$lang['login_unsuccessful_not_active']       = 'Account is inactive';
+$lang['login_unsuccessful_not_active']       = 'Your email address is unverified. For the security reasons, please click the confirmation link in the activation email you received.';
 $lang['login_timeout']                       = 'Temporarily Locked Out.  Try again later.';
 $lang['logout_successful']                   = 'Logged Out Successfully';
 
@@ -503,6 +503,7 @@ $lang['users_last_name']         			= 'Last Name';
 $lang['users_fullname']         			= 'Fullname';
 $lang['users_name']         				= 'Name';
 $lang['users_username']         			= 'Username';
+$lang['users_nickname']         			= 'Nickname';
 $lang['users_email']         				= 'Email';
 $lang['users_email_username']         		= 'Email/Username';
 $lang['users_gender']         				= 'Gender';
@@ -1146,6 +1147,7 @@ $lang['welcome_to'] = "Welcome to FetishBNB, ";
 /*Custom warnings*/
 $lang['reg_success_activate'] = 'Registration is successful! Please check your email for activation link to use your account.';
 $lang['update_needed'] = 'To host an event you need to provide your complete profile and billing information.';
+$lang['acc_activate_success'] = 'Your account has been successfully activated, you may now login.';
 /*Billing Fields*/
 $lang['billing_name'] = 'First Name';
 $lang['billing_lastname'] = 'Last Name';
@@ -1164,3 +1166,6 @@ $lang['card_type'] = 'Card Type';
 $lang['payment_m_paypal'] = 'Paypal';
 $lang['payment_m_btc'] = 'Bitcoin';
 $lang['payment_m_swipe'] = 'Credit Card';
+$lang['e_bookings_payment_type_btc'] = 'Pay with Bitcoin Credits';
+$lang['btc_balance_insufficient'] = 'Transaction Failed: Insufficient bitcoin credits.';
+$lang['b_bookings_payment_type_btc'] = 'Bitcoin';
