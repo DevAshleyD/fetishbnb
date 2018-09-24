@@ -99,7 +99,7 @@ class Profile extends Private_Controller {
                   $this->ion_auth->add_to_group(2, $this->user['id']);
                 }
 
-                $saved_data = array_merge($this->user, array('group_name' => 'host')); 
+                $saved_data = array_merge($this->user, array('group_name' => 'host'));
 
                 $this->session->set_userdata('logged_in', $saved_data);
                 $this->session->language = $this->user['language'];
@@ -209,6 +209,7 @@ class Profile extends Private_Controller {
     $content_data = array(
         'billing'              => $this->billing_model->get_user_billing($this->user['id'], TRUE),
         'user'                 => $this->user,
+        'btc_balance'          => $this->users_model->get_user_btc($this->user['id']),
     );
 
     // load views
