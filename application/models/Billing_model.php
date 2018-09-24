@@ -36,6 +36,7 @@ class Billing_model extends CI_Model {
                           "$this->table.billing_city",
                           "$this->table.billing_state",
                           "$this->table.billing_country",
+                          "$this->table.billing_zip",
                           "$this->table.paypal",
                           "$this->table.btc_id",
                           "$this->table.card_number",
