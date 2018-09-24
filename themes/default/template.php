@@ -264,12 +264,6 @@
                     </li>
                     <?php } ?>
 
-                    <!-- FAQ -->
-                    <li><a href="<?php echo site_url('/cms/faq'); ?>"><?php echo lang('action_more'); ?></a></li>
-
-                    <!-- Contact -->
-                    <li><a href="<?php echo site_url('/contact'); ?>"><?php echo lang('menu_contact'); ?></a></li>
-
                 </ul>
             </nav>
         </div>
@@ -432,7 +426,8 @@
             <div class="row">
                 <!-- Copy Right Content -->
                 <div class="col-md-12 text-center">
-                    <p>&copy; <?php echo ' '.date('Y').' ' ?> <?php echo $this->settings->site_name; ?>. | Made With <i class="fa fa-heart"></i> By <a href="https://classiebit.com" title="Classiebit Softwares">Classiebit Softwares</a></p>
+                    <p>&copy; <?php echo ' '.date('Y').' ' ?> <?php echo $this->settings->site_name; ?>.  <a href="<?php echo site_url('/cms/faq'); ?>"><?php echo lang('action_more'); ?></a> |
+                    <a href="<?php echo site_url('/contact') ;?>"><?php echo lang('menu_contact'); ?></a></p>
                 </div><!-- Copy Right Content -->
                 <!-- Copy Right Content -->
             </div><!-- Footer Copyright -->
