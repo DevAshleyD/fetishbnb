@@ -49,8 +49,8 @@
     		</div>
     		<?php } else { ?>
     		<div class="col-md-12 text-center">
-				<h3><?php echo lang('b_bookings_no') ?></h3>
-				<p><a href="<?php echo site_url('') ?>"><?php echo lang('action_home'); ?></a></p>
+				<h3><?php echo lang('see_events_near') ?></h3>
+				<p><a href="<?php echo site_url('') ?>"><?php echo lang('start_browse'); ?></a></p>
 			</div>
     		<?php } ?>
     	</div>
