@@ -44,7 +44,7 @@ class Profile extends Private_Controller {
         ->set_rules('mobile', lang('users_mobile'), 'required|trim|min_length[5]|max_length[20]')
         ->set_rules('address', lang('users_address'), 'required|trim|min_length[8]|max_length[256]')
         ->set_rules('language', lang('users_language'), 'trim')
-        ->set_rules('password', lang('users_password'), 'required|trim|min_length['.$this->settings->i_min_password.']|max_length['.$this->settings->i_max_password.']')
+        ->set_rules('password', lang('users_password'), 'trim|min_length['.$this->settings->i_min_password.']|max_length['.$this->settings->i_max_password.']')
         ->set_rules('password_confirm', lang('users_password_confirm'), 'matches[password]');
 
         // upload users image
@@ -237,6 +237,114 @@ class Profile extends Private_Controller {
 
   }
 
+  function pre_register(){
+
+    // validators
+    $this->form_validation
+    ->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'))
+    ->set_rules('username', lang('users_username'), 'required|trim|min_length[5]|max_length[30]|callback__check_username')
+    ->set_rules('first_name', lang('users_first_name'), 'required|trim|min_length[2]|max_length[32]')
+    ->set_rules('last_name', lang('users_last_name'), 'required|trim|min_length[2]|max_length[32]')
+    ->set_rules('email', lang('users_email'), 'required|trim|max_length[128]|valid_email|callback__check_email')
+    ->set_rules('profession', lang('users_profession'), 'trim|min_length[3]|max_length[256]')
+    ->set_rules('experience', lang('users_experience'), 'trim|is_natural_no_zero')
+    ->set_rules('gender', lang('users_gender'), 'required|trim|in_list[male,female,other]')
+    ->set_rules('dob', lang('users_dob'), 'required|trim')
+    ->set_rules('mobile', lang('users_mobile'), 'required|trim|min_length[5]|max_length[20]')
+    ->set_rules('address', lang('users_address'), 'required|trim|min_length[8]|max_length[256]')
+    ->set_rules('language', lang('users_language'), 'trim');
+
+    // upload users image
+    if(! empty($_FILES['image']['name'])) // if image
+    {
+        $file_image         = array('folder'=>'users/images', 'input_file'=>'image');
+        // update users image
+        $filename_image     = $this->file_uploads->upload_file($file_image);
+        // through image upload error
+        if(!empty($filename_image['error']))
+            $this->form_validation->set_rules('image_error', lang('common_image'), 'required', array('required'=>$filename_image['error']));
+    }
+
+    if ($this->form_validation->run() == TRUE)
+    {
+        // save the changes
+        $data                  = array();
+
+        if(!empty($filename_image) && !isset($filename_image['error']))
+            $data['image']     = $filename_image;
+
+        if($this->input->post('password') && get_domain() !== 'classiebit.com')
+            $data['password']  = $this->input->post('password');
+
+        $data['first_name']    = $this->input->post('first_name');
+        $data['last_name']     = $this->input->post('last_name');
+        $data['email']         = $this->input->post('email');
+        $data['gender']        = $this->input->post('gender');
+        $data['dob']           = date("Y-m-d",strtotime($this->input->post('dob')));
+        $data['mobile']        = $this->input->post('mobile');
+        $data['profession']    = $this->input->post('profession');
+        $data['experience']    = $this->input->post('experience');
+        $data['address']       = $this->input->post('address');
+        $data['language']      = $this->input->post('language');
+        if($this->ion_auth->is_non_admin()){
+          $data['role']          = 2; //set user automatically to host when profile is updated
+        }
+
+        $saved                 = $this->ion_auth->update($this->user['id'], $data);
+
+        if ($saved)
+        {
+            // reload the new user data and store in session
+            $this->user = (array) $this->users_model->get_users_by_id($this->user['id']);
+            // unset($this->user['password']);
+            // unset($this->user['salt']);
+
+            $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($this->user['id'])->row()->id;
+
+            if($this->ion_auth->is_non_admin()){
+              $this->ion_auth->remove_from_group(3, $this->user['id']);
+              $this->ion_auth->add_to_group(2, $this->user['id']);
+            }
+
+            $saved_data = array_merge($this->user, array('group_name' => 'host'));
+
+            $this->session->set_userdata('logged_in', $saved_data);
+            $this->session->language = $this->user['language'];
+            $this->session->set_flashdata('message', sprintf(lang('alert_update_success'), lang('action_profile')));
+        }
+        else
+        {
+            $this->session->set_flashdata('error', sprintf(lang('alert_update_fail'), lang('action_profile')));
+        }
+
+        // reload page and display message
+        redirect('profile/pre_register');
+    }
+
+    // setup page header data
+    $this
+    ->add_plugin_theme(array(
+        "datepicker/datepicker3.css",
+        "datepicker/bootstrap-datepicker.js",
+        "jquery-datatable/datatables.min.css",
+        "jquery-datatable/datatables.min.js",
+    ), 'default')
+    ->add_js_theme( "pages/user/index_i18n.js", TRUE );
+
+    $this->set_title( lang('menu_user').' '.lang('act_preregister'));
+    $data = $this->includes;
+
+    // set content data
+    $content_data = array(
+        'cancel_url'        => base_url(),
+        'user'              => $this->user,
+        'password_required' => FALSE,
+    );
+
+    // load views
+    $data['content'] = $this->load->view('auth/preregister_form', $content_data, TRUE);
+    $this->load->view($this->template, $data);
+  }
 
     /**************************************************************************************
      * PRIVATE VALIDATION CALLBACK FUNCTIONS
