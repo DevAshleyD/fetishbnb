@@ -150,7 +150,7 @@
                     <li><a href="<?php echo site_url('myevents/add')?>">Create an Event</a></li>
                   <?php } ?>
                   <?php if($this->user['group_name'] == 'customers' || empty($this->user['has_billing'])){?>
-                    <li><a href="<?php echo site_url('profile')?>">Become a Host</a></li>
+                    <li><a href="<?php echo site_url('profile/pre_register')?>">Become a Host</a></li>
                   <?php } ?>
 
 
@@ -241,7 +241,7 @@
                                                 <div class="img-thumbnail">
                                                     <img src="<?php echo $this->user['image'] ? base_url('upload/users/images/').$this->user['image'] : base_url('themes/default/images/avatar.jpg'); ?>" class="img-responsive" />
                                                 </div>
-                                                <p><strong><?php echo $this->user['username'];?></strong><span><?php echo $this->user['group_name']; ?></span></p>
+                                                <p><strong><?php echo $this->user['username'];?></strong><span><?php echo ($this->user['group_name'] == 'customers' ? 'member' : $this->user['group_name']); ?></span></p>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
@@ -328,11 +328,11 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <?php echo $this->error; ?>
                     </div>
-                <?php elseif($this->user['group_name'] == 'customers' && empty($this->user['has_billing'])) : ?>
-                  <div class="alert-danger alert alert-dismissable">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      <?php echo lang('update_needed'); ?>
-                  </div>
+                <?php elseif(empty($this->user['has_billing']) && current_url() == site_url('profile/pre_register')) : ?>
+                    <div class="alert-danger alert alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <?php echo lang('update_needed'); ?>
+                    </div>
                 <?php endif; ?>
                 <!-- Ajax validation error -->
                 <div class="alert-danger alert alert-dismissable" id="validation-error">
