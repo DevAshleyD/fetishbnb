@@ -39,7 +39,7 @@ class Mybookings extends Private_Controller {
         $content_data['my_events'] = $this->ebookings_model->get_my_events($this->user['id']);
 
         // load views
-        $data['content'] = $this->load->view('my_events', $content_data, TRUE);
+        $data['content'] = $this->load->view('my_bookings', $content_data, TRUE);
         $this->load->view($this->template, $data);
     }
 
