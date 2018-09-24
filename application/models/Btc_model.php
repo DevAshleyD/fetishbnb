@@ -37,4 +37,10 @@ class Btc_model extends CI_Model {
                          ->result_array();
 
     }
+    
+    public function add_btc_transaction($data = array(), $id = NULL)
+    {
+      $this->db->insert($this->table, $data);
+      return $this->db->insert_id();
+    }
 }
