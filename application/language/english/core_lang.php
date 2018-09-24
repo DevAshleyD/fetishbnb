@@ -1123,7 +1123,10 @@ $lang['demo_mode']						   = 'Username and password does not update in demo mode
 $lang['demo_mode_user']						   		= 'User does not delete in demo mode';
 
 $lang['batches_time_remain']				= 'to go...';
-
+$lang['act_preregister']          = 'Pre-register';
+$lang['book_act_add']             = 'Add person';
+$lang['see_events_near']          = 'You have no bookings yet, start browsing for events near you.';
+$lang['start_browse']             = 'Start Browsing';
 
 /*ManageACL Language*/
 $lang['manage_acl_view']					= 'View';
