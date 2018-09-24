@@ -185,7 +185,7 @@
                      <?php echo form_open(site_url($this->uri->segment(1).'/'.'initiate_booking'), array('class' => 'form-horizontal', 'id' => 'form-create', 'role'=>'form')); ?>
                     <div class="row members-toggle">
                         <div class="col-md-12">
-                        	<h4><?php echo lang('e_bookings_members'); ?></h4> <a class="add_member_button pointer-elem btn pull-right" title="<?php echo lang('e_bookings_members_add'); ?>"><?php echo lang('e_bookings_members_add'); ?></a>
+                        	<h4><?php echo lang('e_bookings_members'); ?></h4> <a class="add_member_button pointer-elem btn pull-right" title="<?php echo lang('book_act_add'); ?>"><?php echo lang('book_act_add'); ?></a>
 
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-11 members">
@@ -281,24 +281,6 @@
 					<h4><?php echo lang('e_l_payment'); ?></h4>
 
 					<?php echo form_open(site_url($this->uri->segment(1).'/'.'payment_method')); ?>
-						<div class="row payment-row">
-							<div class="col-md-12">
-								<span class="remember-box checkbox">
-									<label>
-										<input type="radio" name="payment_method" checked="" value="paypal"><?php echo lang('e_bookings_payment_type_paypal') ?>
-									</label>
-								</span>
-							</div>
-						</div>
-						<div class="row payment-row">
-							<div class="col-md-12">
-								<span class="remember-box checkbox">
-									<label>
-										<input type="radio" name="payment_method" value="stripe"><?php echo lang('e_bookings_payment_type_stripe') ?>
-									</label>
-								</span>
-							</div>
-						</div>
 						<div class="row payment-row">
 							<div class="col-md-12">
 								<span class="remember-box checkbox">
