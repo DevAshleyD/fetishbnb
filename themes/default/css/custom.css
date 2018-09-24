@@ -649,7 +649,9 @@ small.small {
 #btc_table table tr:nth-child(odd){
 	background: #f8f8f8;
 }
-
+.align-right{
+	text-align: right;
+}
 
 
 /*Media Queries*/
