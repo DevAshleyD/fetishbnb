@@ -10,7 +10,7 @@
                 <li class="template-content text-center">
                     <h1><?php echo empty($this->session->flashdata('message')) ? lang('action_oops') : lang('action_yeah'); ?></h1>
                     <p><?php echo empty($this->session->flashdata('message')) ? $this->session->flashdata('error') : $this->session->flashdata('message'); ?></p>
-                    <a href="<?php echo site_url('courses'); ?>"><?php echo lang('c_l_go_back_courses'); ?></a>
+                    <a href="<?php echo site_url('mybookings'); ?>"><?php echo lang('e_l_my_ebookings'); ?></a>
                 </li><!-- Page Template Content -->
             </ul>
         </div>
