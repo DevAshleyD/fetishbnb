@@ -10,7 +10,7 @@
                 <li class="template-content text-center">
                     <h1><?php echo lang('c_l_payment_cancel_msg'); ?></h1>
                     <p><?php echo empty($this->session->flashdata('message')) ? $this->session->flashdata('error') : $this->session->flashdata('message'); ?></p>
-                    <a href="<?php echo site_url('courses'); ?>"><?php echo lang('c_l_go_back_courses'); ?></a>
+                    <a href="<?php echo site_url('events'); ?>"><?php echo lang('e_l_go_back_events'); ?></a>
                 </li><!-- Page Template Content -->
             </ul>
         </div>
