@@ -17,6 +17,9 @@
 							<div class="clear"></div>
 						</div>
 						<div id="btc_table" class="body">
+							<?php echo form_open('charge/charge_btc');?>
+							<input type="hidden" name="payer_id" value="<?php echo $this->user['id']?>" />
+							<input type="hidden" name="txn_amount" value="<?php echo bcdiv($details['net_fees'],$btc_exchange['rate_float'], 8);?>" />
 							<p>Your Booking Details: </p>
 							<table width="100%">
 								<tr>
@@ -86,9 +89,11 @@
 							</tr>
 						</table>
 							<div class="clear"></div>
-						<div class="col-md-12">
+						<div class="col-md-4 pull-right align-right">
 							<br>
-							<button class="btn pull-right" name="book_proceed" id="booksubmit">Submit Payment</button>
+							<a href="<?php echo site_url('charge/cancel')?>" class="btn">Cancel</a>
+							<button class="btn" name="book_proceed" id="booksubmit" value="submit">Submit Payment</button>
+							<?php echo form_close();?>
 						</div>
 						<div class="clear"></div>
 						</div>
