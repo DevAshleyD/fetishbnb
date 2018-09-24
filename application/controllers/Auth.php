@@ -87,7 +87,7 @@ class Auth extends Public_Controller {
                 $_SESSION['groups_id']      = $this->ion_auth->get_users_groups($result['id'])->row()->id;
 								$result['has_billing'] = $this->billing_model->get_user_billing_id($result['id']);
 
-            	$this->session->set_userdata('logged_in', $result); 
+            	$this->session->set_userdata('logged_in', $result);
 
 				redirect('/', 'refresh');
 			}
@@ -592,8 +592,9 @@ class Auth extends Public_Controller {
         if ($activation)
         {
             // redirect them to the auth page
-            $this->session->set_flashdata('message', $this->ion_auth->messages());
-            redirect("auth", 'refresh');
+            //$this->session->set_flashdata('message', $this->ion_auth->messages());
+						$this->session->set_flashdata('message', lang('acc_activate_success'));
+            redirect("auth/login", 'refresh');
         }
         else
         {
