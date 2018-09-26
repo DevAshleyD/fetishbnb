@@ -39,9 +39,9 @@ class Events extends Public_Controller {
 
             $category_id                    = $category_id->id;
         }
-        
+
         $data['events']                     = $this->event_model->get_events($category_id);
-        
+
         // get user ids by group tutor = 2
         $tutor_ids                          = array();
         foreach($this->ion_auth->get_users_by_group(2)->result() as $val)
@@ -82,7 +82,7 @@ class Events extends Public_Controller {
         $category                   = $category ? str_replace('+', ' ', urldecode($category)) : NULL;
 
         $events                     = $this->get_events_by_category($category);
-        
+
         // set content data
         $content_data['category']   = $category;
         $content_data['events']     = $events['events'];
@@ -114,12 +114,13 @@ class Events extends Public_Controller {
         $data = $this->includes;
 
         $event_title                  = $event_title ? str_replace('+', ' ', urldecode($event_title)) : NULL;
-        
+
         if(! $event_title)
-            show_404();    
-        
+            show_404();
+
         // set content data
         $content_data['event_detail']       = $this->event_model->get_event_detail($event_title);
+
 
         if(empty($content_data['event_detail']))
             show_404();
@@ -131,30 +132,39 @@ class Events extends Public_Controller {
         if($content_data['event_detail']->meta_description)
             $this->meta_description         = $content_data['event_detail']->meta_description;
         if($content_data['event_detail']->images)
-            $this->meta_image                = base_url('upload/events/images/').json_decode($content_data['event_detail']->images)[0];
+            $this->meta_image               = base_url('upload/events/images/').json_decode($content_data['event_detail']->images)[0];
         if($content_data['event_detail']->title)
-            $this->meta_url                  = site_url('events/detail/').str_replace(' ', '+', $content_data['event_detail']->title);
+            $this->meta_url                 = site_url('events/detail/').str_replace(' ', '+', $content_data['event_detail']->title);
+        if($content_data['event_detail']->created_by)
+            $this->meta_organizer           = $this->users_model->get_users_by_id($content_data['event_detail']->created_by, TRUE);
+            $this->organizer_events         = count($this->event_model->get_tutor_events($content_data['event_detail']->created_by));
 
         $content_data['related_events']    = $this->get_events_by_category($content_data['event_detail']->category_name)['events'];
-        
+
         if($content_data['event_detail']->total_tutors)
             $content_data['event_tutors'] = $this->event_model->get_events_tutors($content_data['event_detail']->id);
 
+        $host_ids = array();
+        foreach ($content_data['event_tutors'] as $host_id) {
+          $host_ids[] = $host_id->id;
+        }
+
+        $content_data['event_detail']->is_host = in_array($this->user['id'],$host_ids);
         $content_data['recurring_types']  = array(
                                                 'every_week'    => lang('events_recurring_types_all'),
-                                                'first_week'    => lang('events_recurring_types_first'), 
-                                                'second_week'   => lang('events_recurring_types_second'), 
-                                                'third_week'    => lang('events_recurring_types_third'), 
-                                                'fourth_week'   => lang('events_recurring_types_fourth'), 
+                                                'first_week'    => lang('events_recurring_types_first'),
+                                                'second_week'   => lang('events_recurring_types_second'),
+                                                'third_week'    => lang('events_recurring_types_third'),
+                                                'fourth_week'   => lang('events_recurring_types_fourth'),
                                             );
         $content_data['weekdays']         = array(
-                                                '0' => lang('events_weekdays_sun'), 
+                                                '0' => lang('events_weekdays_sun'),
                                                 '1' => lang('events_weekdays_mon'),
-                                                '2' => lang('events_weekdays_tue'), 
-                                                '3' => lang('events_weekdays_wed'), 
-                                                '4' => lang('events_weekdays_thu'), 
-                                                '5' => lang('events_weekdays_fri'), 
-                                                '6' => lang('events_weekdays_sat'), 
+                                                '2' => lang('events_weekdays_tue'),
+                                                '3' => lang('events_weekdays_wed'),
+                                                '4' => lang('events_weekdays_thu'),
+                                                '5' => lang('events_weekdays_fri'),
+                                                '6' => lang('events_weekdays_sat'),
                                             );
         // load views
         $data['content'] = $this->load->view('events_detail', $content_data, TRUE);
@@ -179,7 +189,7 @@ class Events extends Public_Controller {
 
         if(empty($categories))
         {
-            echo json_encode(array());exit;   
+            echo json_encode(array());exit;
         }
 
         $output = array();
@@ -190,7 +200,7 @@ class Events extends Public_Controller {
         }
 
         echo json_encode($output);exit;
-    }    
+    }
 
 }
 

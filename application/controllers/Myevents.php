@@ -168,7 +168,7 @@ class Myevents extends Private_Controller {
       // render tutors dropdown
       $tutors                         = $this->events_model->get_users_dropdown($tutor_ids);
       foreach($tutors as $val)
-          $data['tutors_o'][$val->id] = $val->first_name.' '.$val->last_name.' ('.$val->profession.')';
+          $data['tutors_o'][$val->id] = $val->username.' ('.$val->profession.')';
 
       $data['tutors']   = array(
           'name'          => 'tutors[]',
@@ -516,6 +516,7 @@ class Myevents extends Private_Controller {
       // convert_to_mysql_date
       $data['start_date']             = date('Y-m-d', strtotime(str_replace('-', '/', $data['start_date'])));
       $data['end_date']               = date('Y-m-d', strtotime(str_replace('-', '/', $data['end_date'])));
+      $data['created_by']             = $this->user['id'];
 
       if(!empty($filenames) && !isset($filenames['error']))
           $data['images']             = json_encode($filenames);
