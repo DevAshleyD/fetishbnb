@@ -173,6 +173,23 @@
 					<!-- aside -->
 					<aside class="sidebar">
 						<!-- Widget -->
+						<div class="widget">
+							<h5 class="widget-title">Event By<span></span></h5>
+							<ul class="thumbnail-widget thumb-circle">
+								<li>
+									<div class="thumb-wrap">
+										<a href="<?php echo site_url('tutors/').$this->meta_organizer['username'];?>">
+											<img width="66" height="66" alt="<?php echo $this->meta_organizer['username']?>" class="img-responsive" src="<?php echo base_url().($this->meta_organizer['image'] ? '/upload/users/images/'.image_to_thumb($this->meta_organizer['image']) : 'themes/default/images/teacher/thumb-teacher-01.jpg') ?>">
+										</a>
+									</div>
+									<div class="thumb-content">
+										<a href="<?php echo site_url('tutors/').$this->meta_organizer['username'] ?>"><?php echo $this->meta_organizer['username'];?></a>
+										<span><?php echo lang('e_l_total_events').' : '.$this->organizer_events;?></span>
+									</div>
+								</li>
+							</ul>
+						</div><!-- Widget -->
+						<!-- Widget -->
 						<?php if(!empty($event_tutors)) { ?>
 						<div class="widget">
 							<h5 class="widget-title">Hosts<span></span></h5>
@@ -181,11 +198,11 @@
 								<li>
 									<div class="thumb-wrap">
 										<a href="<?php echo site_url('tutors/').$val->username ?>">
-											<img width="66" height="66" alt="<?php echo $val->first_name.' '.$val->last_name ?>" class="img-responsive" src="<?php echo base_url().($val->image ? '/upload/users/images/'.image_to_thumb($val->image) : 'themes/default/images/teacher/thumb-teacher-01.jpg') ?>">
+											<img width="66" height="66" alt="<?php echo $val->username;?>" class="img-responsive" src="<?php echo base_url().($val->image ? '/upload/users/images/'.image_to_thumb($val->image) : 'themes/default/images/teacher/thumb-teacher-01.jpg') ?>">
 										</a>
 									</div>
 									<div class="thumb-content">
-										<a href="<?php echo site_url('tutors/').$val->username ?>"><?php echo $val->first_name.' '.$val->last_name ?></a>
+										<a href="<?php echo site_url('tutors/').$val->username ?>"><?php echo $val->username;?></a>
 										<span><?php echo lang('e_l_total_events').' : '.$val->total_events ?></span>
 									</div>
 								</li>
@@ -193,10 +210,17 @@
 							</ul>
 						</div><!-- Widget -->
 						<?php } ?>
+						<?php if($event_detail->is_host || $event_detail->created_by == $this->user['id']):?>
+						<!-- Widget -->
+						<div class="widget">
+							<h5 class="widget-title">Event Earned<span></span></h5>
+							<p><?php echo $event_detail->event_earned;?> BTC</p>
+							<button class="btn" name="charge_earnings" value="submit">Claim Earnings</button>
+						</div><!-- Widget -->
+					<?php endif;?>
 					</aside><!-- aside -->
 				</div><!-- Column -->
 			</div><!-- Row -->
-
 			<!-- Divider -->
 			<hr class="md">
 
