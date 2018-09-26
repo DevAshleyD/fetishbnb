@@ -254,6 +254,8 @@ class Event_model extends CI_Model {
                             "$this->table.meta_description",
                             "$this->table.date_added",
                             "$this->table.date_updated",
+                            "$this->table.created_by",
+                            "$this->table.event_earned",
                             "(SELECT cc.title FROM event_types cc WHERE cc.id = $this->table.event_types_id) category_name",
                             "(SELECT COUNT(DISTINCT(et.users_id)) FROM events_tutors et WHERE et.events_id = $this->table.id) total_tutors",
                             "(SELECT COUNT(em.id) FROM e_bookings_members em WHERE em.e_bookings_id IN (SELECT ek.id FROM e_bookings ek WHERE ek.events_id = $this->table.id)) total_e_bookings",
@@ -362,7 +364,7 @@ class Event_model extends CI_Model {
         return $this->db->select('event_types.title')
         ->where_in('id', $id)
         ->get('event_types')
-        ->row(); 
+        ->row();
     }
 
     /**
@@ -380,6 +382,13 @@ class Event_model extends CI_Model {
                         ->where(array('event_types.status !='=>'0'))
                         ->get('event_types')
                         ->result();
+    }
+
+    public function update_event_credits($id, $amount)
+    {
+      $this->db->set(array('event_earned' => $amount))
+               ->where(array('id'=>$id))
+               ->update($this->table);
     }
 
 }
