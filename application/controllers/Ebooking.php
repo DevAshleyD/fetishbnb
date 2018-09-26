@@ -579,8 +579,13 @@ class Ebooking extends Public_Controller {
                 'n_content' => 'noti_new_booking',
                 'n_url'     => site_url('admin/ebookings'),
             );
-            $this->notifications_model->save_notifications($notification);
 
+            //add credit earned by booking
+            $current_earnings = $this->events_model->get_events_by_id($data['events_id'])->event_earned;
+            $update_amount = $current_earnings + $data['net_fees'];
+            $this->event_model->update_event_credits($data['events_id'], $update_amount);
+
+            $this->notifications_model->save_notifications($notification);
             $this->session->set_flashdata('message', lang('e_l_booking_success'));
             redirect(base_url('ebooking/booking_complete'));
         }
