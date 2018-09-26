@@ -33,9 +33,9 @@ class Profile extends Private_Controller {
         // validators
         $this->form_validation
         ->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'))
-        ->set_rules('username', lang('users_username'), 'required|trim|min_length[5]|max_length[30]|callback__check_username')
-        ->set_rules('first_name', lang('users_first_name'), 'required|trim|min_length[2]|max_length[32]')
-        ->set_rules('last_name', lang('users_last_name'), 'required|trim|min_length[2]|max_length[32]')
+        ->set_rules('username', lang('users_username'), 'trim|min_length[5]|max_length[30]|callback__check_username')
+        ->set_rules('first_name', lang('users_first_name'), 'trim|min_length[2]|max_length[32]')
+        ->set_rules('last_name', lang('users_last_name'), 'trim|min_length[2]|max_length[32]')
         ->set_rules('email', lang('users_email'), 'required|trim|max_length[128]|valid_email|callback__check_email')
         ->set_rules('profession', lang('users_profession'), 'trim|min_length[3]|max_length[256]')
         ->set_rules('experience', lang('users_experience'), 'trim|is_natural_no_zero')
@@ -242,9 +242,9 @@ class Profile extends Private_Controller {
     // validators
     $this->form_validation
     ->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'))
-    ->set_rules('username', lang('users_username'), 'required|trim|min_length[5]|max_length[30]|callback__check_username')
-    ->set_rules('first_name', lang('users_first_name'), 'required|trim|min_length[2]|max_length[32]')
-    ->set_rules('last_name', lang('users_last_name'), 'required|trim|min_length[2]|max_length[32]')
+    ->set_rules('username', lang('users_username'), 'trim|min_length[5]|max_length[30]|callback__check_username')
+    ->set_rules('first_name', lang('users_first_name'), 'trim|min_length[2]|max_length[32]')
+    ->set_rules('last_name', lang('users_last_name'), 'trim|min_length[2]|max_length[32]')
     ->set_rules('email', lang('users_email'), 'required|trim|max_length[128]|valid_email|callback__check_email')
     ->set_rules('profession', lang('users_profession'), 'trim|min_length[3]|max_length[256]')
     ->set_rules('experience', lang('users_experience'), 'trim|is_natural_no_zero')
