@@ -166,6 +166,15 @@ $config['email_forgot_password'] = 'forgot_password.tpl.php';
  */
 $config['email_forgot_password_complete'] = 'new_password.tpl.php';
 
+
+/*
+ | -------------------------------------------------------------------------
+ | Booking notification email added by rob
+ | -------------------------------------------------------------------------
+ | Default: booking_confirm.tpl.php
+ */
+$config['email_booking_confirm'] = 'booking_confirm.tpl.php';
+
 /*
  | -------------------------------------------------------------------------
  | Salt options
