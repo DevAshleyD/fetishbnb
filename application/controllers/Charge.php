@@ -147,7 +147,7 @@ class Charge extends Private_Controller {
 			$data['business']                           = '';
 			$data['verify_sign']                        = '';
 
-			$_SESSION['bookings']['txn_id']             = '';
+			$_SESSION['bookings']['txn_id']             = $data['txn_id'];
 
 			$btc_balance = $this->users_model->get_user_btc($this->input->post('payer_id'));
 
@@ -168,6 +168,8 @@ class Charge extends Private_Controller {
 					'user_id'			=>	$data['payer_id'],
 					'date'				=> 	date('Y-m-d H:i:s'),
 					'amount'			=>  $data['total_amount'],
+					'txn_id'			=>  $data['txn_id'],
+					'txn_type'		=>  'booking',
 				);
 
 				$this->btc_model->add_btc_transaction($btc_data);
