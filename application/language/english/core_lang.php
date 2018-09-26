@@ -1147,6 +1147,8 @@ $lang['e_l_my_ebookings'] = 'My Bookings';
 $lang['total_users'] = 'Users';
 /*Email Templates*/
 $lang['welcome_to'] = "Welcome to FetishBNB, ";
+$lang['email_booking_head'] = 'Your booking details:';
+$lang['email_book_subject'] = 'Booking Details';
 /*Custom warnings*/
 $lang['reg_success_activate'] = 'Registration is successful! Please check your email for activation link to use your account.';
 $lang['update_needed'] = 'To host an event you need to provide your complete profile and billing information.';
