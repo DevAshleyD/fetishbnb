@@ -31,13 +31,13 @@ class Btc_model extends CI_Model {
 
     public function get_user_transaction($id = NULL)
     {
-        return $this->db->select(array('id','user_id','event_id','amount','date'))
+        return $this->db->select(array('id','user_id','event_id','amount','date','txn_id','txn_type'))
                          ->where(array('user_id'=>$id))
                          ->get($this->table)
                          ->result_array();
 
     }
-    
+
     public function add_btc_transaction($data = array(), $id = NULL)
     {
       $this->db->insert($this->table, $data);
