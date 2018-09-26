@@ -31,18 +31,18 @@ class Events_model extends CI_Model {
     {
         return $this->db->query("SELECT e.id, e.title, 'admin/events/view/' url, 'event' type, (SELECT COUNT(ebm.id) FROM e_bookings_members ebm WHERE ebm.e_bookings_id IN (SELECT eb.id FROM e_bookings eb WHERE eb.events_id = e.id)) total_bookings FROM events e ORDER BY total_bookings DESC LIMIT 5")
                         ->result();
-    }    
-    
+    }
+
     /**
      * get_event_types_dropdown
      *
      * @return array
-     * 
+     *
      **/
     public function get_event_types_dropdown()
     {
         return $this->db->select(array(
-                                    "event_types.id", 
+                                    "event_types.id",
                                     "event_types.title",
                                 ))
                         ->order_by('title')
@@ -54,12 +54,12 @@ class Events_model extends CI_Model {
      * get_users_dropdown
      *
      * @return array
-     * 
+     *
      **/
     public function get_users_dropdown($ids = array())
     {
         return $this->db->select(array(
-                                    "users.id", 
+                                    "users.id",
                                     "users.first_name",
                                     "users.last_name",
                                     "users.username",
@@ -76,7 +76,7 @@ class Events_model extends CI_Model {
      * get_events_tutors
      *
      * @return array
-     * 
+     *
      **/
     public function get_events_tutors($events_id = NULL)
     {
@@ -97,7 +97,7 @@ class Events_model extends CI_Model {
      * get_events
      *
      * @return array
-     * 
+     *
      **/
     public function get_events_by_id($id = FALSE)
     {
@@ -123,6 +123,7 @@ class Events_model extends CI_Model {
                             "$this->table.meta_tags",
                             "$this->table.meta_description",
                             "$this->table.event_types_id",
+                            "$this->table.event_earned",
                             "event_types.title event_types_title",
                         ))
                         ->join("event_types", "event_types.id = $this->table.event_types_id")
@@ -134,7 +135,7 @@ class Events_model extends CI_Model {
      * save_events
      *
      * @return array
-     * 
+     *
      **/
     public function save_events($data = array(), $data_2 = array(), $id = FALSE, $cur_tutors = array())
     {
@@ -144,7 +145,7 @@ class Events_model extends CI_Model {
             $this->db->set($data)
                      ->where(array('id'=>$id))
                      ->update($this->table);
-            
+
             return TRUE;
         }
 
@@ -155,7 +156,7 @@ class Events_model extends CI_Model {
                      ->where(array('id'=>$id))
                      ->update($this->table);
 
-            // if any current tutors removed then remove them from table as well         
+            // if any current tutors removed then remove them from table as well
             $to_delete = array();
             foreach($cur_tutors as $val)
                 if(! in_array($val, $data_2))
@@ -174,7 +175,7 @@ class Events_model extends CI_Model {
         {
             $this->db->trans_start();
             $this->db->insert($this->table, $data);
-            
+
             $events_id =  $this->db->insert_id();
 
             // insert tutors on the event
@@ -201,7 +202,7 @@ class Events_model extends CI_Model {
      * save_events_tutors
      *
      * @return array
-     * 
+     *
      **/
     public function save_events_tutors($data = array())
     {
@@ -213,15 +214,15 @@ class Events_model extends CI_Model {
      * delete_events
      *
      * @return array
-     * 
+     *
      **/
     public function delete_events($id = NULL, $title = NULL, $tutors = array())
     {
-        if(! ($id && $title)) 
+        if(! ($id && $title))
             return FALSE;
 
         $this->db->trans_start();
-        $this->db->delete($this->table, array('id' => $id, 'title'=>$title)); 
+        $this->db->delete($this->table, array('id' => $id, 'title'=>$title));
 
         foreach($tutors as $val)
             $this->db->delete('events_tutors', array('events_id'=>$id, 'users_id'=>$val->users_id));
@@ -229,7 +230,7 @@ class Events_model extends CI_Model {
         $this->db->trans_complete();
 
         if ($this->db->trans_status() === TRUE)
-            return TRUE;        
+            return TRUE;
 
         return FALSE;
     }
