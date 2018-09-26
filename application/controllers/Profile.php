@@ -229,6 +229,9 @@ class Profile extends Private_Controller {
         $event_title->title,
         $transaction['date'],
         $transaction['amount']. ' BTC',
+        $transaction['txn_id'],
+        $transaction['txn_type'],
+
       );
     }
 
