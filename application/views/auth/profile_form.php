@@ -23,11 +23,11 @@
         <div class="row">
             <div class="col-md-5">
                 <?php if ($this->session->userdata('logged_in')) : ?>
-                <div class="form-group <?php echo form_error('first_name') ? ' has-error' : ''; ?>">
-                    <?php echo lang('users_first_name', 'first_name', array('class' => 'col-md-4 control-label')); ?>
-                    <div class="col-md-8">
-                        <?php echo form_input(array('name'=>'first_name', 'value'=>set_value('first_name', (isset($user['first_name']) ? $user['first_name'] : '')), 'class'=>'form-control input-lg')); ?>
-                    </div>
+                <div class="form-group <?php echo form_error('username') ? ' has-error' : ''; ?>">
+                  <?php echo lang('users_username', 'username', array('class' => 'col-md-4 control-label')); ?>
+                  <div class="col-md-8">
+                      <?php echo form_input(array('name'=>'username', 'disabled' => TRUE,'value'=>set_value('username', (isset($user['username']) ? $user['username'] : '')), 'class'=>'form-control input-lg')); ?>
+                  </div>
                 </div>
               <?php endif;?>
                 <div class="form-group <?php echo form_error('email') ? ' has-error' : ''; ?>">
@@ -77,20 +77,6 @@
             </div>
 
             <div class="col-md-5">
-              <?php if ($this->session->userdata('logged_in')) : ?>
-                <div class="form-group <?php echo form_error('last_name') ? ' has-error' : ''; ?>">
-                    <?php echo lang('users_last_name', 'last_name', array('class' => 'col-md-4 control-label')); ?>
-                    <div class="col-md-8">
-                        <?php echo form_input(array('name'=>'last_name', 'value'=>set_value('last_name', (isset($user['last_name']) ? $user['last_name'] : '')), 'class'=>'form-control input-lg')); ?>
-                    </div>
-                </div>
-              <?php endif;?>
-                <div class="form-group <?php echo form_error('username') ? ' has-error' : ''; ?>">
-                    <?php echo lang('users_username', 'username', array('class' => 'col-md-4 control-label')); ?>
-                    <div class="col-md-8">
-                        <?php echo form_input(array('name'=>'username', 'value'=>set_value('username', (isset($user['username']) ? $user['username'] : '')), 'class'=>'form-control input-lg')); ?>
-                    </div>
-                </div>
                 <?php if ($this->session->userdata('logged_in')) : ?>
                 <div class="form-group <?php echo form_error('language') ? ' has-error' : ''; ?>">
                     <?php echo lang('users_language', 'language', array('class' => 'col-md-4 control-label')); ?>
