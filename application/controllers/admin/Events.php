@@ -548,6 +548,7 @@ class Events extends Admin_Controller {
         // convert_to_mysql_date
         $data['start_date']             = date('Y-m-d', strtotime(str_replace('-', '/', $data['start_date'])));
         $data['end_date']               = date('Y-m-d', strtotime(str_replace('-', '/', $data['end_date'])));
+        $data['created_by']             = $this->user['id'];
 
         if(!empty($filenames) && !isset($filenames['error']))
             $data['images']             = json_encode($filenames);
