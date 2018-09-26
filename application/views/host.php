@@ -49,12 +49,6 @@
 								<?php echo ' ('.lang('users_experience_1') ?> : <?php echo $host->experience > 1 ? $host->experience.' '.lang('users_experience_years') : $host->experience.' '.lang('users_experience_year') ?><?php echo ')'; ?>
 							</span>
 							<div class="share">
-								<h5><?php echo lang('users_email') ?> : </h5>
-								<ul class="social-icons color round">
-									<li class="mail"><a title="<?php echo lang('users_email') ?>" href="mailto:<?php echo $host->email ?>" target="_blank"><?php echo $host->email ?></a></li>
-								</ul><!-- Blog Social Share -->
-							</div>
-							<div class="share">
 								<h5><?php echo lang('users_about') ?> : </h5>
 								<blockquote>
 								  <p><?php echo $host->about ?></p>
