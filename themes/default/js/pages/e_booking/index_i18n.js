@@ -33,7 +33,7 @@ function getNetFees() {
 
         var tutors_rows = '';
         $.each(response.tutors, (index, item) => {
-            tutors_rows += '<tr>'+'<td class="ver-mid">'+"{{e_l_event_host_name}}"+'</td>'+'<td class="ver-mid">'+item.first_name.textCapitalize()+' '+item.last_name.textCapitalize()+'</td>'+'</tr>';
+            tutors_rows += '<tr>'+'<td class="ver-mid">'+"{{e_l_event_host_name}}"+'</td>'+'<td class="ver-mid">'+item.username+'</td>'+'</tr>';
         });
 
         $('#tutors_table tbody').html(tutors_rows);
