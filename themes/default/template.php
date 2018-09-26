@@ -461,14 +461,16 @@
   <script>
   jQuery(document).ready(function($) {
       $('#transac_table').DataTable( {
-          ajax: 'http://18.222.143.177/profile/btc/?uid=<?php echo $this->user['id']?>',
+          ajax: '<?php echo base_url();?>profile/btc/?uid=<?php echo $this->user['id']?>',
           'language': {
             'emptyTable': 'No transaction has been recorded yet.'
           },
           columns: [
             { title: "Event" },
             { title: "Transaction Date" },
-            { title: "Amount Paid" },
+            { title: "Amount" },
+            { title: "Transaction ID" },
+            { title: "Transaction Type" },
         ]
       } );
   } );
@@ -481,7 +483,7 @@
   <script>
   jQuery(document).ready(function($) {
       $('#event_title_list').DataTable( {
-          ajax: 'http://18.222.143.177/myevents/get/?uid=<?php echo $this->user['id']?>',
+          ajax: '<?php echo base_url();?>myevents/get/?uid=<?php echo $this->user['id']?>',
           'language': {
             'emptyTable': 'No event is hosted by you, create one <a href="<?php base_url();?>myevents/add">here</a>'
           },
