@@ -285,7 +285,7 @@
 							<div class="col-md-12">
 								<span class="remember-box checkbox">
 									<label>
-										<input type="radio" name="payment_method" value="btc_credit"><?php echo lang('e_bookings_payment_type_btc') ?>
+										<input type="radio" name="payment_method" value="btc_credit" checked="checked"><?php echo lang('e_bookings_payment_type_btc') ?>
 									</label>
 								</span>
 							</div>
