@@ -134,7 +134,7 @@ class Charge extends Private_Controller {
 																										$payer_billing['billing_country'].', '.
 																										$payer_billing['billing_zip'];
 			$data['txn_id']                             = substr( str_shuffle( str_repeat( 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 10 ) ), 0, 10 );
-			$data['currency']                           = 'BTC'; 
+			$data['currency']                           = 'BTC';
 			$data['protection_eligibility']             = '';
 			$data['total_amount']                       = $this->input->post('txn_amount');
 			$data['payment_status']                     = 'Completed';
@@ -176,6 +176,8 @@ class Charge extends Private_Controller {
 				if(isset($_SESSION['bookings']['is_event']))
 				$_SESSION['bookings']['transactions_id']    = $this->ebookings_model->save_transactions($data);
 				$_SESSION['bookings']['payment_gateway']    = 'btc';
+				$_SESSION['bookings']['currency']						= 'BTC';
+				$_SESSION['bookings']['net_fees']						= $this->input->post('txn_amount');
 
 				if(isset($_SESSION['bookings']['is_event']))
 					redirect(site_url('ebooking/finish_booking'));
