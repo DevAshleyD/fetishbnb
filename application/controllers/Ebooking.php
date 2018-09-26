@@ -530,22 +530,45 @@ class Ebooking extends Public_Controller {
             $members[$key]['fullname']        = $val['fullname'];
             $members[$key]['email']           = $val['email'];
             $members[$key]['mobile']          = $val['mobile'];
-            $members[$key]['e_bookings_id']     = $data['id'];
+            $members[$key]['e_bookings_id']   = $data['id'];
         }
 
         $flag                           = $this->ebookings_model->save_e_bookings($data, $members, $payments);
 
+        $mail_content = array(
+          'event_title'      =>     $data['event_title'],
+          'event_start_date' =>     $data['event_start_date'],
+          'event_start_time' =>     $data['event_start_time'],
+          'net_fees'         =>     $data['net_fees'],
+          'currency'         =>     $_SESSION['bookings']['currency'],
+          'payment_method'   =>     $_SESSION['bookings']['payment_gateway'],
+          'event_members'    =>     count($_SESSION['bookings']['members']),
+        );
+
         if($_SERVER['HTTP_HOST'] !== 'localhost')
         {
-            $this->load->library('make_mail');
-            $email      = $this->emailtemplates_model->get_email_templates_by_id($this->settings->default_e_booking_email_template);
+          // send email
+              $this->load->library('email');
 
-            $message    = str_replace('(t_user_name)', ucwords($this->user['first_name'].' '.$this->user['last_name']), $email->message);
-            $message    = str_replace('(t_be_name)', '#'.$_SESSION['bookings']['temp_id'].' - '.$_SESSION['bookings']['event_title'], $message);
-            $message    = str_replace('(t_txn_id)', '#'.$_SESSION['bookings']['txn_id'], $message);
-            $message    = str_replace('(t_total_amount)', $_SESSION['bookings']['booking_fees'].' '.$_SESSION['bookings']['currency'], $message);
+              // in case of smtp
+              if($this->settings->smtp_server && $this->settings->smtp_username && $this->settings->smtp_password && $this->settings->smtp_port)
+              {
+                  $config['protocol']     = 'smtp';
+                  $config['smtp_host']    = $this->settings->smtp_server;
+                  $config['smtp_user']    = $this->settings->smtp_username;
+                  $config['smtp_pass']    = $this->settings->smtp_password;
+                  $config['smtp_port']    = $this->settings->smtp_port;
 
-            $this->make_mail->send($this->user['email'], $email->subject, $message);
+                  $this->email->initialize($config);
+              }
+
+          $message = $this->load->view($this->config->item('email_templates', 'ion_auth').$this->config->item('email_booking_confirm', 'ion_auth'), $mail_content, true);
+          $this->email->clear();
+          $this->email->from($this->config->item('sender_email', 'ion_auth'), $this->config->item('sender_name', 'ion_auth'));
+          $this->email->to($customer->email);
+          $this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_book_subject'));
+          $this->email->message($message);
+          $this->email->send();
         }
 
         if($flag)
