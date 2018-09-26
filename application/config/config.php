@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://fetishbnb.com/';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -515,6 +515,6 @@ $config['proxy_ips'] = '';
 |
 */
 spl_autoload_register(function($class){
-    if (strpos($class, 'CI_') !== 0) 
+    if (strpos($class, 'CI_') !== 0)
         @include_once(APPPATH . 'core/' . $class . '.php');
 });
