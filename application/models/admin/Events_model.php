@@ -131,6 +131,13 @@ class Events_model extends CI_Model {
                         ->get($this->table)->row();
     }
 
+    public function get_event_earnings($id = FALSE)
+    {
+        return $this->db->select(array("$this->table.event_earned"))
+                        ->where(array("$this->table.id"=>$id))
+                        ->get($this->table)->row()->event_earned;
+    }
+
     /**
      * save_events
      *
