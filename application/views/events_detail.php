@@ -215,7 +215,15 @@
 						<div class="widget">
 							<h5 class="widget-title">Event Earned<span></span></h5>
 							<p><?php echo $event_detail->event_earned;?> BTC</p>
-							<button class="btn" name="charge_earnings" value="submit">Claim Earnings</button>
+							<?php if( strtotime(date('Y-m-d')) < strtotime($event_detail->end_date) ) {?>
+								<i>Event earnings can be credited once the event is over.</i>
+							<?php } else { ?>
+								<?php echo form_open_multipart(site_url('myevents/charge_earnings'), array('role'=>"form"));?>
+								<input name="event_id" type="hidden" value="<?php echo $event_detail->id;?>" />
+								<input name="event_title" type="hidden" value="<?php echo $this->uri->segment(3);?>" />
+								<button class="btn" name="event_earnings_sub" value="submit" <?php if($event_detail->event_earned == 0){echo 'disabled';}?>>Claim Earnings</button>
+								<?php echo form_close();?>
+							<?php }; ?>
 						</div><!-- Widget -->
 					<?php endif;?>
 					</aside><!-- aside -->
