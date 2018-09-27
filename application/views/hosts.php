@@ -12,7 +12,7 @@
 				<!-- Coloumn -->
 				<div class="col-md-8">
 					<div class="member-detail-wrap">
-						<h4 class="member-name"><a href="<?php echo site_url('hosts/').$host->username ?>"><?php echo $host->first_name.' '.$host->last_name; ?></a></h4>
+						<h4 class="member-name"><a href="<?php echo site_url('hosts/').$host->username ?>"><?php echo $host->username; ?></a></h4>
 						<span class="position"><?php echo $host->profession ?>
 								<?php echo ' ('.lang('users_experience_1') ?> : <?php echo $host->experience > 1 ? $host->experience.' '.lang('users_experience_years') : $host->experience.' '.lang('users_experience_year') ?><?php echo ')'; ?></span>
 						<p><?php echo $host->about ?></p>
@@ -32,7 +32,7 @@
 				<div class="col-md-4 static">
 					<div class="member-img-wrap">
 						<a href="<?php echo site_url('hosts/').$host->username ?>">
-							<img width="400" height="500" alt="<?php echo $host->first_name.' '.$host->last_name ?>" class="img-responsive" src="<?php echo base_url().($host->image ? '/upload/users/images/'.$host->image : 'themes/default/images/teacher/teacher-single-01.jpg') ?>">
+							<img width="400" height="500" alt="<?php echo $host->username ?>" class="img-responsive" src="<?php echo base_url().($host->image ? '/upload/users/images/'.$host->image : 'themes/default/images/teacher/teacher-single-01.jpg') ?>">
 						</a>
 					</div><!-- Member Image Wrapper -->
 				</div><!-- Coloumn -->
@@ -41,14 +41,14 @@
 				<div class="col-md-4 static">
 					<div class="member-img-wrap">
 						<a href="<?php echo site_url('hosts/').$host->username ?>">
-							<img width="400" height="500" alt="<?php echo $host->first_name.' '.$host->last_name ?>" class="img-responsive" src="<?php echo base_url().($host->image ? '/upload/users/images/'.$host->image : 'themes/default/images/teacher/teacher-single-01.jpg') ?>">
+							<img width="400" height="500" alt="<?php echo $host->username ?>" class="img-responsive" src="<?php echo base_url().($host->image ? '/upload/users/images/'.$host->image : 'themes/default/images/teacher/teacher-single-01.jpg') ?>">
 						</a>
 					</div><!-- Member Image Wrapper -->
 				</div><!-- Coloumn -->
 				<!-- Coloumn -->
 				<div class="col-md-8">
 					<div class="member-detail-wrap">
-						<h4 class="member-name"><a href="<?php echo site_url('hosts/').$host->username ?>"><?php echo $host->first_name.' '.$host->last_name; ?></a></h4>
+						<h4 class="member-name"><a href="<?php echo site_url('hosts/').$host->username ?>"><?php echo $host->username; ?></a></h4>
 						<span class="position"><?php echo $host->profession ?>
 								<?php echo ' ('.lang('users_experience_1') ?> : <?php echo $host->experience > 1 ? $host->experience.' '.lang('users_experience_years') : $host->experience.' '.lang('users_experience_year') ?><?php echo ')'; ?></span>
 						<p><?php echo $host->about ?></p>

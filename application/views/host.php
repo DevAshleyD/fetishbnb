@@ -18,11 +18,11 @@
 							<li>
 								<div class="thumb-wrap">
 									<a href="<?php echo site_url('hosts/').$val->username ?>">
-										<img width="66" height="66" alt="<?php echo $val->first_name.' '.$val->last_name ?>" class="img-responsive" src="<?php echo base_url().($val->image ? '/upload/users/images/'.image_to_thumb($val->image) : 'themes/default/images/teacher/thumb-teacher-01.jpg') ?>">
+										<img width="66" height="66" alt="<?php echo $val->username ?>" class="img-responsive" src="<?php echo base_url().($val->image ? '/upload/users/images/'.image_to_thumb($val->image) : 'themes/default/images/teacher/thumb-teacher-01.jpg') ?>">
 									</a>
 								</div>
                 <div class="thumb-content">
-									<a href="<?php echo site_url('hosts/').$val->username ?>"><?php echo $val->first_name.' '.$val->last_name ?></a>
+									<a href="<?php echo site_url('hosts/').$val->username ?>"><?php echo $val->username ?></a>
 									<span><?php echo lang('c_l_total_events').' : '.$val->total_events ?></span>
 								</div>
 							</li>
@@ -38,12 +38,12 @@
 				<div class="row team-list">
 					<!-- Member Image Column -->
 					<div class="col-md-4">
-						<img width="400" height="500" alt="<?php echo $host->first_name.' '.$host->last_name ?>" class="img-responsive" src="<?php echo base_url().($host->image ? '/upload/users/images/'.$host->image : 'themes/default/images/teacher/teacher-single-01.jpg') ?>">
+						<img width="400" height="500" alt="<?php echo $host->username ?>" class="img-responsive" src="<?php echo base_url().($host->image ? '/upload/users/images/'.$host->image : 'themes/default/images/teacher/teacher-single-01.jpg') ?>">
 					</div><!-- Coloumn -->
 					<!-- Coloumn -->
 					<div class="col-md-8">
 						<div class="member-detail-wrap">
-							<h4 class="member-name"><?php echo $host->first_name.' '.$host->last_name; ?></h4>
+							<h4 class="member-name"><?php echo $host->username; ?></h4>
 							<span class="position">
 								<?php echo $host->profession ?>
 								<?php echo ' ('.lang('users_experience_1') ?> : <?php echo $host->experience > 1 ? $host->experience.' '.lang('users_experience_years') : $host->experience.' '.lang('users_experience_year') ?><?php echo ')'; ?>
