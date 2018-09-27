@@ -25,6 +25,7 @@ class Myevents extends Private_Controller {
                             'notifications_model',
                             'admin/ebookings_model',
                             'event_model',
+                            'btc_model',
                             'admin/events_model',
 
                           ));
@@ -773,9 +774,54 @@ class Myevents extends Private_Controller {
                         ));
         exit;
 
-
   }
 
+  //credit event earnings
+  function charge_earnings()
+  {
+    $this->form_validation->set_rules('event_id', lang('e_l_event_id'), 'trim|numeric');
+
+    if($this->form_validation->run() === FALSE)
+    {
+        $this->session->set_flashdata('error', lang('e_l_send_earnings_error'));
+        redirect('events/detail/'.$_POST['event_title']);
+    }
+
+    $event_id = $this->input->post('event_id');
+
+    $total_earnings = $this->events_model->get_event_earnings($event_id);
+    $event_hosts = $this->event_model->get_events_tutors($event_id);
+    $hosts_count = count($event_hosts);
+
+    $saved = array();
+    foreach($event_hosts as $host)
+    {
+      //add credit to hosts
+      $user_current_bal     = $this->users_model->get_user_btc($host->id);
+      $add_credit_amount    = bcdiv($total_earnings, $hosts_count, 8);
+      $update_amount        = bcadd($user_current_bal, $add_credit_amount, 8);
+
+      $saved[] = $this->users_model->save_users(array('btc_balance'=>$update_amount),$host->id);
+
+      //update btc transaction data
+      $btc_data = array(
+        'event_id'      => $event_id,
+        'user_id'       => $host->id,
+        'amount'        => $add_credit_amount,
+        'date'          => date('Y-m-d H:i:s'),
+        'txn_id'        => substr( str_shuffle( str_repeat( 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 10 ) ), 0, 10 ),
+        'txn_type'      => 'credit',
+      );
+
+      $this->btc_model->add_btc_transaction($btc_data);
+
+    }
+
+    $this->events_model->save_events(array('event_earned' => 0), NULL, $event_id);
+
+    $this->session->set_flashdata('message', lang('e_l_send_earnings_success'));
+    redirect('events/detail/'.$_POST['event_title']);
+  }
 
 }
 

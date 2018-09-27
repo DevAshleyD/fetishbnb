@@ -1133,6 +1133,8 @@ $lang['manage_acl_view']					= 'View';
 
 /*Events lang*/
 $lang['events_free']						= 'FREE';
+$lang['e_l_send_earnings_success'] = 'Credits earned by this event has been sent to all host.';
+$lang['e_l_send_earnings_error'] = 'Sending of credits failed, please try again.';
 /*Hosts Lang*/
 $lang['l_host']  = 'Host';
 $lang['l_hosts']  = 'Hosts';
