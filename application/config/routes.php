@@ -80,6 +80,8 @@ $route['events'] 								= 'events';
 $route['events/search_categories'] 				= 'events/search_categories';
 $route['events/(:any)'] 						= 'events/index/$1';
 $route['events/detail/(:any)']					= 'events/detail/$1';
+$route['events/charge_earnings']					= 'events/charge_earnings';
+
 
 $route['tutors'] 								= 'tutors';
 $route['tutors/(:any)'] 						= 'tutors/tutor/$1';
