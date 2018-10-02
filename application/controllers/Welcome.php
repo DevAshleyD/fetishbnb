@@ -82,7 +82,7 @@ class Welcome extends Public_Controller {
             'gallaries'       => $this->gallaries_model->get_gallaries(6),
             'testimonials'    => $this->testimonials_model->get_testimonials(),
             'f_courses'       => $c_e_data['f_courses'],
-            'f_events'        => $c_e_data['f_events'],
+            'f_events'        => $this->event_model->get_rand_events(6),
             'tutors'          => $c_e_data['tutors'],
             'count_courses'   => $this->course_model->count_courses(),
             'count_batches'   => $this->course_model->count_batches(),
