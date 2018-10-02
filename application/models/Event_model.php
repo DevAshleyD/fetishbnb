@@ -391,6 +391,16 @@ class Event_model extends CI_Model {
                ->update($this->table);
     }
 
+    public function get_cat_rand_events($number)
+    {
+      return $this->db->order_by('id', 'RANDOM')
+                  ->limit($number)
+                  ->where(array('status' => 1))
+                  ->get('event_types')
+                  ->result();
+
+    }
+
 }
 
 /*Event model ends*/

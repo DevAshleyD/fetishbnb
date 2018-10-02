@@ -90,6 +90,7 @@ class Welcome extends Public_Controller {
             'count_tutors'    => $this->users_model->count_users(),
             'u_events'        => $this->event_model->get_u_events(),
             'blogs'           => $this->blogs_model->get_blogs(3),
+            'rand_cat_events' => $this->event_model->get_cat_rand_events(6),
         );
 
         // load views

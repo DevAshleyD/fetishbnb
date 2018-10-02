@@ -62,7 +62,7 @@
             <div class="col-sm-12">
                 <div class="title-container sm">
                     <div class="title-wrap">
-                        <h3 class="title"><?php echo lang('w_featured_events') ?></h3>
+                        <h3 class="title"><?php echo lang('welcome_rand_cat') ?></h3>
                         <span class="separator line-separator"></span>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
         </div>
         <!-- Row -->
         <div class="row">
-            <?php $row = 0; foreach($f_events as $key => $val) {
+            <?php $row = 0; foreach($rand_cat_events as $key => $val) {
                 $row++;
                 if($row%4 == 0) echo '</div><hr class="md"><div class="row">'; ?>
             <!-- Column -->
@@ -79,57 +79,15 @@
                 <!-- Event Wrapper -->
                 <div class="event-wrap">
                     <!-- Event Banner Image -->
-                    <a href="<?php echo site_url('events/detail/').str_replace(' ', '+', $val->title) ?>" title="<?php lang('action_view'); ?>" >
+                    <a href="<?php echo site_url('events/').str_replace(' ', '+', $val->title) ?>" title="<?php lang('action_view'); ?>" >
                         <div class="event-img-wrap">
-                            <img alt="<?php echo $val->title ?>" class="img-responsive" src="<?php echo base_url().($val->images ? '/upload/events/images/'.image_to_thumb(json_decode($val->images)[0]) : 'themes/default/images/course/course-01.jpg') ?>" width="600" height="220">
-                            <?php if($val->recurring) { ?>
-                            <span class="cat bg-green"><?php echo lang('e_l_repetitive_event'); ?></span>
-                            <?php } else { ?>
-                            <span class="cat bg-orange"><?php $c_day = strtotime($val->end_date) - strtotime($val->start_date);$c_day = floor($c_day / (60 * 60 * 24)); echo $c_day > 0 ? $c_day : 1; ?><?php echo ' '.lang('e_l_day_event'); ?></span>
-                            <?php } ?>
+                            <img alt="<?php echo $val->title ?>" class="img-responsive" src="<?php echo ($val->image != '' ? base_url().'upload/event_types/images/'.$val->image : 'http://via.placeholder.com/600x220' );?>" width="600" height="220">
                         </div><!-- Event Banner Image -->
                     </a>
                     <!-- Event Details -->
                     <div class="event-details">
-                        <h4><a href="<?php echo site_url('events/detail/').str_replace(' ', '+', $val->title) ?>" title="<?php lang('action_view'); ?>"><?php echo $val->title ?></a></h4>
+                        <h4><a href="<?php echo site_url('events/').str_replace(' ', '+', $val->title) ?>" title="<?php lang('action_view'); ?>"><?php echo $val->title ?></a></h4>
 
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <ul class="events-meta">
-                                    <li><i class="fa fa-users"></i> <?php echo lang('e_l_total_hosts').' : '.$val->total_tutors ?></li>
-                                    <li><i class="fa fa-calendar-o"></i> <?php echo lang('e_l_total_bookings').' : '.$val->total_e_bookings ?></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="events-meta">
-                                    <li><i class="fa fa-th"></i> <?php echo lang('events_capacity').' : '.$val->capacity ?></li>
-                                    <li><i class="fa fa-money"></i>
-                                        <?php echo lang('e_l_price').' : '; ?>
-                                        <?php echo $val->fees ? $val->fees.' '.$this->settings->default_currency : '<strong>'.lang('events_free').'</strong>'; ?></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="events-meta">
-                                    <li>
-                                        <i class="fa fa-calendar"></i><?php echo lang('e_bookings_duration').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('M j, y', strtotime($val->start_date)).' - '.date('M j, y', strtotime($val->end_date)); ?>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="events-meta">
-                                    <li>
-                                        <i class="fa fa-clock-o"></i><?php echo lang('e_bookings_timing').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('g:i A', strtotime($val->start_time)).' - '.date('g:i A', strtotime($val->end_time)); ?>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <?php if( date('Y-m-d') < date( 'Y-m-d', strtotime( str_replace( '-', '/', $val->end_date ) ) ) ) { ?>
-                        <a href="<?php echo site_url('ebooking/').str_replace(' ', '+', $val->title) ?>" class="btn"><?php echo lang('action_book_now') ?></a>
-                        <?php } else { ?>
-                        <a disabled class="btn disabled"><?php echo lang('e_l_event_over') ?></a>
-                        <?php } ?>
 
                     </div>
                 </div><!-- Event Wrapper -->
