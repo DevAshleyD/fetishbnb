@@ -401,6 +401,34 @@ class Event_model extends CI_Model {
 
     }
 
+    public function get_rand_events($number)
+    {
+      return $this->db->select(array(
+                          "$this->table.id",
+                          "$this->table.title",
+                          "$this->table.status",
+                          "$this->table.images",
+                          "$this->table.event_types_id",
+                          "$this->table.fees",
+                          "$this->table.capacity",
+                          "$this->table.recurring",
+                          "$this->table.start_date",
+                          "$this->table.end_date",
+                          "$this->table.start_time",
+                          "$this->table.end_time",
+                          "$this->table.date_added",
+                          "$this->table.date_updated",
+                          "(SELECT users.id FROM users WHERE users.id = (SELECT et.users_id FROM events_tutors et WHERE et.events_id = $this->table.id LIMIT 1) LIMIT 1) users_id",
+                          "(SELECT cc.title FROM event_types cc WHERE cc.id = $this->table.event_types_id) category_name",
+                          "(SELECT COUNT(DISTINCT(et.users_id)) FROM events_tutors et WHERE et.events_id = $this->table.id) total_tutors",
+                          "(SELECT COUNT(em.id) FROM e_bookings_members em WHERE em.e_bookings_id IN (SELECT ek.id FROM e_bookings ek WHERE ek.events_id = $this->table.id)) total_e_bookings",))
+                  ->order_by('id', 'RANDOM')
+                  ->limit($number)
+                  ->where(array('status' => 1))
+                  ->get($this->table)
+                  ->result();
+    }
+
 }
 
 /*Event model ends*/
