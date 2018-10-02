@@ -31,7 +31,7 @@
 							<?php echo build_event_types(); ?>
 						</ul><!-- Tag Widget -->
 					</div><!-- Widget -->
-					
+
 					<!-- Tutors Widget -->
 					<?php if(!empty($tutors)) { ?>
 					<div class="widget">
@@ -64,16 +64,16 @@
 								<div class="thumb-wrap">
 									<img width="66" height="66" alt="<?php echo $val->title ?>" class="img-responsive" src="<?php echo base_url().($val->images ? '/upload/events/images/'.image_to_thumb(json_decode($val->images)[0]) : 'themes/default/images/default/course-thumb-01.jpg') ?>">
 								</div>
-								<div class="thumb-content"><a href="<?php echo site_url('/').$val->url.str_replace(' ', '+', $val->title) ?>"><?php echo mb_substr($val->title, 0, 30, 'utf-8') ?></a><span><?php echo lang('menu_bookings').': '; ?><?php echo $val->total_bookings ?></span></div>	
+								<div class="thumb-content"><a href="<?php echo site_url('/').$val->url.str_replace(' ', '+', $val->title) ?>"><?php echo mb_substr($val->title, 0, 30, 'utf-8') ?></a><span><?php echo lang('menu_bookings').': '; ?><?php echo $val->total_bookings ?></span></div>
 							</li>
 							<?php } ?>
 						</ul><!-- Thumbnail Widget -->
 					</div><!-- Widget -->
 					<?php } ?>
 
-				</aside><!-- aside -->	
+				</aside><!-- aside -->
 			</div><!-- Column -->
-			
+
 			<!-- Page Content -->
 			<div class="col-md-9">
 				<!-- Course Container -->
@@ -101,31 +101,32 @@
 								<div class="row">
 									<div class="col-sm-6">
 										<ul class="events-meta">
-											<li><i class="fa fa-users"></i> <?php echo lang('e_l_total_tutors').' : '.$val->total_tutors ?></li>
 											<li><i class="fa fa-calendar-o"></i> <?php echo lang('e_l_total_bookings').' : '.$val->total_e_bookings ?></li>
-										</ul>		
+											<li><i class="fa fa-money"></i>
+												<?php echo lang('e_l_price').' : '; ?>
+												<?php echo $val->fees ? $val->fees.' '.$this->settings->default_currency : '<strong>'.lang('events_free').'</strong>'; ?></li>
+												<li>
+													<i class="fa fa-clock-o"></i><?php echo lang('e_bookings_timing').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('g:i A', strtotime($val->start_time)).' - '.date('g:i A', strtotime($val->end_time)); ?>
+												</li>
+										</ul>
 									</div>
 									<div class="col-sm-6">
 										<ul class="events-meta">
 											<li><i class="fa fa-th"></i> <?php echo lang('events_capacity').' : '.$val->capacity ?></li>
-											<li><i class="fa fa-money"></i> 
-												<?php echo lang('e_l_price').' : '; ?> 
-												<?php echo $val->fees ? $val->fees.' '.$this->settings->default_currency : '<strong>'.lang('events_free').'</strong>'; ?></li>
-										</ul>		
-									</div>
-									<div class="col-sm-6">
-										<ul class="events-meta">
 											<li>
 												<i class="fa fa-calendar"></i><?php echo lang('e_bookings_duration').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('M j, y', strtotime($val->start_date)).' - '.date('M j, y', strtotime($val->end_date)); ?>
 											</li>
-										</ul>		
+										</ul>
 									</div>
 									<div class="col-sm-6">
 										<ul class="events-meta">
-											<li>
-												<i class="fa fa-clock-o"></i><?php echo lang('e_bookings_timing').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('g:i A', strtotime($val->start_time)).' - '.date('g:i A', strtotime($val->end_time)); ?>
-											</li>		
-										</ul>		
+
+										</ul>
+									</div>
+									<div class="col-sm-6">
+										<ul class="events-meta">
+
+										</ul>
 									</div>
 								</div>
 
@@ -133,11 +134,11 @@
 								<a href="<?php echo site_url('ebooking/').str_replace(' ', '+', $val->title) ?>" class="btn"><?php echo lang('action_book_now') ?></a>
 								<?php } else { ?>
 								<a disabled class="btn disabled"><?php echo lang('e_l_event_over') ?></a>
-								<?php } ?>	
-								
+								<?php } ?>
+
 							</div>
 						</div><!-- Event Wrapper -->
-					</div><!-- Column -->		
+					</div><!-- Column -->
 				<?php } } else { ?>
 					<div class="col-md-12 text-center">
 						<h3><?php echo lang('e_l_no_events') ?></h3>
@@ -145,8 +146,8 @@
 					</div>
 				</div><!-- Row -->
 				<?php } ?>
-				
+
 			</div><!-- Column -->
-		</div><!-- Row -->	
+		</div><!-- Row -->
 	</div><!-- Container -->
 </div>

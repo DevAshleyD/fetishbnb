@@ -59,7 +59,6 @@
 												<?php echo $event_detail->fees ? $event_detail->fees.' '.$this->settings->default_currency : '<strong>'.lang('events_free').'</strong>'; ?></li>
 											</h5>
 										</li>
-										<li><i class="fa fa-users"></i><span><?php echo lang('events_tutors') ?></span><h5><?php echo $event_detail->total_tutors ?></h5>
 										</li>
 										<?php if($event_detail->recurring) { ?>
 										<li>
