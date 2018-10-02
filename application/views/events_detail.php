@@ -109,7 +109,8 @@
 							<!-- Count -->
 							<div class="count-block">
 								<h5><?php echo lang('e_l_booking_available_tickets') ?></h5>
-								<h3 class="count-number" data-count="<?php echo $event_detail->capacity - $event_detail->total_e_bookings ?>"><span class="counter"></span> / <?php echo $event_detail->capacity ?></h3>
+								<h3 class="count-number" data-count="<?php echo $event_detail->capacity - $event_detail->total_e_bookings ?>"><span class="counter"></span>
+									<?php if($event_detail->total_e_bookings != 0 && bcdiv($event_detail->total_e_bookings, $event_detail->capacity, 1) >= 0.5){}else{ echo ' / '.$event_detail->capacity; } ?></h3>
 							</div><!-- Count -->
 						</div>
 						<div class="<?php echo $event_detail->recurring ? 'col-md-4' : 'col-md-6' ?>">
