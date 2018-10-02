@@ -114,7 +114,7 @@
 										<ul class="events-meta">
 											<li><i class="fa fa-th"></i> <?php echo lang('events_capacity').' : '.$val->capacity ?></li>
 											<li>
-												<i class="fa fa-calendar"></i><?php echo lang('e_bookings_duration').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('M j, y', strtotime($val->start_date)).' - '.date('M j, y', strtotime($val->end_date)); ?>
+												<i class="fa fa-calendar"></i><?php echo lang('e_bookings_duration').' : '; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('M j, Y', strtotime($val->end_date)); ?>
 											</li>
 										</ul>
 									</div>
