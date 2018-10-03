@@ -1,4 +1,21 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<div id="homeopt-in" style="display:none;">
+    <div class="opthead">
+      <h4>Subscribe to our newsletter</h4>
+    </div>
+    <div class="col-sm-4">
+      <div class="optimg">
+        <img src="<?php echo base_url();?>upload/gallaries/images/1538570322947.png" alt="FetishBNB Logo" />
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="optform">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis risus elementum, aliquet nisl vel, feugiat felis.</p>
+        <input name="contact_email" placeholder="Your Email Address" />
+        <button name="contact_sub" value="Submit" class="btn">Subscribe</button>
+      </div>
+    </div>
+</div>
 
 <!-- Hero Slider -->
 <section class="pad-none cd-hero js-cd-hero js-cd-autoplay">
@@ -96,31 +113,30 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <ul class="events-meta">
-                                    <li><i class="fa fa-users"></i> <?php echo lang('e_l_total_hosts').' : '.$val->total_tutors ?></li>
-                                    <li><i class="fa fa-calendar-o"></i> <?php echo lang('e_l_total_bookings').' : '.$val->total_e_bookings ?></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="events-meta">
-                                    <li><i class="fa fa-th"></i> <?php echo lang('events_capacity').' : '.$val->capacity ?></li>
                                     <li><i class="fa fa-money"></i>
                                         <?php echo lang('e_l_price').' : '; ?>
                                         <?php echo $val->fees ? $val->fees.' '.$this->settings->default_currency : '<strong>'.lang('events_free').'</strong>'; ?></li>
                                     </li>
+                                    <li><i class="fa fa-th"></i> <?php echo lang('events_capacity').' : '.$val->capacity ?></li>
                                 </ul>
                             </div>
                             <div class="col-sm-6">
                                 <ul class="events-meta">
-                                    <li>
-                                        <i class="fa fa-calendar"></i><?php echo lang('e_bookings_duration').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('M j, y', strtotime($val->start_date)).' - '.date('M j, y', strtotime($val->end_date)); ?>
-                                    </li>
+                                  <li>
+                                      <i class="fa fa-calendar"></i><?php echo lang('e_bookings_duration').' : '.date('M j, Y', strtotime($val->end_date)); ?>
+                                  </li>
+                                  <li>
+                                      <i class="fa fa-clock-o"></i><?php echo lang('e_bookings_timing').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('g:i A', strtotime($val->start_time)).' - '.date('g:i A', strtotime($val->end_time)); ?>
+                                  </li>
+
                                 </ul>
                             </div>
                             <div class="col-sm-6">
                                 <ul class="events-meta">
-                                    <li>
-                                        <i class="fa fa-clock-o"></i><?php echo lang('e_bookings_timing').' : '.'<br>'; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('g:i A', strtotime($val->start_time)).' - '.date('g:i A', strtotime($val->end_time)); ?>
-                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <ul class="events-meta">
                                 </ul>
                             </div>
                         </div>
