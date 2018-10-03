@@ -1,6 +1,6 @@
 (function(){
 	//remove no-js class
-    removeClass(document.getElementsByTagName("html")[0], "no-js"); 
+    removeClass(document.getElementsByTagName("html")[0], "no-js");
 
     //Hero Slider - by CodyHouse.co
 	function HeroSlider( element ) {
@@ -14,7 +14,7 @@
 		this.oldSlideIndex = 0;
 		this.autoplay = hasClass(this.element, "js-cd-autoplay");
 		this.autoPlayId;
-		this.autoPlayDelay = 5000;
+		this.autoPlayDelay = 3000;
 		this.init();
 	};
 
@@ -55,7 +55,7 @@
 		var videoSlides = this.element.getElementsByClassName("js-cd-bg-video");
 		for( var i = 0; i < videoSlides.length; i++) {
 			if( videoSlides[i].offsetHeight > 0 ) {
-				// if visible - we are not on a mobile device 
+				// if visible - we are not on a mobile device
 				var videoUrl = videoSlides[i].getAttribute("data-video");
 				videoSlides[i].innerHTML = "<video loop><source src='"+videoUrl+".mp4' type='video/mp4' /><source src='"+videoUrl+".webm' type='video/webm'/></video>";
 				// if the visible slide has a video - play it
@@ -78,7 +78,7 @@
 		if( this.newSlideIndex < this.slidesNumber - 1) {
 			this.newSlideIndex +=1;
 			this.newSlide();
-			
+
 		} else {
 			this.newSlideIndex = 0;
 			this.newSlide();
@@ -140,7 +140,7 @@
 		}
 	}
 
-	//on mobile - open/close primary navigation clicking/tapping the menu icon 
+	//on mobile - open/close primary navigation clicking/tapping the menu icon
 	document.getElementsByClassName('js-cd-header__nav')[0].addEventListener('click', function(event){
 		if(event.target.tagName.toLowerCase() == 'nav') {
 			var dropdown = this.getElementsByTagName('ul')[0];
@@ -169,7 +169,7 @@
 	}
 	function removeClass(el, className) {
 		var classList = className.split(' ');
-	  	if (el.classList) el.classList.remove(classList[0]);	
+	  	if (el.classList) el.classList.remove(classList[0]);
 	  	else if(hasClass(el, classList[0])) {
 	  		var reg = new RegExp('(\\s|^)' + classList[0] + '(\\s|$)');
 	  		el.className=el.className.replace(reg, ' ');
