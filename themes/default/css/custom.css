@@ -548,6 +548,24 @@ small.small {
 .bg-black{
 	background: #000;
 }
+#homeopt-in{
+	min-width: 720px;
+  padding: 40px 5px;
+  border-radius: unset;
+}
+#homeopt-in .opthead{
+	text-align: center;
+	margin-bottom: 25px;
+}
+#homeopt-in .optform input{
+	padding: 10px 5px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+#homeopt-in .optform button{
+	width: 100%;
+	padding: 13px;
+}
 /*======================= V2 css ==========================*/
 /*Checkbox RTL error*/
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
