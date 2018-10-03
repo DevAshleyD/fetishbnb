@@ -1178,3 +1178,7 @@ $lang['btc_balance_insufficient'] = 'Transaction Failed: Insufficient bitcoin cr
 $lang['b_bookings_payment_type_btc'] = 'Bitcoin';
 /* Welcome Page Customs*/
 $lang['welcome_rand_cat'] = 'Featured Categories';
+$lang['welcome_featured_experiences'] = 'Featured Experiences';
+$lang['welcome_upcoming_experiences'] = 'Upcoming Experiences';
+$lang['welcome_experience'] = 'Experience';
+$lang['welcome_experiences'] = 'Experiences';
