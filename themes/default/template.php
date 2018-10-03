@@ -159,7 +159,7 @@
                     <!-- Events Menu -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="<?php echo site_url('events'); ?>">
-                            <?php echo lang('menu_events') ?>
+                            <?php echo lang('welcome_experiences') ?>
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <?php echo build_menu_events(); ?>
