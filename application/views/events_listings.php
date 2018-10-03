@@ -101,7 +101,6 @@
 								<div class="row">
 									<div class="col-sm-6">
 										<ul class="events-meta">
-											<li><i class="fa fa-calendar-o"></i> <?php echo lang('e_l_total_bookings').' : '.$val->total_e_bookings ?></li>
 											<li><i class="fa fa-money"></i>
 												<?php echo lang('e_l_price').' : '; ?>
 												<?php echo $val->fees ? $val->fees.' '.$this->settings->default_currency : '<strong>'.lang('events_free').'</strong>'; ?></li>
