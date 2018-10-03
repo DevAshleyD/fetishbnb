@@ -112,17 +112,10 @@
 								<h3 class="count-number" data-count="<?php echo $event_detail->capacity - $event_detail->total_e_bookings ?>"><span class="counter"></span></h3>
 							</div><!-- Count -->
 						</div>
-						<div class="<?php echo $event_detail->recurring ? 'col-md-4' : 'col-md-6' ?>">
-							<!-- Count -->
-							<div class="count-block">
-								<h5><?php echo lang('e_l_booking_joined_members') ?></h5>
-								<h3 class="count-number" data-count="<?php echo $event_detail->total_e_bookings ?>"><span class="counter"></span></h3>
-							</div><!-- Count -->
-						</div><!-- Column -->
-
 						<!-- If event is recurring -->
-						<?php if($event_detail->recurring) { ?>
-						<div class="col-md-4">
+						<?php if(!$event_detail->recurring) { ?>
+
+						<div class="col-md-6">
 							<!-- Count -->
 							<div class="count-block">
 								<h5><?php echo lang('e_l_book_seats') ?></h5>
@@ -130,23 +123,26 @@
 								<br>
 							</div>
 						</div>
-						<?php } ?>
-
-						<!-- If event is recurring -->
-						<?php if(!$event_detail->recurring) { ?>
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<h4 class="title-sm"><?php echo lang('e_l_starts_in') ?> : </h4>
 							<div id="daycounter-2" class="daycounter clearfix" data-counter="down" data-year="<?php echo date('Y', strtotime($event_detail->start_date)) ?>" data-month="<?php echo date('m', strtotime($event_detail->start_date)) ?>" data-date="<?php echo date('d', strtotime($event_detail->start_date)) ?>"></div>
 						</div><!-- Column -->
+						<?php } ?>
+
+
+						<!-- If event is recurring -->
+						<?php if($event_detail->recurring) { ?>
 						<div class="col-md-6">
 							<!-- Count -->
-							<div class="count-block m-t-80">
+							<div class="count-block">
 								<h5><?php echo lang('e_l_book_seats') ?></h5>
 								<a href="<?php echo site_url('ebooking/').str_replace(' ', '+', $event_detail->title) ?>" class="btn"><?php echo lang('action_book_now') ?></a>
 								<br>
 							</div>
 						</div>
 						<?php } ?>
+
+
 					</div>
 					<?php } else { ?>
 					<div class="row">
