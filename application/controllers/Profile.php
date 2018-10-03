@@ -20,7 +20,7 @@ class Profile extends Private_Controller {
         parent::__construct();
 
         // load the users model
-        $this->load->model(array('users_model','btc_model','event_model','billing_model'));
+        $this->load->model(array('users_model','btc_model','event_model','billing_model','admin/events_model'));
         $this->load->library('file_uploads');
     }
 
@@ -217,16 +217,22 @@ class Profile extends Private_Controller {
     $this->load->view($this->template, $data);
   }
 
-  function get_trans_json(){
+  function get_trans_json($user_id){
 
-    $user_id = $_GET['uid'];
     $transactions = $this->btc_model->get_user_transaction($user_id);
 
     $arr = '';
     foreach($transactions as $transaction){
-      $event_title = $this->event_model->get_title_by_id($transaction['event_id'], 'events');
+      $event = $this->events_model->get_events_by_id($transaction['event_id']);
+      if(!empty($event))
+      {
+        $event_title = $event->title;
+      }else{
+        $event_title = 'Deleted Event';
+      }
+
       $arr[] = array(
-        $event_title->title,
+        $event_title,
         $transaction['date'],
         $transaction['amount']. ' BTC',
         $transaction['txn_id'],
