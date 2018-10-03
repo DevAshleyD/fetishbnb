@@ -30,14 +30,14 @@
     <?php } } ?>
       <!-- other slides here -->
    </ul> <!-- .cd-hero__slider -->
-   <div style="display:none;" class="cd-hero__nav js-cd-nav">
+   <div style="opacity: 0;" class="cd-hero__nav js-cd-nav">
       <nav>
          <span class="cd-hero__marker cd-hero__marker--item-1 js-cd-marker"></span>
 
          <ul>
            <li class="cd-selected"><a href="#0">Slider</a></li>
            <?php for($i = 2; $i<=3;$i++) { if($this->settings->{'banner_title_'.$i}) {?>
-            <li><a href="#<?php echo $i-1;?>">Slider</a></li>
+            <li><a href="#0">Slider</a></li>
             <!-- other navigation items here -->
           <?php }} ?>
          </ul>
@@ -79,7 +79,7 @@
             <div class="col-sm-12">
                 <div class="title-container sm">
                     <div class="title-wrap">
-                        <h3 class="title"><?php echo lang('w_featured_events') ?></h3>
+                        <h3 class="title"><?php echo lang('welcome_featured_experiences') ?></h3>
                         <span class="separator line-separator"></span>
                     </div>
                 </div>
@@ -184,7 +184,7 @@
             <div class="col-sm-6 col-md-4">
                 <!-- Count Block -->
                 <div class="count-block dark bg-verydark">
-                    <h5><?php echo lang('menu_events'); ?></h5>
+                    <h5><?php echo lang('welcome_experiences'); ?></h5>
                     <h3 data-count="<?php echo $count_events; ?>" class="count-number"><span class="counter"><?php echo $count_events; ?></span></h3>
                     <i class="uni-wine-glass"></i>
                 </div><!-- Counter Block -->
@@ -210,7 +210,7 @@
             <div class="col-sm-12">
                 <div class="title-container typo-dark">
                     <div class="title-wrap">
-                        <h3 class="title"><?php echo lang('w_upcoming_events') ?></h3>
+                        <h3 class="title"><?php echo lang('welcome_upcoming_experiences') ?></h3>
                         <span class="separator line-separator"></span>
                     </div>
                 </div>
