@@ -461,7 +461,7 @@
   <script>
   jQuery(document).ready(function($) {
       $('#transac_table').DataTable( {
-          ajax: '<?php echo base_url();?>profile/btc/?uid=<?php echo $this->user['id']?>',
+          ajax: '<?php echo base_url();?>profile/btc/<?php echo $this->user['id']?>',
           'language': {
             'emptyTable': 'No transaction has been recorded yet.'
           },
@@ -542,7 +542,6 @@
     });
   </script>
 <?php endif;?>
-
 </body>
 
 <!-- Load Facebook SDK for JavaScript -->
