@@ -95,3 +95,18 @@ $(window).on('load', function() {
 $(window).resize(function(){
   equalheight('.blog-details');
 });
+$(window).ready(function() {
+    // delay by 7 seconds
+    setTimeout(function(){
+        // make the modal appear
+        $('#homeopt-in').modal({
+          fadeDuration: 200,
+          fadeDelay: 0.50
+        });
+    }, 3000);
+});
+$('.close-modal').click(function(){
+    // create a cookie
+    alert('Closed.');
+    //$.cookie('hideTheModal', 'true', { expires: 30 });
+});
