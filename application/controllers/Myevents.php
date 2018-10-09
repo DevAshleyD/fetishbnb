@@ -52,7 +52,7 @@ class Myevents extends Private_Controller {
           "font-awesome/css/font-awesome.min.css",
       ), 'default');
 
-        $this->set_title( lang('menu_my_events'));
+        $this->set_title( lang('action_menu_my_experiences'));
         $data = $this->includes;
 
 
@@ -378,13 +378,6 @@ class Myevents extends Private_Controller {
           'class'         => 'form-control',
           'value'         => $this->form_validation->set_value('meta_description', !empty($result->meta_description) ? $result->meta_description : ''),
       );
-      $data['featured'] = array(
-          'name'      => 'featured',
-          'id'        => 'featured',
-          'class'     => 'form-control',
-          'options'   => array('1' => lang('common_featured_enabled'), '0' => lang('common_featured_disabled')),
-          'selected'  => $this->form_validation->set_value('featured', !empty($result->featured) ? $result->featured : 0),
-      );
       $data['status'] = array(
           'name'      => 'status',
           'id'        => 'status',
@@ -453,7 +446,6 @@ class Myevents extends Private_Controller {
       ->set_rules('meta_title', lang('common_meta_title'), 'trim|max_length[128]')
       ->set_rules('meta_tags', lang('common_meta_tags'), 'trim|max_length[256]')
       ->set_rules('meta_description', lang('common_meta_description'), 'trim')
-      ->set_rules('featured', lang('common_featured'), 'required|in_list[0,1]')
       ->set_rules('status', lang('common_status'), 'required|in_list[0,1]')
       ->set_rules('event_types', lang('events_type'), 'trim|required|is_natural_no_zero')
       ->set_rules('tutors[]', lang('events_tutors'), 'trim|required|is_natural_no_zero');
@@ -779,19 +771,27 @@ class Myevents extends Private_Controller {
   //credit event earnings
   function charge_earnings()
   {
+
     $this->form_validation->set_rules('event_id', lang('e_l_event_id'), 'trim|numeric');
 
     if($this->form_validation->run() === FALSE)
     {
         $this->session->set_flashdata('error', lang('e_l_send_earnings_error'));
-        redirect('events/detail/'.$_POST['event_title']);
+        redirect('events/detail/'.$_POST['event_title'] );
     }
 
     $event_id = $this->input->post('event_id');
-
     $total_earnings = $this->events_model->get_event_earnings($event_id);
-    $event_hosts = $this->event_model->get_events_tutors($event_id);
-    $hosts_count = count($event_hosts);
+
+    if($this->input->post('claim_act') == 1)
+    {
+      $event_hosts = $this->event_model->get_events_tutors($event_id);
+      $hosts_count = count($event_hosts);
+    }else{
+      $creator = $this->event_model->get_event_detail(str_replace('+', ' ', $_POST['event_title']))->created_by;
+      $event_hosts = array($this->users_model->get_users_by_id($creator));
+      $hosts_count = 1;
+    }
 
     $saved = array();
     foreach($event_hosts as $host)
@@ -819,7 +819,13 @@ class Myevents extends Private_Controller {
 
     $this->events_model->save_events(array('event_earned' => 0), NULL, $event_id);
 
-    $this->session->set_flashdata('message', lang('e_l_send_earnings_success'));
+    if($this->input->post('claim_act') == 1)
+    {
+      $this->session->set_flashdata('message', lang('e_l_send_earnings_success'));
+    }else{
+      $this->session->set_flashdata('message', lang('e_l_send_earnings_success_own'));
+    }
+
     redirect('events/detail/'.$_POST['event_title']);
   }
 

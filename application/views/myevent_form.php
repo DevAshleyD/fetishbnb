@@ -274,25 +274,11 @@
                                   </div>
                               </div>
                           </div>
-                          <div class="col-md-6">
-                              <div class="row">
-                                  <div class="col-md-4 form-control-label">
-                                      <?php echo lang('common_featured', 'featured', array('class'=>'featured')); ?>
-                                  </div>
-                                  <div class="col-md-8">
-                                      <div class="form-group">
-                                          <div class="form-line">
-                                              <?php echo form_dropdown($featured);?>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
                       </div>
                       <div class="row clearfix">
                           <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                               <div class="btn-group">
-                                  <button type="submit" class="btn bg-<?php echo $this->settings->admin_theme ?> btn-lg waves-effect"><?php echo lang('action_submit') ?></button>
+                                  <button type="submit" class="btn bg-<?php echo $this->settings->admin_theme ?> btn-lg waves-effect"><?php echo lang('book_create_exp') ?></button>
                               </div>
                               <span id="submit_loader"></span>
                           </div>
